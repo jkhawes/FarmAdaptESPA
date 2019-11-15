@@ -1,0 +1,26 @@
+1. Farm-Adapt Purpose, Content, and Development
+
+Project purpose: 
+The team set out to better understand the implications of the adopted decision-making model for 
+the results and conclusions of a modeling effort. To do this, the team has sought to produce a 
+generalizable model of industrialized farmer adaptation to resource scarcity. The implementation of 
+three separate, theory-based decision-making mechanisms to govern farmer agent behavior within a 
+fully functional model of an agricultural system allows the study team to expand the collective 
+understanding of the type of variability introduced when decision-making rules are varied. In doing 
+so, we draw attention to the intentionality with which decision-making rules should be selected and 
+designed. 
+
+Content: 
+The Farm-Adapt GitHub repository is an evolving set of content. To date, it is dominted by the Idaho 
+Case Study for which this model was originally designed. Moving forward, the team seeks to release an
+unoperationalized Farm-Adapt model for ease of use in the instance of new case studies. In the meantime, 
+this READ-ME guides the user through both the Idaho Case Study and through re-operationalization of the model. 
+
+Development: 
+Farm-Adapt was developed and designed by Jason K Hawes. Jason can be reached at jasonkhawes@gmail.com. For
+more information on the initial use and testing of the model, see _______________________________________. 
+The model is designed to run using only free and open source software (NetLogo and R) and operate in any 
+environment with access to those programs. The model is designed for use by researchers and practitioners 
+interested in adaptation in industrialized agriculture as well asdecision-making theory. To this end, the 
+interface is designed to allow for easy investigation of the agricultural and economic inputs and outcome 
+variables, as well as to support a thorough understanding of the operationalization of social science theory. 

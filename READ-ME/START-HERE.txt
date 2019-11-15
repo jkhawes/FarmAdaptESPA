@@ -14,7 +14,13 @@ Contents of READ-ME:
 2. Using the ESPA Case Study Program
 3. Implementing new case studies
 4. Components
+	4a. Planning Season
+	4b. Planting Season
+	4c. Harvest Season
+	4d. Offseason
+	4e. Analysis Components
 5. Inputs
+	5a. Interface Inputs 
 
 
 Last revised: 2019-11-15

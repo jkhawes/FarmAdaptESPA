@@ -598,11 +598,11 @@ to EvaluateRun
   print (word "grain-rotation-count is " grain-rot-count)
   print (word "barley-rotation-count is " barley-rot-count)
   let rot-sum barley-rot-count + grain-rot-count + alfalfa-rot-count + beet-rot-count + potato-rot-count
-  print (word "Percent potato is " (potato-rot-count / rot-sum) " as compared to " CropscapePercentPotatoes " prescribed by cropscape.")
-  print (word "Percent beet is " (beet-rot-count / rot-sum) " as compared to " CropscapePercentSugarbeets " prescribed by cropscape.")
-  print (word "Percent alfafa is " (alfalfa-rot-count / rot-sum) " as compared to " CropscapePercentAlfalfa " prescribed by cropscape.")
-  print (word "Percent grain is " (grain-rot-count / rot-sum) " as compared to " (CropscapePercentSpringWheat + CropscapePercentCorn + CropscapePercentWinterWheat) " prescribed by cropscape.")
-  print (word "Percent barley is " (barley-rot-count / rot-sum) " as compared to " CropscapePercentBarley " prescribed by cropscape.")
+  print (word "Percent potato in rotations is " (potato-rot-count / rot-sum * 100) " as compared to " CropscapePercentPotatoes " prescribed by cropscape.")
+  print (word "Percent beet in rotations is " (beet-rot-count / rot-sum * 100) " as compared to " CropscapePercentSugarbeets " prescribed by cropscape.")
+  print (word "Percent alfafa in rotations is " (alfalfa-rot-count / rot-sum * 100) " as compared to " CropscapePercentAlfalfa " prescribed by cropscape.")
+  print (word "Percent grain in rotations is " (grain-rot-count / rot-sum * 100) " as compared to " (CropscapePercentSpringWheat + CropscapePercentCorn + CropscapePercentWinterWheat) " prescribed by cropscape.")
+  print (word "Percent barley in rotations is " (barley-rot-count / rot-sum * 100) " as compared to " CropscapePercentBarley " prescribed by cropscape.")
 
   ; Evaluating crop histories
   set potato-count 0
@@ -654,7 +654,8 @@ to EvaluateRun
     if ChangedWaterManagementThisYear? = 1
     [ set WaterStratChange WaterStratChange + 1 ]
   ]
-  print (WaterStratChange / count farmers)
+  let WaterStratChangePercent-local (WaterStratChange / count farmers * 100)
+  print (word "The percent of farmers changing their water use strategy is " WaterStratChangePercent-local)
 
 end
 
@@ -746,11 +747,11 @@ end
 GRAPHICS-WINDOW
 646
 80
-1503
-685
+2498
+1384
 -1
 -1
-2.75
+6.0
 1
 10
 1
@@ -788,7 +789,7 @@ CHOOSER
 Decision-Making
 Decision-Making
 "Rational Actor Theory" "Theory of Planned Behavior" "IAC Framework"
-1
+0
 
 BUTTON
 234
@@ -876,7 +877,7 @@ NumberOfSeasons
 NumberOfSeasons
 0
 50
-5.0
+15.0
 1
 1
 years
@@ -964,7 +965,7 @@ ChargeForOverdraw
 ChargeForOverdraw
 0
 200
-100.0
+0.0
 1
 1
 $ per acre-foot
@@ -1228,7 +1229,7 @@ SWITCH
 791
 UseRandomRotations?
 UseRandomRotations?
-0
+1
 1
 -1000
 
@@ -1334,7 +1335,7 @@ TypicalAmountFarmerIsWillingToLosePerField
 TypicalAmountFarmerIsWillingToLosePerField
 0
 10000
-2500.0
+5000.0
 50
 1
 NIL
@@ -1372,7 +1373,7 @@ INPUTBOX
 627
 144
 RandomSeed
-15.0
+1.0
 1
 0
 Number
@@ -1469,7 +1470,7 @@ INPUTBOX
 635
 457
 InterfaceVariableFileName
-InterfaceVariables.txt
+/data/InterfaceInputs6.txt
 1
 0
 String
@@ -1481,7 +1482,7 @@ SWITCH
 451
 GeneratingWorlds?
 GeneratingWorlds?
-1
+0
 1
 -1000
 
@@ -1491,7 +1492,7 @@ INPUTBOX
 238
 462
 ExperimentVariablesFile
-ExperimentVariables.txt
+/data/ExperimentVariables.txt
 1
 0
 String
@@ -1555,23 +1556,6 @@ RhythmScalar
 1
 NIL
 HORIZONTAL
-
-BUTTON
-1366
-33
-1521
-66
-Generate Experiments
-GenerateExperiments
-NIL
-1
-T
-OBSERVER
-NIL
-NIL
-NIL
-NIL
-1
 
 @#$#@#$#@
 ## WHAT IS IT?
@@ -1915,7 +1899,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.1
+NetLogo 6.1.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@

@@ -1,0 +1,30 @@
+2. Using the ESPA Case Study Program
+
+To use or test the ESPA Farm-Adapt Case Study, first download NetLogo and R. 
+We recommend the use of RStudio, although there are a variety of R GUIs, all of 
+which should be compatible with the structure of Farm-Adapt. 
+1. To download NetLogo, visit https://ccl.northwestern.edu/netlogo/download.shtml
+2. To download RStudio, visit https://rstudio.com/products/rstudio/download/
+	To use RStudio, you first must download R as indicated by the website above.
+
+The best way to familiarize yourself with the model is to launch it in NetLogo. To do
+this, open NetLogo and locate the model in the Open dialogue under the File menu. This
+process is just the same as opening a Microsoft Office file, for example. 
+
+Once a model is open, NetLogo has three tabs: Interface, Info, and Code. Unless you intend 
+to update or modify the model, you will only need to interact with the Interface tab. The
+Info tab reproduces many of the important points made in this READ-ME document. 
+
+The model is governed by a variety of user-determined inputs. To simply run the model, 
+it is not necessary to change any of the inputs seen on the NetLogo Interface tab. Each of 
+these inputs is described in more detail in part 5a of this document. To customize the simulation, 
+reference READ-ME part 5a. 
+
+The Interface offers several buttons for your use. To run a simulation based on your Interface Inputs, 
+press Go. To generate a new world based on your interface inputs, press Only Setup. A new world will 
+be generated that you can then export and use in future experimental simulations. To test new code,  
+add that code to the Test function in the main Code tab and press Test on the main screen. Only the code
+in the Test function will be run. This is best used for testing new methods of analysis or other one-off 
+operations. It is not an efficient way to test large-scale changes to the simulation. Finally, Evaluate Run 
+can be used after simulation to print the results of that simulation in the Command Center at the 
+bottom of the screen. 

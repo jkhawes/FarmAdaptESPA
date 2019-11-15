@@ -1,0 +1,25 @@
+4. Components
+The model is designed as a collection of components, with minimal coding within the main NetLogo
+file. These components can be divide into two main categories, Simulation and Analysis. Analysis
+components are primarily dedicated to the integration of R in the program. Simulation components 
+are divided into four main categories detailed below. More details on each components can be found 
+in the sub-files 4a-4e. 
+
+
+Farmers are the only actors with true agency. They proceed through a four-season year, which 
+approximates their real-world schedule.
+1.	Planning season – traditional: Farmers determine preferred crop, plan for planting 
+	that best meets their requirements – may still be revised in adaptation planning. 
+	With each crop, farmers calculate their expected water use and analyze various water-saving 
+	measures, including more efficient irrigation, less water-intensive crops, and fallowing 
+	acres or corners. This is all considered in an overall utility function that uses the 
+	selected decision-making theory to approximate a farmer’s decision-making process in light 
+	of available information. 
+2.	Planting season: Farmers execute plan developed in planning season. Simulation determines 
+	total water use by farmers, yields (AquaCrop), and net revenue.
+3.	Harvest Season (Reconciliation): Farmers calculate their yield and income and adapt their 
+	attitudes based on this year’s outcomes.  
+4.	Offseason: Farmers communicate results with other farmers and with consultants in their 
+	social network. Afterwards, consultants speak with their farmer clients about the new 
+	attitudes they’ve developed after seeing that year’s performance for a variety of farmers. 
+Other agents only participate in the offseason section of the model, communicating with farmers and sharing their opinions about each possible crop and irrigation method. 

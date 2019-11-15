@@ -1,0 +1,5 @@
+3. Implementing new case studies
+
+Guidance on this is limited to-date. The team is working to create a version of the software that guides the user through much of this process.
+For now, the best strategy for planning new case studies is to study the inputs section of the READ-ME (part 5) and to reach out to the primary 
+author (Jason Hawes) at jasonkhawes@gmail.com. 
