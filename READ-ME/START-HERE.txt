@@ -1,15 +1,21 @@
-Model of Water Scarcity Adaptation in Irrigated Agriculture
+Industrialized Agriculture Adaptation Model (Farm-Adapt) READ-ME
 
 By Jason K. Hawes
 
-This read me guides the user through the modeling framework "Model of Water Scarcity
-Adaptation in Irrigated Agriculture."
-This model was developed by Jason Hawes, Zhao Ma, Morey Burnham, and David Yu at
-Purdue University and Idaho State University.
-Written primarily in NetLogo, the program relies upon FAO's AquaCrop for some calculations.
+This read me guides the user through the Industrialized Agriculture Adaptation Model (Farm-Adapt).
+Farm-Adapt was developed by Jason Hawes, Zhao Ma, Morey Burnham, and David Yu at
+Purdue University and Idaho State University. 
+Written primarily in NetLogo, the program employs R for some analysis and simulation.
+
+The primary author may be reached at jasonkhawes@gmail.com.
 
 Contents of READ-ME:
-1. Programs
-2. Components
-3. Inputs
-4.
+1. Program Purpose, Contents, and Development
+2. Using the ESPA Case Study Program
+3. Implementing new case studies
+4. Components
+5. Inputs
+
+
+Last revised: 2019-11-15
+As of 2019-11-15, this READ-ME is still under development, and the program is still under revision. 
