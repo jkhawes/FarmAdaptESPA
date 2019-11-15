@@ -1,0 +1,54 @@
+Location Name(string)
+Number of farms/farmers (#) (2 thru 20 came from AgCensus)
+Total number of acres (#)
+Irrigated acres (#)
+Mean farm size (acres - #)
+Median size of farms (acres - #)
+Farmers - principal occupation farming (#)
+Farmers - principal occupation not farming (#)
+Farms with a tractor (#)
+Farms with Grain and Bean Combine (#)
+Farms with Forage Harvester (#)
+Farms with Hay Baler (#)
+Farms with Beef Cattle (#)
+Farms with Dairy Cattle (#)
+1 to 9 Acre farms
+10 to 49 acre farms
+50 to 179 acre farms
+180 to 499 acre farms
+500 to 999 acre farms
+1000 to 10000 acre farms
+PriorityTiers (21 thru 24 came from docs from Meg (see email))
+Min % Decrease
+Max % Decrease
+AF Cap matrix
+Jan Ref ET (mm/day) (25 thru 37 came from regional climate center data)
+Feb... (mm/day)
+March...
+April...
+May...
+June...
+July...
+August...
+September...
+October...
+November...
+December...
+Rent Paid per acre 2008
+Rent Paid per acre 2009
+Rent Paid per acre 2010
+Rent Paid per acre 2011
+Rent Paid per acre 2012
+Rent Paid per acre 2013
+Rent Paid per acre 2014
+Rent Paid per acre 2016
+Rent Paid per acre 2017
+NWS Stations that comprise the various points of calculation for this district
+Alfalfa share 2007-2016
+Barley share 2007-2016
+Corn share 2007-2016
+Potatoes share 2007-2016
+Spring Wheat share 2007-2016
+Sugarbeets share 2007-2016
+Winter Wheat share 2007-2016
+end

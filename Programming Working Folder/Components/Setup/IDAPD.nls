@@ -1,0 +1,23 @@
+ to ImportDrawAndParameterizeDistrict
+  wait 2.5 ; wait before clearing everything
+  clear-patches
+
+  set location "Pre-IDAPD"
+  trace location
+
+  DrawDistrict ImportGWDGISFiles
+    ; ImportGWDGISFiles is a to-report function for GWDgis - the file of all GIS files needed to draw the overview map.
+
+  set location "Mid-IDAPD, overview drawn, parametization commencing"
+  trace location
+
+  ParameterizeDistrict ; find the basic information about each district and set that for the remainder of the simulation.
+
+  set location "end of district parameterization. Generating weather next."
+
+  ImportGeneralWeather
+
+  set location "end of IDAPD. District and weather imported."
+  trace location
+
+end

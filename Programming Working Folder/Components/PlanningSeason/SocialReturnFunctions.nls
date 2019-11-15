@@ -1,0 +1,204 @@
+to-report SubjectiveNormsCompliance
+
+  ;;  Subjective norms around ...
+    ; complying with the ESPA
+    ; planting something, actively managing
+    ; stewardship of the land?
+  trace "SNC Entrance"
+  let ESPACompliance 0
+  let ActiveFarmer 0
+  ifelse ticks < 10 [ set ESPACompliance 1 ] [ ifelse WaterOverDraw <= 0 [ set ESPACompliance 1 ] [ set ESPACompliance 0 ]]
+  ifelse Current-Land-Use != "Lease" [ set ActiveFarmer 1 ] [ set ActiveFarmer 0 ]
+  ; what other norms should be considered?
+  let localSubjectiveNormsCompliance ( ESPACompliance + ActiveFarmer ) / 2
+  if (WasAlfalfa? = true AND Current-Land-Use != "Alfalfa_Perennial") [ set localSubjectiveNormsCompliance (localSubjectiveNormsCompliance * (WasAlfalfaYear / 5)) ]
+  if (WasGrain? = true AND Rotation = "HayGrain" AND (NOT(Current-Land-Use = "Corn" OR Current-Land-Use = "Spring Wheat"  OR Current-Land-Use = "Winter Wheat"))) [ set localSubjectiveNormsCompliance (localSubjectiveNormsCompliance * (WasGrainYear / 4)) ]
+  
+  WriteSocialCropBudget (word "Finished calculating Subjective Norm Compliance. Outcome is " localSubjectiveNormsCompliance " / 1.")
+  WriteSocialCropBudget (word "Breakdown of SubjectiveNormCompliance is ( ESPACompliance + ActiveFarmer ) / 2. May be scaled year of planting if in a hay or grain cycle.")
+  WriteSocialCropBudget (word "This turns out to be (" ESPACompliance " + " ActiveFarmer ") / 2 .")
+  WriteSocialCropBudget "ESPACompliance is measured as presence or absence of a water overdraw. In other words, ifelse WaterOverDraw <= 0 [ set ESPACompliance 1 ] [ set ESPACompliance 0 ]."
+  WriteSocialCropBudget "ActiveFarmer is measured as a consequence of leavsing or farming. In other words, ifelse Current-Land-Use != 'Lease' [ set ActiveFarmer 1 ] [ set ActiveFarmer 0 ]."
+  trace "SNC Exit"
+  
+  report localSubjectiveNormsCompliance
+end
+
+to-report AttitudeConsistency
+
+  ;; Attitude consistency around ...
+  ; profitability
+  ; perception of crop
+  ; perception of irrigation
+  ; consistency with rotation
+  
+  trace "AC Entrance"
+  let PerceptionOfProfitability 0
+  let PerceptionOfCrop 0
+  let PerceptionOfWaterMgmt 0
+  let ConsistencyWithRotation 0
+
+  ifelse ExpectedNetReturnsForThisLandUse-farmer > 0 [set PerceptionOfProfitability 1] [set PerceptionOfProfitability 0]
+  ifelse item cropZ LandUsePerceptions > PerceptionThreshold [set PerceptionOfCrop 1] [set PerceptionOfCrop 0] ; this is one that's going to adapt a lot after knowledge sharing.
+  ifelse item waterstratZ WaterManagementPerceptions > PerceptionThreshold [set PerceptionOfWaterMgmt 1] [set PerceptionOfWaterMgmt 0] ; this is one that's going to adapt a lot after knowledge sharing.
+  let CurrentRotationItem 0
+  ask field-global [set RotationPosition-local RotationPosition]
+  set CurrentRotationItem item RotationPosition-local RotationList
+  ifelse CurrentRotationItem = "Potato" [
+    ifelse Current-Land-Use = "Potatoes" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+  ]
+  [
+    ifelse CurrentRotationItem = "Grain" [
+      ifelse Current-Land-Use = "Spring Wheat" [set ConsistencyWithRotation 1] [
+        ifelse Current-Land-Use = "Corn" [set ConsistencyWithRotation 1] [
+          ifelse Current-Land-Use = "Winter Wheat" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]]]
+    ]
+    [
+      ifelse CurrentRotationItem = "Barley" [
+        ifelse Current-Land-Use = "Barley" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+      ]
+      [
+        ifelse CurrentRotationItem = "Hay" [
+          ifelse Current-Land-Use = "Alfalfa" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+        ]
+        [
+          ifelse CurrentRotationItem = "Beet" [
+            ifelse Current-Land-Use = "Sugarbeets" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+          ]
+          [
+            set ConsistencyWithRotation 0
+            print (word self "has an abnormal rotation. Error. Rotation loaded as: " CurrentRotationItem)
+          ]
+        ]
+      ]
+    ]
+  ]
+  if Current-Land-Use = "Alfalfa_Perennial" [ 
+    if (WasAlfalfa? = true AND WasAlfalfaYear < 6) [ 
+      set ConsistencyWithRotation 1 
+    ]
+  ]
+  if Current-Land-Use = "Corn" OR Current-Land-Use = "Spring Wheat" OR Current-Land-Use = "Winter Wheat" [ 
+    if (WasGrain? = true AND WasGrainYear < 4 AND Rotation = "HayGrain") [ 
+      set ConsistencyWithRotation 1 
+    ]
+  ]
+  if (WasAlfalfa? = true AND Current-Land-Use != "Alfalfa_Perennial" AND ConsistencyWithRotation = 1) [ set ConsistencyWithRotation (ConsistencyWithRotation * (WasAlfalfaYear / 6)) ]
+  if (WasGrain? = true AND (NOT(Current-Land-Use = "Corn" OR Current-Land-Use = "Spring Wheat"  OR Current-Land-Use = "Winter Wheat")) AND Rotation = "HayGrain" AND ConsistencyWithRotation = 1) [ set ConsistencyWithRotation (ConsistencyWithRotation * (WasGrainYear / 4)) ]
+
+  let localAttitudeConsistency ( PerceptionOfProfitability + PerceptionOfCrop + ConsistencyWithRotation + PerceptionOfWaterMgmt) / 4
+
+  WriteSocialCropBudget (word "Finished calculating Attitude Consistency. Outcome is " localAttitudeConsistency " / 1.")
+  WriteSocialCropBudget (word "Breakdown of Attitude Consistency is ( PerceptionOfProfitability + PerceptionOfCrop + ConsistencyWithRotation + PerceptionOfWaterMgmt) / 3.")
+  WriteSocialCropBudget (word "This turns out to be (" PerceptionOfProfitability " + " PerceptionOfCrop " + " ConsistencyWithRotation "+" PerceptionOfWaterMgmt ") / 4 .")
+  WriteSocialCropBudget "PerceptionOfProfitability is measured as presence or absence of a profit. In other words, ifelse ExpectedNetReturnsForThisLandUse-farmer > 0 [set PerceptionOfProfitability 1] [set PerceptionOfProfitability 0]."
+  WriteSocialCropBudget "PerceptionOfCrop is measured as a comparison to a threshold of acceptable land uses. In other words,  ifelse item cropZ LandUsePerceptions > LandUsePerceptionThreshold [set PerceptionOfCrop 1] [set PerceptionOfCrop 0]."
+  WriteSocialCropBudget "ConsistencyWithRotation is measured as a binary of if this is the correct crop for a rotation or not. In other words, ifelse item ticks-(or a divisor of this) RotationList = Current-Land-Use [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]."
+  trace "AC Exit"
+  
+  report localAttitudeConsistency
+
+end
+
+to-report PerceivedBehavioralControl ; TODO - need to turn this into a threshold.
+
+  ;  Perceived Behavioral Control is determined by the knowledge a farmer has of a crop. Could be scaled by crop difficulty IF I can find those values.
+  ;; Farmers are assigned a familiarity value.
+  ;; Other factors should include accessibility of information and number of other people the farmer knows doing it.
+  ;; This is where crop difficulty would come in, but finding reliable sources for this is a long shot.
+  ;; If the ultimate score exceeds a certain threshold, the farmer will be comfortable planting that crop. If it doesn't, it's eliminated.
+  trace "PBC Entrance"
+  let PerceivedInfoAvail 0
+  if any? (in-consultancy-neighbors with [breed? = "Agronomist"]) [ set PerceivedInfoAvail PerceivedInfoAvail + (1 / 3) ]
+  if any? (in-consultancy-neighbors with [breed? = "Crop Consultant"]) [ set PerceivedInfoAvail PerceivedInfoAvail + (1 / 3) ]
+  if any? (in-consultancy-neighbors with [breed? = "Irrigation Consultant"]) [ set PerceivedInfoAvail PerceivedInfoAvail + (1 / 3) ]
+  let PastExperience 0
+  ifelse member? Current-Land-Use CropHistory [set PastExperience 1] [set PastExperience 0] ; could be useful to create a scale of # times it appears.
+  let EconomicFeasibility 0 ; there's something different here ... what is it? ROI? For now, it's the same.
+  ifelse ExpectedNetReturnsForThisLandUse-farmer > 0 [set EconomicFeasibility 1] [set EconomicFeasibility 0]
+
+  let localPerceivedBehavioralControl ( PerceivedInfoAvail + PastExperience + EconomicFeasibility ) / 3
+
+  WriteSocialCropBudget (word "Finished calculating Perceived Behavioral Control. Outcome is " localPerceivedBehavioralControl " / 1.")
+  WriteSocialCropBudget (word "Breakdown of Perceived Behavioral Control is ( PerceivedInfoAvail + PastExperience + EconomicFeasibility ) / 3.")
+  WriteSocialCropBudget (word "This turns out to be (" PerceivedInfoAvail " + " PastExperience " + " EconomicFeasibility ") / 3 .")
+  WriteSocialCropBudget "PerceivedInfoAvail is measured as connectivity to consultants. In other words, if a farmer has an agronomist but not a crop consultant or irrigiton consultant, they'll have 1/3 as this score. Crop consultant + agronomist, = 2/3, etc.."
+  WriteSocialCropBudget "PastExperience is measured as simply whether or not the farmer has experience with the crop. In other words,  ifelse member? Current-Land-Use CropHistory [set PastExperience 1] [set PastExperience 0]."
+  WriteSocialCropBudget "EconomicFeasibility is measured as a binary of whether or not the crop is profitable - right now identical to perception of profitability."
+  trace "PBC Exit"
+  
+  report localPerceivedBehavioralControl
+
+end
+
+to-report HabitConsistency
+
+  ; Habit consistency is determined by whether or not the behavior matches with what the user has done repeatedly in the past
+  ; Could be gauged by a familiarity score or some similar mechanism.
+  ; Habit is not a "y/n" factor, rather it's an additional thing to be weighted.
+  ; Two primary components are consistency with rotation and consistency with equipment.
+  trace "HC entrance"
+  let ConsistencyWithRotation 0
+  let CurrentRotationItem 0
+  ask field-global [set RotationPosition-local RotationPosition]
+  set CurrentRotationItem item RotationPosition-local RotationList
+  ifelse CurrentRotationItem = "Potato" [
+    ifelse Current-Land-Use = "Potatoes" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+  ]
+  [
+    ifelse CurrentRotationItem = "Grain" [
+      ifelse Current-Land-Use = "Spring Wheat" [set ConsistencyWithRotation 1] [
+        ifelse Current-Land-Use = "Corn" [set ConsistencyWithRotation 1] [
+          ifelse Current-Land-Use = "Winter Wheat" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]]]
+    ]
+    [
+      ifelse CurrentRotationItem = "Barley" [
+        ifelse Current-Land-Use = "Barley" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+      ]
+      [
+        ifelse CurrentRotationItem = "Hay" [
+          ifelse Current-Land-Use = "Alfalfa" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+      ]
+        [
+          ifelse CurrentRotationItem = "Beet" [
+            ifelse Current-Land-Use = "Sugarbeets" [set ConsistencyWithRotation 1] [set ConsistencyWithRotation 0]
+          ]
+          [
+            set ConsistencyWithRotation 0
+            print (word self "has an abnormal rotation. Error. Rotation loaded as: " CurrentRotationItem)
+          ]
+        ]
+      ]
+    ]
+  ]
+  if Current-Land-Use = "Alfalfa_Perennial" [ 
+    if (WasAlfalfa? = true AND WasAlfalfaYear < 6) [ 
+      set ConsistencyWithRotation 1 
+    ]
+  ]
+  if Current-Land-Use = "Corn" OR Current-Land-Use = "Spring Wheat" OR Current-Land-Use = "Winter Wheat" [ 
+    if (WasGrain? = true AND WasGrainYear < 4 AND Rotation = "HayGrain") [ 
+      set ConsistencyWithRotation 1 
+    ]
+  ]
+  if (WasAlfalfa? = true AND Current-Land-Use != "Alfalfa_Perennial" AND ConsistencyWithRotation = 1) [ set ConsistencyWithRotation (ConsistencyWithRotation * (WasAlfalfaYear / 6)) ]
+  if (WasGrain? = true AND (NOT(Current-Land-Use = "Corn" OR Current-Land-Use = "Spring Wheat"  OR Current-Land-Use = "Winter Wheat")) AND Rotation = "HayGrain" AND ConsistencyWithRotation = 1) [ set ConsistencyWithRotation (ConsistencyWithRotation * (WasGrainYear / 4)) ]
+
+  
+  ; Should be less penalty for switching between types of center pivots. This is where the typologies in the input files would be useful.
+  ;; "if not the same, take off half; if not from the same family of mgmt strats, take off 100%"
+  let ConsistencyWithIrrigation 0
+  ifelse Water-Management-Strategy = [TypeOfIrrigation] of (one-of field-global) [set ConsistencyWithIrrigation 1] [set ConsistencyWithIrrigation 0]
+
+  let HabitConsistency-local ((ConsistencyWithRotation + ConsistencyWithIrrigation) / 2)
+
+  WriteSocialCropBudget (word "Finished calculating HabitConsistency. Outcome is " HabitConsistency-local " / 1.")
+  WriteSocialCropBudget (word "Breakdown of Habit Consistency is ( ConsistencyWithRotation + ConsistencyWithIrrigation) / 2.")
+  WriteSocialCropBudget (word "This turns out to be (" ConsistencyWithRotation " + " ConsistencyWithIrrigation ") / 2 .")
+  WriteSocialCropBudget "ConsistencyWithRotation is measured as whether or not something fits the rotation."
+  WriteSocialCropBudget "ConsistencyWithIrrigation is measured as simply whether or not something is he same as what a farmer does now. Some benefit is given to smaller changes."
+  trace "HC Exit"
+  
+  report HabitConsistency-local
+
+end

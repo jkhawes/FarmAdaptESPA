@@ -1,0 +1,43 @@
+Crop name(string)
+Crop typical yield in bushels or other standard unit(#) (Statewide NASS data - see csv listing) (Alfalfa/A_P scaled by 80%/120% from average values)
+expected natural variability in crop performance(measured as SD 1997-2017)
+Commodity price - scaling factor from bushels or other unit to dollars($/#) (2017 data for price received in Idaho - state NASS summary data)
+expected variability in commodity price(measured as variance 2012-17)
+Projected sale price (units vary by crop) (6 - 19 from crop budgets - list with values from 2007, 2009, 2011, 2013, and 2017)
+Projected yield (units vary by crop)
+Seed price ($/acre)
+Fertilizer ($/acre)
+Pesticides ($/acre)
+Custom/consultants ($/acre)
+Water assessment ($/acre)
+Irrigation repairs ($/acre)
+Irrigation Power (CP - Scale in simulation) ($/acre)
+Machinery Operation Costs ($/acre)
+Labor costs ($/acre)
+Crop-specific costs - Ex: Sorting/Storage ($/acre)
+Misc. Costs - Ex: Insurance and Interest ($/acre)
+General Ownership Costs ($/acre) (Crop budget - Land Rent)
+crop water demand on Jan1 (acre-inches) (20-31 calculated in the Excel spreadsheet "ET0 By Groundwater District")
+Feb
+Mar
+Apr
+May
+Jun
+Jul
+Aug
+Sept
+Oct
+Nov
+Dec
+Start Date in district (day of year - #) (source? was listed as Excel sheet above - true?)
+Full period in-ground (days)
+2016 Percent of Relevant Cropland (34-43 from cropscape)
+2015 Percent of Relevant Cropland
+2014 Percent of Relevant Cropland
+2013 Percent of Relevant Cropland
+2012 Percent of Relevant Cropland
+2011 Percent of Relevant Cropland
+2010 Percent of Relevant Cropland
+2009 Percent of Relevant Cropland
+2008 Percent of Relevant Cropland
+2007 Percent of Relevant Cropland

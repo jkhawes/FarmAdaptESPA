@@ -1,0 +1,8 @@
+Percent using a Potato-Grain-Beet-Grain rotation (percents estimated with qualitative data and cropscapes)
+Percent using a Potato-Beet-Grain-Grain rotation
+Percent using a Hay-Grain rotation (5 yrs hay, 3-4 yrs grain)
+Percent using a Hay-Grain-Potato-Grain rotation
+Percent using a Potato-Grain-Grain rotation
+Percent using a Hay-Barley-Potato rotation
+Percent using a Hay-Grain-Grain-Potato rotation
+Percent using a Grain-Potato-Beets-Hay rotation

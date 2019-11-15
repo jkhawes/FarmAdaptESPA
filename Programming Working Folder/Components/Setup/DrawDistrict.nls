@@ -1,0 +1,19 @@
+to DrawDistrict [GWDgis]
+   gis:set-transformation gis:envelope-of GWDgis (list min-pxcor max-pxcor min-pycor max-pycor) ; set scope of GIS map to the size of the screen
+   ask patches with [gis:contains? GWDgis self = true] [
+     set in-district true ; establishes an in-district variable that allows for the computer to later discern between patches that should be considered in the simulation and those that shouldn't.
+     set pcolor 36 ; changes the color of the patches within the district for GUI
+     set InRiver FALSE
+   ]
+     ;;The code above finds all the patches within the district, changes a patches-own variable, and colors them.
+     ;;Chose to use the keyword contains because I am custom sizing the map anyway, and it will be more aesthetically appealling if everything appears to be inside the district.
+
+  if water-preference > 0 [ 
+    let RiverGIS gis:load-dataset "data/RiversInIdaho/hyd250.shp"
+    ask patches with [gis:intersects? RiverGIS self = true AND gis:contains? GWDgis self = true] [
+      set InRiver true
+      set pcolor blue
+    ]
+    ;; The code above is intended to color surface water in on the map. This will be used as a patches-own to document proximity, as well.
+  ]
+end

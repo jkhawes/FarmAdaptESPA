@@ -1,0 +1,223 @@
+to SetDemographics
+  ;;It's important to keep in mind that all of this code below is being executed in farmer context (by the farmer agents) and
+  ;;individually, so most of these are farmers-own variables that each person is setting for themselves.
+  let farmer-id-iter 0
+  foreach sort-on [who] farmers
+  [ the-farmer -> ask the-farmer[
+    set ID_Number farmer-id-iter
+    set farmer-id-iter farmer-id-iter + 1
+    ]
+  ]
+
+  ask farmers [
+
+    ;; Farm infrastructure parameterization ;;
+    set LandUsesKnown [] ; initializing this reconciling variable
+
+    ;Equipment
+    ;; First, set equipment matrix ... to do so, initialize EquipmentMatrix to [] ... No equipment
+    set EquipmentMatrix [] ;
+    ;; Next, for each type of equipment, find the percent of farms with it.
+    ;; Finally, generate a random number from 0 to 1 (percentile) and compare ...
+    ;; If below the threshold, that means they have that piece of equipment (set that list value to 1, else 0)
+    ;; To visualize this method, imagine 7 / 10 people are to be given a tractor.
+    ;; To determine who gets it, I generate 10 numbers from 1 to 10 and assign each person with a random number under 7 a tractor.
+    ;; Since random numbers should be a uniform distribution, on average, 7 people will end up with a tractor.
+    ifelse (Farms-With-A-Tractor / Number-of-Farms) > random-float 1 [set EquipmentMatrix lput 1 EquipmentMatrix] [set EquipmentMatrix lput 0 EquipmentMatrix]
+    ifelse (Farms-with-Grain-and-Bean-Combine / Number-of-Farms) > random-float 1 [set EquipmentMatrix lput 1 EquipmentMatrix] [set EquipmentMatrix lput 0 EquipmentMatrix]
+    ifelse (Farms-with-Forage-Harvester / Number-of-Farms) > random-float 1 [set EquipmentMatrix lput 1 EquipmentMatrix] [set EquipmentMatrix lput 0 EquipmentMatrix]
+    ifelse (Farms-with-Hay-Baler / Number-of-Farms) > random-float 1 [set EquipmentMatrix lput 1 EquipmentMatrix] [set EquipmentMatrix lput 0 EquipmentMatrix]
+
+    ; MoneyAvailable - Two scenarios …
+    ; 1) All start even with 100,000 in the security fund
+    ; 2) Start on a distribution (gamma for now) with 100,000 as the mean … too extreme on low end? Planning to keep uniform for early simulations.
+    ;ifelse RandomStartingMoney = TRUE
+    ;[set MoneyAvailable random-gamma (100000 * 100000 / 10000) (1 / (10000 / 100000))] ; Use a built-in gamma generation function to set the money available to each farmer.
+    ;[set MoneyAvailable 100000]
+    set MoneyAvailable 0
+
+    ; WaterRightSeniority - random - distributed Uniformly, normally, or left- or right-skewed. Saving left- and right-skewed for an improvement
+    if WaterRightSeniorityDistribution = "Uniform"
+    [ let distance-from-1930 random 50 ; max distance from 1930 ... 1980 is the approximate time cut-offs started and 1880 is the approximate time farming really expanded. Decent approximation on either end.
+      let direction-from-1930 random-float 2
+      ifelse direction-from-1930 > 1 ; if the random value is 0 to =1, subtract. If it's >1 to 2, add.
+      [ set WaterRightSeniority 1930 + distance-from-1930 ]
+      [ set WaterRightSeniority 1930 - distance-from-1930 ]
+    ]
+    if WaterRightSeniorityDistribution = "Normal"
+    [ set WaterRightSeniority floor random-normal 1930 ( 50 / 3 ) ] ; use a built in random normal function to distribute. 99.99% of values will be after 1880 and before 1980.
+
+    ; WaterRightSize - Generally assigned per acre. Since there is SOME variability in the amount per acre, I would hope to just
+    ;; assign a distribution around the average water right per acre and assign that to each farmer.
+    ;; Standard maximum assignment is 0.02 cfs per acre. Unfortunately, we can't actually assume a standard distribution
+    ;; or estimate the mean by standard measures. Instead, it is necessary to analyze the impacts of different distributions
+    ;; of water rights ... gamma, standard... any others? Those two require the least new code.
+    ifelse WaterRightDistribution = "Gamma" ; only coding for gamma and normal for now. Can just write an if-else instead of multiple ifs.
+    [set WaterRightSize random-gamma (0.1908 * 0.1908 / 0.024) (1 / (0.024 / 0.1908))] ;units are inch-acres per day per acre - derivation of the 0.1908 value is in field notes ... 0.024 is 5% of max diversion
+    [set WaterRightSize random-normal 0.1908 0.024] ;units are inch-acres per day per acre
+
+    ; Livestock initialization
+    ;; In this early iteration, I am focusing only on cattle. They are the dominant livestock and the one most-cited as influencing crop rotation.
+    ;; The location input file identifies the percent of farmers who have each type of cattle. As with equipment, I can generate a random number and if it's below that threshold, they get cattle.
+    let beef-cattle-random random-float 1
+    let dairy-cattle-random random-float 1
+    ifelse (beef-cattle-random < Farms-with-Beef-Cattle) [set beef-cattle? 1] [set beef-cattle? 0]
+    ifelse (dairy-cattle-random < Farms-with-Dairy-Cattle) [set dairy-cattle? 1] [set dairy-cattle? 0]
+
+
+    if tracers? = TRUE [
+      print word "I am farmer" who
+      print word "My equipment matrix is" EquipmentMatrix
+      print word "My money available is" MoneyAvailable
+      print word "My Water Right Size is" WaterRightSize
+    ]
+
+    ;; Social parameterization ;;
+
+    ;;Belief in the ESPA is a variable that will help to determine the degree to which people feel compelled to participate.
+    set BeliefInESPA random-normal BeliefInESPAAverage BeliefInESPASD
+    if BeliefInESPA > 1 [ set BeliefInESPA 1 ]
+    if BeliefInESPA < 0 [ set BeliefInESPA 0 ]
+
+    ;;Belief in social sanction is a component of the subjective norm.
+    set BeliefInSocialSanctions random-normal BeliefInSocialSanctionsAverage BeliefInSocialSanctionsSD
+    if BeliefInSocialSanctions > 1 [ set BeliefInSocialSanctions 1 ]
+    if BeliefInSocialSanctions < 0 [ set BeliefInSocialSanctions 0 ]
+
+    ;;Belief in economic sanctions is incorporated into the expected cost of overdraw.
+    set BeliefInEconomicSanctions random-normal BeliefInEconomicSanctionsAverage BeliefsInEconomicSanctionsSD ; TODO - need to identify how and when these belief values will vary.
+    if BeliefInEconomicSanctions > 1 [ set BeliefInEconomicSanctions 1 ]
+    if BeliefInEconomicSanctions < 0 [ set BeliefInEconomicSanctions 0 ]
+
+    set AmountFarmerIsWillingToLose random-normal TypicalAmountFarmerIsWillingToLosePerField ((PercVarWillingnessToLose / 100) * TypicalAmountFarmerIsWillingToLosePerField)
+
+    set ROISeasonTolerance-farmer random-normal ROISeasonTolerance (0.05 * ROISeasonTolerance)
+
+    ; ValuationOfOwnTime TODO
+    ;;Left out for now.
+
+    set NegativeFarmSize 0 - FarmSize ; Variable needed for other equations
+    set OtherJob? 0
+
+    ;; Farming strategy parameterization ;;
+
+    ;;Assign farmers a method of determining when to irrigate. Same setting method as equipment matrix.
+    ; Matrix is [Condition of crop, Feel of Soil, Soil Moisture Sensing Device, Plant Moisture Sensing Device, Comm. or gov. sched, Reports on daily ET, ...
+    ; ... Sched. by Water Delivery org., Personal calendar sched., Computer simulation models, When neighbors begin to irrigate]
+    let temp-random random-float 1 ; this is just the placeholder value to be used for comparison. Similar principle as the equipment matrix above ... if randomness rules, the correct percentage of farmers should end up with each strategy.
+    set IrrigationPlanningMethod [1] ; initialize with a 1 - this is so that the farmers always have something to measure... basically this first "1" is "Eh, I make it up as I go." Should be almost nonexistent as primary.
+    ifelse temp-random < (10025 / 16092) ; percents (e.g. 10025 / 16092) derived from ag census data on irrigation planning.
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1 ; reset this value for each new strategy. Otherwise it would act like a ladder ... if you have the top one, you must've had all the others. That's not necessarily the case here.
+    ifelse temp-random < (5867 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (521 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (61 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (1208 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (814 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (4124 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (5 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+    set temp-random random-float 1
+    ifelse temp-random < (728 / 16092)
+    [ set IrrigationPlanningMethod lput 1 IrrigationPlanningMethod ]
+    [ set IrrigationPlanningMethod lput 0 IrrigationPlanningMethod ]
+
+    let IrrigationI 0
+    let IPSD-SourceMatrix [ 1.0 1.0 .1 .05 .25 .25 .25 .3 .25 1.0 ] ; assumption
+    let IPD-SourceMatrix [ 28 21 14 1 2 3 7 7 3 7 ] ; assumption
+    let IrrigationPlanningStandardDeviationMatrix []
+    let IrrigationPlanningDelayMatrix []
+    foreach irrigationPlanningMethod [ ; since each farmer is doing this individually, it is possible to just say, "ok now that we have that list, we can iterature through it and assign the irrigation strategies to the current farmer"
+      [Uses?] ->
+      if Uses? = 1 [
+        set IrrigationPlanningStandardDeviationMatrix lput item IrrigationI IPSD-SourceMatrix IrrigationPlanningStandardDeviationMatrix
+        set IrrigationPlanningDelayMatrix  lput item IrrigationI IPD-SourceMatrix IrrigationPlanningDelayMatrix
+      ]
+      set IrrigationI IrrigationI + 1
+    ]
+    set IrrigataionPlanningStandardDeviation min IrrigationPlanningStandardDeviationMatrix
+    set IrrigationPlanningDelay min IrrigationPlanningDelayMatrix
+
+    DetermineRotation
+
+    set LandUsePerceptions []
+    foreach LandUseList [
+      [LandUse-local] ->
+      ; for random
+      ; set LandUsePerceptions lput random-float 1 LandUsePerceptions
+      ; for semi-random
+      ifelse LandUse-local = "Alfalfa_Perennial"  
+      [ 
+        ifelse member? "Alfalfa" RotationList = TRUE
+        [ set LandUsePerceptions lput (0.5 + random-float 0.5) LandUsePerceptions]
+        [ set LandUsePerceptions lput random-float 1 LandUsePerceptions ]
+      ]
+      [
+        ifelse member? LandUse-local RotationList = TRUE
+        [ set LandUsePerceptions lput (0.5 + random-float 0.5) LandUsePerceptions]
+        [ set LandUsePerceptions lput random-float 1 LandUsePerceptions ]
+        ; for qualitatively inspired
+        ; ifelse LandUse-local = "Potatoes" high risk, wheat low risk, etc.
+      ]
+    ]
+    
+    set WaterManagementPerceptions[]
+    foreach WaterManagementList [
+      [WaterMgmt-local] ->
+      ; for random
+      ; set WaterManagementPerceptions lput random-float 1 WaterManagementPerceptions
+      ; for semi-random
+      ;ifelse member? WaterMgmt-local list-TypesOfIrrigation
+      ;[ set WaterManagementPerceptions lput (0.5 + random-float 0.5) WaterManagementPerceptions]
+      ;[ set WaterManagementPerceptions lput random-float 1 WaterManagementPerceptions ]
+      
+      ;simpler random - Type of Irrigation has not been set yet. 
+      set WaterManagementPerceptions lput random-float 1 WaterManagementPerceptions
+      
+      ; for qualitatively inspired
+      ; ifelse Watermgmt-local = furrow old fashioned, drip expensive, etc.
+    ]
+
+    ; This would be the moment to set familiarity with each crops
+    ;; TODO
+
+  ]
+  ; Assign the farmers with the least land other jobs. Simple assumption?
+  let PercentFarmerPrimarilyFarm Number-Farmers-Primarily-Farm / Number-of-Farms
+  let PercentFarmerPrimarilyOther Number-Farmers-Primarily-Other / Number-of-Farms
+  ask max-n-of Number-Farmers-Primarily-Other farmers [NegativeFarmSize]
+  [
+    let tempRandom ( random-float 1.0 + 0.2 )
+    ifelse tempRandom > PercentFarmerPrimarilyFarm
+    [ set OtherJob? 1 ]
+    [ set OtherJob? 0 ]
+  ]
+  ask max-n-of Number-Farmers-Primarily-Farm farmers [FarmSize]
+  [
+    let tempRandom ( random-float 1 - 0.2 )
+    ifelse tempRandom > PercentFarmerPrimarilyFarm
+    [ set OtherJob? 1 ]
+    [ set OtherJob? 0 ]
+  ]
+
+end

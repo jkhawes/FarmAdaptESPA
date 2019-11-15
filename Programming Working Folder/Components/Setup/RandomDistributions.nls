@@ -1,0 +1,210 @@
+to Gamma
+  while [i < Number-of-Farms AND j < 2 * Number-of-farms] [
+      let b (Average-Farm-Size - Median-Farm-Size)
+      let c (1.3)
+      let a (Average-Farm-Size - (b * c))
+      let alpha (1 / (sqrt(2 * c - 1)))
+      let beta (c - ln(4))
+      let q (c + (1 / alpha))
+      let theta 4.5
+      let d (1 + ln(theta))
+      let U1 (random-float 1)
+      let U2 (random-float 1)
+      if U1 > 0 and U1 < 1 and U2 > 0 and U2 < 1 [
+        let V (alpha * ln(U1 / (1 - U1)))
+        let Y (c * e ^ V)
+        let Z (U1 * U1 * U2)
+        let W (beta + (q * V) - Y)
+        ifelse (W + d - (theta * Z) > 0)
+        [ set X lput (a + b * Y)  X
+          set i (i + 1) ]
+        [ if ( W >= ln(z))
+          [ set X lput (a + b * Y) X
+            set i (i + 1) ]]
+      ]
+      set j (j + 1)
+    ]
+end
+
+to Chi-square
+  while [i < Number-of-Farms AND j < 2 * Number-of-farms] [
+      let b (2)
+      let c (Average-Farm-Size / 2)
+      let a (0)
+      let alpha (1 / (sqrt(2 * c - 1)))
+      let beta (c - ln(4))
+      let q (c + (1 / alpha))
+      let theta 4.5
+      let d (1 + ln(theta))
+      let U1 (random-float 1)
+      let U2 (random-float 1)
+      if U1 > 0 and U1 < 1 and U2 > 0 and U2 < 1 [
+        let V (alpha * ln(U1 / (1 - U1)))
+        let Y (c * e ^ V)
+        let Z (U1 * U1 * U2)
+        let W (beta + (q * V) - Y)
+        ifelse (W + d - (theta * Z) > 0)
+        [ set X lput (a + b * Y)  X
+          set i (i + 1) ]
+        [ if ( W >= ln(z))
+          [ set X lput (a + b * Y) X
+            set i (i + 1) ]]
+      ]
+      set j (j + 1)
+    ]
+end
+
+to F-Ratio
+  let Wlist []
+  let Vlist []
+  while [i < Number-of-Farms AND j < 2 * Number-of-farms] [
+    let b (2)
+    let c (F-Ratio-W / 2)
+    let a (0)
+    let alpha (1 / (sqrt(2 * c - 1)))
+    let beta (c - ln(4))
+    let q (c + (1 / alpha))
+    let theta 4.5
+    let d (1 + ln(theta))
+    let U1 (random-float 1)
+    let U2 (random-float 1)
+    if U1 > 0 and U1 < 1 and U2 > 0 and U2 < 1 [
+      let V (alpha * ln(U1 / (1 - U1)))
+      let Y (c * e ^ V)
+      let Z (U1 * U1 * U2)
+      let W (beta + (q * V) - Y)
+      ifelse (W + d - (theta * Z) > 0)
+      [ set Wlist lput (a + b * Y)  Wlist
+        set i (i + 1) ]
+      [ if ( W >= ln(z))
+        [ set Wlist lput (a + b * Y) Wlist
+          set i (i + 1) ]]
+    ]
+    set j (j + 1)
+  ]
+  set i 0
+  set j 0
+  while [i < Number-of-Farms AND j < 2 * Number-of-farms] [
+    let b (2)
+    let c (F-Ratio-V / 2)
+    let a (0)
+    let alpha (1 / (sqrt(2 * c - 1)))
+    let beta (c - ln(4))
+    let q (c + (1 / alpha))
+    let theta 4.5
+    let d (1 + ln(theta))
+    let U1 (random-float 1)
+    let U2 (random-float 1)
+    if U1 > 0 and U1 < 1 and U2 > 0 and U2 < 1 [
+      let V (alpha * ln(U1 / (1 - U1)))
+      let Y (c * e ^ V)
+      let Z (U1 * U1 * U2)
+      let W (beta + (q * V) - Y)
+      ifelse (W + d - (theta * Z) > 0)
+      [ set Vlist lput (a + b * Y)  Vlist
+        set i (i + 1) ]
+      [ if ( W >= ln(z))
+        [ set Vlist lput (a + b * Y) Vlist
+          set i (i + 1) ]]
+    ]
+    set j (j + 1)
+  ]
+
+  let Xoffset []
+  let Xextreme []
+  let Xtrunc []
+ ;  let Xtrim []
+  let normalization-factor 100
+  (foreach Wlist Vlist
+    [ [a b] -> set Xoffset lput ((b / F-Ratio-V) / (a / F-Ratio-W)) Xoffset ])
+  foreach Xoffset [[a] -> set X lput ((a / (mean Xoffset)) *  Average-Farm-Size) X ]
+ ;  foreach Xoffset [[a] -> set Xextreme lput ((a / (mean Xoffset)) *  Average-Farm-Size) Xextreme ]
+ ;  let IQR1 item (Number-of-Farms / 2) sort(Xextreme)
+ ;  let IQR3 item (1.5 * Number-of-Farms) sort(Xextreme)
+ ;  foreach Xextreme [[a1] -> if ((a1 > (IQR1 / normalization-factor)) AND (a1 < (IQR3 * normalization-factor))) [set Xtrunc lput a1 Xtrunc]]
+ ;  foreach Xtrunc [[a2] -> set X lput ((a2 / (mean Xtrunc)) *  Average-Farm-Size) X ]
+  set X map [[a3] -> ifelse-value (a3 > 10000) [Average-Farm-Size] [a3]] X
+
+ ;  let LengthDiff length Xtrim - length X
+ ;  let k 0
+ ;  while [k < LengthDiff] [
+ ;    set X remove-item 0 sort X
+ ;    set k k + 1
+ ;  ]
+ ;  set k 0
+ ;  while [k < 2 * LengthDiff] [
+ ;    set X lput Average-Farm-Size X
+ ;    set k k + 1
+ ;  ]
+end
+
+to Lognormal
+  let mu ln(Median-Farm-Size)
+  let xnormal 0
+  let Xextreme 0
+  let normalization-factor 100
+  let a 0
+  while [i < 2 * Number-of-Farms] [
+    let U1 (-1 + (random-float 2))
+    let U2 (-1 + (random-float 2))
+    let U3 (U1 * U1 + U2 * U2)
+    if (U3 < 1) [
+      set xnormal (mu + (Lognormal-Sigma * U1 * sqrt(-2 * ln(U3) / U3)))
+      print xnormal
+      set Xextreme lput (a + e ^ xnormal) Xextreme
+      set i i + 1
+    ]
+  ]
+  let IQR1 item (Number-of-Farms / 2) sort(Xextreme)
+  let IQR3 item (1.5 * Number-of-Farms) sort(Xextreme)
+  let Xtrunc []
+  foreach Xextreme [[b] -> if ((b > (IQR1 / normalization-factor)) AND (b < (IQR3 * normalization-factor))) [set Xtrunc lput b Xtrunc]]
+  foreach Xtrunc [[c] -> set X lput ((c / (mean Xtrunc)) *  Average-Farm-Size) X ]
+end
+
+to Categorical
+  set X []
+  set i 0
+  let temp 0
+  while [i < One-to-9-Acre-Farms] [
+    set temp random-float 8
+    set temp (temp + 1)
+    set X lput temp X
+    set i i + 1
+  ]
+  set i 0
+  while [i < Ten-to-49-Acre-Farms] [
+    set temp random-float 3.9
+    set temp ((temp + 1) * 10)
+    set X lput temp X
+    set i i + 1
+  ]
+  set i 0
+  while [i < Fifty-to-179-Acre-Farms] [
+    set temp random-float 12.9
+    set temp ((temp + 5) * 10)
+    set X lput temp X
+    set i i + 1
+  ]
+  set i 0
+  while [i < OneHundredEighty-to-499-Acre-Farms] [
+    set temp random-float 31.9
+    set temp ((temp + 18) * 10)
+    set X lput temp X
+    set i i + 1
+  ]
+  set i 0
+  while [i < FiveHundred-to-999-Acre-Farms] [
+    set temp random-float 4.9
+    set temp ((temp + 5) * 100)
+    set X lput temp X
+    set i i + 1
+  ]
+  set i 0
+  while [i < OneThousand-to-10000-Acre-Farms] [
+    set temp random-float 9
+    set temp ((temp + 1) * 1000)
+    set X lput temp X
+    set i i + 1
+  ]
+end

@@ -1,0 +1,50 @@
+Jan Avg Max Temp
+Jan Avg Min Temp
+Feb Avg Max Temp
+Feb Avg Min Temp
+Mar Avg Max Temp
+Mar Avg Min Temp
+Apr Avg Max Temp
+Apr Avg Min Temp
+May Avg Max Temp
+May Avg Min Temp
+Jun Avg Max Temp
+Jun Avg Min Temp
+Jul Avg Max Temp
+Jul Avg Min Temp
+Aug Avg Max Temp
+Aug Avg Min Temp
+Sep Avg Max Temp
+Sep Avg Min Temp
+Oct Avg Max Temp
+Oct Avg Min Temp
+Nov Avg Max Temp
+Nov Avg Min Temp
+Dec Avg Max Temp
+Dec Avg Min Temp
+Jan-Avg-Max-Temp-SD
+Feb-Avg-Max-Temp-SD
+Mar-Avg-Max-Temp-SD
+Apr-Avg-Max-Temp-SD
+May-Avg-Max-Temp-SD
+Jun-Avg-Max-Temp-SD
+Jul-Avg-Max-Temp-SD
+Aug-Avg-Max-Temp-SD
+Sep-Avg-Max-Temp-SD
+Oct-Avg-Max-Temp-SD
+Nov-Avg-Max-Temp-SD
+Dec-Avg-Max-Temp-SD
+Jan-Avg-Min-Temp-SD
+Feb-Avg-Min-Temp-SD
+Mar-Avg-Min-Temp-SD
+Apr-Avg-Min-Temp-SD
+May-Avg-Min-Temp-SD
+Jun-Avg-Min-Temp-SD
+Jul-Avg-Min-Temp-SD
+Aug-Avg-Min-Temp-SD
+Sep-Avg-Min-Temp-SD
+Oct-Avg-Min-Temp-SD
+Nov-Avg-Min-Temp-SD
+Dec-Avg-Min-Temp-SD
+Intended for Groundwater District ______
+Source Location Name(s)

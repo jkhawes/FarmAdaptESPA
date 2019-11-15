@@ -1,0 +1,86 @@
+to DrawFarms
+  ask patches [set owner 0] ; make sure that all patches have no owner initially.
+  let edge-of-farm [] ; create a local list to save the edge of each farm in ... this is used to determine all the possible patches a farm could expand to on any given loop.
+  set i 0 ; iteration variable reset
+  let TotalAcres 0 ; Catalog variable reset
+  let Xscaled [] ; Initialize list to be used for scaling farms to the correct size for the GWD ... both random distributions and categorical can sometimes over- or under-shoot the appropriate total number of acres.
+
+  let scaling-factor Total-Irrigated-Acres / sum X ; So take the exact number of acres needed and divide it by the current total acres randomly generated. This gives us a scaling factor for each farm.
+  foreach X [[a4] -> set Xscaled lput (a4 * scaling-factor) Xscaled] ; Use this scaling factor to generate a new size for each farm and have the total number of acres match the expected value.
+  
+  let Xscaled-random-order shuffle Xscaled
+  while [ i < length Xscaled-random-order] [ ; So this is where the farms are actually drawn. It iterates over each designated farm size and draws a farm of that size, initalizes a farmer, and sets a few basic parameters.
+    let farm-size item i Xscaled-random-order ; each list item is a number that is the size of a farm. Can be thought of as each iteration is one farm.
+                                 ;    print list "This farm is ___ acres" farm-size ; for while trouble-shooting and timing monitoring
+    let random-water random-float 1
+    ifelse random-water <= ( water-preference / 100 )
+    [
+      ask n-of 100 patches with [in-district = true AND owner = 0 AND InRiver = FALSE] [set candidate TRUE] ; take 100 random patches and make them candidates.
+      ask min-one-of patches with [candidate = TRUE] [distance one-of patches with [InRiver = TRUE]] [set favored-candidate TRUE]
+      ; the incredibly dense line above take the 100 candidates and asks which one is closest to water. That one becomes the favored-candidate.
+      ask one-of patches with [favored-candidate = TRUE] [ ; take any patch in the district without an owner and set it as the seed for the farm. Completely random unless the seed is set somewhere, since ask is automatically random.
+        sprout-farmers 1 ; sprout a farmer at this seed to oversee the farm.
+        set owner farmer i ; make this farmer the owner of the farm ... this is a patches-own variable initialized at the beginning of DrawFarms
+        set pcolor green ; rather pointless, since the farmer sits on top of it anyway. 
+      ]
+      ask patches [set candidate FALSE]
+      ask patches [set favored-candidate FALSE]
+    ]
+    [
+      ask one-of patches with [in-district = true AND owner = 0 AND InRiver = FALSE] [ ; take any patch in the district without an owner and set it as the seed for the farm. Completely random unless the seed is set somewhere, since ask is automatically random.
+        sprout-farmers 1 ; sprout a farmer at this seed to oversee the farm.
+        set owner farmer i ; make this farmer the owner of the farm ... this is a patches-own variable initialized at the beginning of DrawFarms
+        set pcolor green ; rather pointless, since the farmer sits on top of it anyway.
+      ]
+    ]
+    ask farmer i [set FarmSize farm-size] ; Have the new farmer (selected by an iterative variable) set the farmers-own FarmSize to the farm-size currently in use.
+                                          ;    print "should have a new farm seed" ; for while trouble-shooting and timing monitoring
+    set j 0 ; j should be 0 at the beginning of each foreach iteration.
+    let fail-safe 0 ; same as j - local variable to be used to salvage the simulation if one farm gets messed up and runs forever.
+    let round-complete FALSE ; local variable to be used for exiting the while
+    let farm-complete FALSE
+    ;    print "entering while" ; for while trouble-shooting and timing monitoring
+    while [j < ((ceiling (farm-size / 10)) - 1) AND fail-safe < ceiling farm-size / 2] [ ; while the farm is smaller than the designated size or while the loop has not run more times than half the total farm size, it will keep running.
+      set round-complete FALSE ; this local variable makes sure that the system skips over the second and third "if" statements in a round if it has already gone through the first one ... in other words, it prevents a farm from setting ownership of a certain edge group twice.
+      set edge-of-farm patch-set [neighbors with [owner = 0  AND in-district = true AND InRiver = false]] of patches with [owner = farmer i] ; set edge-of-farm to be all patches bordering the existing farm (existing farm determined by owner)
+      if count edge-of-farm > 0 AND count edge-of-farm < (ceiling ((farm-size / 10) - j)) AND farm-complete = FALSE AND round-complete = FALSE [
+        ; if the edge of the farm is greater than zero and smaller than the number of patches still needed, and the round has not been marked complete, this will just take all the edge patches and add them to the farm.
+        ; adding things to the farm is comprised of setting the current farmer as owner and setting the current color as pcolor ... color is dictated by the number iteration we're on.
+        ask edge-of-farm [ ; all of edge-of-farm set owner (line 1 below) and sets pcolor to iteration value (lines 2 and 3)
+          set owner farmer i
+          set pcolor 56
+        ]
+        set j (j + count edge-of-farm) ;iterate by number of patches added
+        set fail-safe (fail-safe + count edge-of-farm)
+        set round-complete TRUE
+      ]
+      if count edge-of-farm > 0 AND count edge-of-farm >= (ceiling ((farm-size / 10) - j)) AND farm-complete = FALSE AND round-complete = FALSE [
+        ; if the edge of the farm is greater than zero and greater than or equal to the number of patches still needed, and the round has not been marked complete,
+        ; this will just take a random selection along the edge and add them to the farm until the farm is the right size.
+        ask n-of (ceiling ((farm-size / 10) - j - 1)) edge-of-farm [ ; same as above, except only do the number still required to fill farm
+          set owner farmer i ;same steps as above for all patches selected
+          set pcolor 56
+        ]
+        set j (j + farm-size - j)
+        set fail-safe (fail-safe + farm-size - j)
+        print (word "Exiting while, should have farm number " (i + 1) ", which is " farm-size "acres.")
+        set farm-complete TRUE
+        set round-complete TRUE
+      ]
+      if count edge-of-farm = 0 AND farm-complete = FALSE AND round-complete = FALSE [ ; if the farm is not complete (filled) and there is no valid expansion space, erase the farm and start over.
+        ask patches with [owner = farmer i] [ ; ask all patches in the partially-created farm
+          set owner 0 ; clear ownership
+          set pcolor 36 ; set pcolor back to original
+        ]
+        set i (i - 1) ; iterate backwards so this farm is attempted again ... iterates after this, so need to make sure i stays the same.
+        set j (farm-size / 10) ; one of the conditions for exiting the while loop becomes true.
+        print "Exiting while. Farm was erased."
+      ]
+    ]
+    set i (i + 1) ; iterate through the list of farm sizes
+  ]
+  if is-turtle? farmer length X [ask farmer length X [die]]
+  ask farmers with [farmsize = 0] [die]
+  ask patches with [owner != 0 AND any? neighbors4 with [owner != [owner] of myself]] [set pcolor 53]
+  trace "end of World Drawing."
+end

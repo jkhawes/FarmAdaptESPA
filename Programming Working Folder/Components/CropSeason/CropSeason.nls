@@ -1,0 +1,28 @@
+to CropSeason
+  ; This is a mostly underused function that could hold any functionality needed to complement the crop simulation.
+  ;; It was originally intended to hold the text file writing, but since this is now simplified, most of that will probably be relegated to the simulation function.
+  ask farmers [
+    foreach FieldSeeds [
+      [field] ->
+      ask field [
+        ifelse PreferredLandUse = "Lease"
+        [ ifelse ticks < 1 
+          [set AnnualReturns item 0 RentList * 10 * [FieldSize] of owner ]
+          [ifelse ticks < 7
+            [ set AnnualReturns item (ticks - 1) RentList * 10 * [FieldSize] of owner ]
+            [ ifelse ticks = 8
+              [ set AnnualReturns (((item 6 RentList + item 7 RentList) / 2) * 10 * [FieldSize] of owner) ]
+              [ ifelse ticks < 10 
+                [ set AnnualReturns item (ticks - 2) RentList * 10 * [FieldSize] of owner ]
+                [ set AnnualReturns item 8 RentList * 10 * [FieldSize] of owner ]
+              ]
+            ]
+          ]
+        ]
+        [ CropSimulation ]
+      ]
+    ]
+  ]
+
+  ; Not much else to do here for now.
+end

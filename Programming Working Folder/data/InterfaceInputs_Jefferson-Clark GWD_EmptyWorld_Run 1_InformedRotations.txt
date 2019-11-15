@@ -1,0 +1,1 @@
+ true 15 "Experimental" "Jefferson-Clark GWD_EmptyWorld_Run 1_InformedRotations" true 15 "Experimental" "Jefferson-Clark GWD_EmptyWorld_Run 1_InformedRotations" true 15 "Experimental" "Jefferson-Clark GWD_EmptyWorld_Run 1_InformedRotations" true 15 "Experimental" "Jefferson-Clark GWD_EmptyWorld_Run 1_InformedRotations"

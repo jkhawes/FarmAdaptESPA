@@ -1,0 +1,1 @@
+ true 15 "Experimental" "Magic Valley GWD_EmptyWorld_Run 2_InformedRotations" true 15 "Experimental" "Magic Valley GWD_EmptyWorld_Run 2_InformedRotations" true 15 "Experimental" "Magic Valley GWD_EmptyWorld_Run 2_InformedRotations" true 15 "Experimental" "Magic Valley GWD_EmptyWorld_Run 2_InformedRotations"

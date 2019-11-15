@@ -1,0 +1,93 @@
+to GoExperimental
+  ;; GoExperimental is the alternative primary function in this program. It is called using R or another nested program.
+  ;; Go calls setup, then catalogs initial conditions, then loops through planning and planting for a given number of seasons, then Catalogs Final Conditions, then closes the program.
+
+  if ticks = NumberOfSeasons [
+    print (word "Reached the end of the simulation. Ticks is at " ticks " and Number of Seasons was " NumberOfSeasons)
+    set location "THE-END_post-simulation"
+    CatalogConditions location
+    set Finished TRUE
+    stop
+  ]
+
+  ; TODO - Need to determine what things are useful to catalog and write the component to do that.
+  ; this is the code to run the simulation for a given NumberOfSeasons. I think this could easily be modified to include multiple simulations within one run.
+  ; Throughout this code, tracers are inserted for use during troubleshooting and general timing of the program.
+  trace "start of new tick (year)"
+  PlanningSeason  ; Farmers select their acitons for the year. Actions include any kind of water conservation practice, as well as what/how much to plant.
+  trace "end of planning for all farmers"
+  CropSeason ; Calculate actual returns from choice of land use.
+  trace "end of simulation season. Crop outcomes recorded and preparing to reconcile."
+  Reconcile ; Balances budgets, finds farmers who are out of money, and checks on the status of the settlement agreement.
+  trace "end of season reconciliation. Farmers are now prepared to share outcomes (if not Bounded Rationality) and start new year"
+  if Decision-Making != "Bounded Rationality" [ KnowledgeSharing ]
+  trace "end of knowledge sharing. Farmers have shared their ideas and are ready for the new planning season"
+  tick
+  ;if NumberOfSeasons > 0 [export-world (word GWD "_" Decision-Making "_CompletedSim_Run " RandomSeed "_with Random Rotations? " UseRandomRotations?)] ; Changed to random seed to I can vary the outcomes across the worlds in a regulated way
+end
+
+
+to setupexperimental
+  ;; Setup is usually called by Go. It has two primary forks, one which randomly populates the district and one which populates the district based on a loaded file.
+  ;; It can also be called independently. For example, this may be used to generate a new world for a number of simulations without actually running a simulation immediately.
+
+  if GeneratingWorlds? = FALSE [ ImportInterfaceVariables InterfaceVariableFileName ]
+
+  set Is-Setup? false
+  if FixRandomSeed? = TRUE [random-seed RandomSeed]
+
+;  clear-all ; reset everything, including display, variables, memory. This is key to avoid memory leaks over the course of many runs.
+  set Finished FALSE ; Finished is a status variable for use in BehaviorSpace - gives the simulation an indicator of when it can quit.
+  reset-timer ; Reset the timer so it can be used to track system performance - primarily relevant during testing, don't care as much during actual simulations.
+  reset-ticks
+  if Animate? = TRUE [ animate ]  ; If the setting on the interface says to animate, then go through the process of showing the context and specific simulation location.
+  ifelse PopulateMethod = "Random" [ ; If the populate method on the interface is "Random," we generate a new world. If it is experimental (or somehow somethinge else), it will load whatever world is designated on the GUI.
+    trace "beginning of Populate Random ifelse section" ; trace function is in the Tracers component - it prints the location and timer to a file and to the user interface. The location is defined in the input here.
+    ImportDrawAndParameterizeDistrict
+    trace "district imported and prepared"
+        ;This LandUseList serves as the master list for crops included in the simulation. Crops are parameterized after this list is available.
+    set LandUseList ["Barley" "Spring Wheat" "Alfalfa" "Sugarbeets" "Potatoes" "Corn" "Winter Wheat" "Alfalfa_Perennial"]
+    set CropList ["Barley" "Spring Wheat" "Alfalfa" "Sugarbeets" "Potatoes" "Corn" "Winter Wheat" "Alfalfa_Perennial"]
+    ;; After DetermineCropReturns, "Winter Wheat" is treated as Spring Wheat for all calculation purposes.
+        ; This was more or less confirmed through interviews. Farmers don't distinguish between the two except for marketing purposes and for rotational scheduling.
+        ; Shouldn't matter how it is simulated.
+    set WaterManagementList ["Center Pivot LEPA" "Center Pivot LESA" "Center Pivot MESA" "Drip Tape" "Furrow"] ; others will include modified tillage, end guns, hand lines, and wheel lines.
+    trace "crops and other basic initialization"
+    InitializeCropsAndMisc
+    trace "actual PopulateRandom function"
+    PopulateRandom
+    trace "end of Populate Random" ; trace function is in the Tracers component - it prints the location and timer to a file and to the user interface. The location is defined in the input here.
+    ifelse UseRandomRotations? = true
+    [export-world (word GWD "_EmptyWorld_Run " RandomSeed "_RandomRotations")] ; Changed to random seed to I can vary the outcomes across the worlds in a regulated way.
+    [export-world (word GWD "_EmptyWorld_Run " RandomSeed "_InformedRotations")] ; Changed to random seed to I can vary the outcomes across the worlds in a regulated way.
+  ]
+  [
+    PopulateExperimental
+    ;;After Populate Experimental, it's necessary to manually set any variables that you are interested in varying.
+    ;set Tracers? TRUE
+    ;set WriteOutputs? TRUE
+    ;set NumberOfSeasons 20
+
+    ;;Although it is useful to be able to set things manually like above, it's simpler to import a file that resets things. Can use R to automatically iterate through this.
+    ImportExperimentVariables
+    ask farmers [
+      set ChangedWaterManagementThisYear? 0
+      set AmountFarmerIsWillingToLose random-normal ExperimentalToleranceforLoss ((PercVarWillingnessToLose / 100) * ExperimentalToleranceforLoss)
+    ]
+
+  ]
+  ; This would be the moment to change the working directory in MATLAB if using AquaCrop.
+  ;   matlab:eval "cd '//itsofs06.itap.purdue.edu/ag_fnr/Users/hawes0/GitHub/ESPA-CAMP-ABM/Programming Working Folder/MATLAB'"
+  ask farmers [
+    CreateCleanDetailedCropBudget
+    CreateCleanCropBudget
+    CreateCleanSocialCropBudget
+  ]
+  set NumberOfFarmersWithChangedWM []
+  set FinalCSVPrintList []
+  set Is-Setup? true
+
+  set location "Initial_post-setup"
+  FixRotations
+  CatalogConditions location ; Catalog variables that will serve as evaluation criteria - CatalogConditions is a generic cataloging function that names variables based on the time in the model (Initial is the "time" input)
+end

@@ -1,0 +1,22 @@
+to-report SettlementFinancialCosts
+
+  let SettlementFinancialCosts-local 0
+  ifelse ticks > 10 [
+    if Simulate-ESPA_CAMP = TRUE [
+      ;;Settlement costs: Possible (anticipated) sanctions - scaled by expectation of sanctions - this is an important area for communication to play a role
+      ifelse WaterOverdraw > 0 
+      [ set SettlementFinancialCosts-local 0 ] 
+      [ set SettlementFinancialCosts-local 10 * FieldSize * WaterOverdraw * ChargeForOverdraw / 12 ]
+      WriteDetailedCropBudget (word "Finished calculating settlement costs. Outcome is $" SettlementFinancialCosts-local ".")
+      WriteDetailedCropBudget (word "Breakdown of Gross Financial Returns is 10 * FieldSize * WaterOverdraw * ChargeForOverdraw / 12.")
+      WriteDetailedCropBudget (word "This turns out to be 10 * " FieldSize " * " WaterOverdraw " * " ChargeForOverdraw " / 12.")
+    ]
+   ]
+   [
+    set SettlementFinancialCosts-local 0
+    WriteDetailedCropBudget "Settlement costs not included, since either ticks < 10 or ESPA CAMP is turned off."
+
+  ]
+   trace (word "DC Tracer7 - Just set settlement costs. Timer is at " Timer)
+   report SettlementFinancialCosts-local
+end

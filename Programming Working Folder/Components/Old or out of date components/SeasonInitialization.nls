@@ -1,0 +1,18 @@
+to SeasonInitialization
+    if tracers? = TRUE [
+        file-open "reporter.txt"
+        file-write (word "Season initialization beginning. General Precipitation up first. Timer is at " Timer)
+        file-close
+        print "Season initialization beginning. General Precipitation up first."
+        print word "Timer is at " Timer
+      ]
+    print "Trying to run GeneralWeather"
+    ImportGeneralWeather
+    if tracers? = TRUE [
+        file-open "reporter.txt"
+        file-write (word "Precip set. Farmer decision-making next. Timer is at " Timer)
+        file-close
+        print "Precip set. Farmer decision-making next."
+        print word "Timer is at " Timer
+    ]
+end

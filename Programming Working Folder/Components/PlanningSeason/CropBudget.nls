@@ -1,0 +1,133 @@
+to-report NetExpectedReturnsForThisPlan
+  WriteDetailedCropBudget (word "Calculating net expected returns for current plan in field around " one-of field-global ". Current plan involves " Current-Land-Use " and " Water-Management-Strategy ".")
+  WriteDetailedCropBudget "Results of each sub-calculation below, followed by final net expected returns."
+  let NetExpectedReturnsForThisPlan-local ExpectedGrossFinancialReturnsForThisPlan - TotalFinancialCostsForThisPlan
+  ;trace (word "Net Expected financial returns are $" NetExpectedReturnsForThisPlan-local ".")
+  WriteDetailedCropBudget (word "Finished calculating net expected returns. Outcome is $" NetExpectedReturnsForThisPlan-local ".")
+  WriteDetailedCropBudget "---------------------------------------------------------------------------------------------------"
+  report NetExpectedReturnsForThisPlan-local
+
+end
+
+
+
+to-report ExpectedGrossFinancialReturnsForThisPlan
+
+  trace (word "DC Tracer - Calculating Expected Gross Financial Returns. Timer is at " Timer)
+  let ExpectedGrossFinancialReturnsPerAcre-local 0
+  let ExpectedGrossFinancialReturnsForThisCrop-local 0
+  let TypicalYield-local 0
+  let CommodityPrice-local 0
+  set TypicalYield-local item TimeListValue (item cropZ TypicalYield-CB)
+  set CommodityPrice-local item TimeListValue (item cropZ CommodityPrice-CB)
+  trace (word "Typical yield is " TypicalYield-local " and Commodity price is " CommodityPrice-local)
+  set ExpectedGrossFinancialReturnsPerAcre-local (TypicalYield-local * CommodityPrice-local) ; Very simple gross return calculation based on averages - see input file for sources
+  set ExpectedGrossFinancialReturnsForThisCrop-local (ExpectedGrossFinancialReturnsPerAcre-local * 10 * FieldSize) ;; Scale to field size
+  WriteDetailedCropBudget (word "Finished calculating Gross Financial Returns. Outcome is $" ExpectedGrossFinancialReturnsForThisCrop-local ".")
+  WriteDetailedCropBudget (word "Breakdown of Gross Financial Returns is 10 * FieldSize * TypicalYield * CommodityPrice.")
+  WriteDetailedCropBudget (word "This turns out to be 10 * " FieldSize " * " TypicalYield-local " * " CommodityPrice-local ".")
+  trace (word "DC Tracer - Calculated and reported Expected Gross Financial Returns. They are $" ExpectedGrossFinancialReturnsForThisCrop-local ". Timer is at " Timer)
+  report ExpectedGrossFinancialReturnsForThisCrop-local
+
+end
+
+
+to-report TotalFinancialCostsForThisPlan
+
+  trace (word "DC Tracer - Calculating Total Financial Costs. Timer is at " Timer)
+  ;;Operating costs: Seeds + Fertilizer + Pesticides + Custom/Consultants + Irrigation costs + Machinery + Labor + Crop Insurance + Social dimensions
+  ; Scale the irrigation cost based on what type of irrigation is being used. Values sourced from Texas A&M Extension
+  trace (word "DC Tracer2 - continuing to determine crop. Timer is at " Timer)
+
+  ;creating local versions to simplify calculations and record-keeping
+  let OperatingCostsForThisPlan-local OperatingCostsForThisPlan
+  let OwnershipCostsForThisPlan-local OwnershipCostsForThisPlan
+  let InfrastructureCostsForThisPlan-local InfrastructureCostsForThisPlan
+  let SettlementFinancialCosts-local SettlementFinancialCosts
+
+  let TotalFinancialCostsForThisCrop-local ( (OperatingCostsForThisPlan-local + OwnershipCostsForThisPlan-local + InfrastructureCostsForThisPlan-local + SettlementFinancialCosts-local))
+  WriteDetailedCropBudget (word "Finished calculating Total Financial Costs. Outcome is $" TotalFinancialCostsForThisCrop-local ".")
+  WriteDetailedCropBudget (word "Breakdown of Total Financial Costs is  (OperatingCostsForThisPlan + OwnershipCostsForThisPlan + InfrastructureCostsForThisPlan + SettlementFinancialCosts).")
+  WriteDetailedCropBudget (word "This turns out to be (" OperatingCostsForThisPlan-local " + " OwnershipCostsForThisPlan-local " + " InfrastructureCostsForThisPlan-local " + " SettlementFinancialCosts-local ").")
+  trace (word "DC Tracer - Calculated and reported Total Financial Costs. They are $" TotalFinancialCostsForThisCrop-local ". Timer is at " Timer)
+  report TotalFinancialCostsForThisCrop-local
+
+end
+
+to-report OperatingCostsForThisPlan
+
+  trace (word "DC Tracer - Calculating Operating Costs. Timer is at " Timer)
+  ;Operating costs based on the annual inputs (biological, chemical, human)
+  let SeedPrice-local item TimeListValue (item cropZ SeedPrice)
+  let Fertilizer-local item TimeListValue (item cropZ Fertilizer)
+  let Pesticides-local item TimeListValue (item cropZ Pesticides)
+  ;let IrrigationPower-local item TimeListValue (item cropZ IrrigationPower) ;;Irrigation inputs within land use go unused because I have better estimates from the irrigation inputs.
+  ;let IrrigationPower-local item TimeListValue (item cropZ IrrigationPower)
+  let LaborCosts-local item TimeListValue (item cropZ LaborCosts)
+  let Crop-SpecificCosts-local item TimeListValue (item cropZ Crop-SpecificCosts)
+  let MiscCosts-local item TimeListValue (item cropZ MiscCosts)
+  let AdjIrrigationTypeSpecificCosts TotalIrrigationUseForThisCrop * item waterstratZ AnnualCost
+
+  ; Custom consultants are used when equipment is not present ... if equipment is owned for a crop, custom consultants can be zero.
+  let NeedCustomConsultants? NOT HaveRequiredEquipment
+
+  let CustomConsultants-local 0
+  ifelse NeedCustomConsultants? = TRUE [set CustomConsultants-local item TimeListValue (item cropZ CustomConsultants)]
+  [set CustomConsultants-local 0]
+
+  let OperatingCostsForThisPlan-local 10 * FieldSize * (SeedPrice-local + (item 0 ([InputIntensity] of field-global) * (Fertilizer-local + Pesticides-local)) + CustomConsultants-local + AdjIrrigationTypeSpecificCosts + LaborCosts-local + Crop-SpecificCosts-local + MiscCosts-local)
+  trace (word "DC Tracer - Calculated and Reported Operating Costs. They are $" OperatingCostsForThisPlan-local ". Timer is at " Timer)
+  WriteDetailedCropBudget (word "Finished calculating Operating costs. Outcome is $" OperatingCostsForThisPlan-local ".")
+  WriteDetailedCropBudget (word "Breakdown of Operating Costs is 10 * FieldSize * (SeedPrice + (item 0 ([InputIntensity] of field-global) * (Fertilizer + Pesticides)) + CustomConsultants + AdjIrrigationTypeSpecificCosts + LaborCosts + Crop-SpecificCosts + MiscCosts).")
+  WriteDetailedCropBudget (word "This turns out to be 10 * " FieldSize " * (" SeedPrice-local " + (" item 0 ([InputIntensity] of field-global) " * (" Fertilizer-local " + " Pesticides-local "))  + " CustomConsultants-local " + " AdjIrrigationTypeSpecificCosts " + " LaborCosts-local " + " Crop-SpecificCosts-local " + " MiscCosts-local ").")
+  report OperatingCostsForThisPlan-local
+
+
+end
+
+
+to-report OwnershipCostsForThisPlan
+
+  trace (word "DC Tracer - Calculating Ownership Costs. Timer is at " Timer)
+  ;Ownership costs include maintenance and upkeep, as well as loan fees and taxes
+  ;Ownership costs: FarmOwnership (includes Equipment-costs + General-overhead) + Land-costs
+  let OwnershipCosts-local 0
+
+  ; Custom consultants are used when equipment is not present ... if equipment is owned for a crop, custom consultants should equal half the cost - assumed loan payments are less than cost of custom guys.
+  let OwnCorrectEquipment? HaveRequiredEquipment
+  let EquipmentOwnership-local 0
+  ifelse OwnCorrectEquipment? = TRUE [set EquipmentOwnership-local (item TimeListValue (item cropZ CustomConsultants) / 2)]
+  [set EquipmentOwnership-local 0]
+
+  let RentAvg mean RentList
+  let LandOwnership-local RentAvg / 2
+
+  set OwnershipCosts-local 10 * FieldSize * (EquipmentOwnership-local + LandOwnership-local)
+  trace (word "DC Tracer - Just set ownership costs. They are $" OwnershipCosts-local ". Timer is at " Timer)
+  WriteDetailedCropBudget (word "Finished calculating Ownership costs. Outcome is $" OwnershipCosts-local ".")
+  WriteDetailedCropBudget (word "Breakdown of Total Financial Costs is 10 * FieldSize * (EquipmentOwnership + LandOwnership).")
+  WriteDetailedCropBudget (word "This turns out to be 10 * " FieldSize " * (" EquipmentOwnership-local " + " LandOwnership-local ").")
+  report OwnershipCosts-local
+
+end
+
+to-report InfrastructureCostsForThisPlan
+
+  trace (word "DC Tracer - Calculating Infrastructure Costs. Timer is at " Timer)
+  let InfrastructureCosts-local 0
+  let Irrigation-Infrastructure-Costs-local 0
+  ifelse item 0 ([TypeOfIrrigation] of field-global) = Water-Management-Strategy
+  [ set Irrigation-Infrastructure-Costs-local 0 ]
+  [
+    ifelse ROISeasonTolerance > 0 
+    [ set Irrigation-Infrastructure-Costs-local item waterstratZ CostOfWaterStrategy / ROISeasonTolerance-farmer ]
+    [ set Irrigation-Infrastructure-Costs-local item waterstratZ CostOfWaterStrategy / item waterstratZ LifetimeOfStrategy ] 
+  ]
+  set InfrastructureCosts-local 10 * FieldSize * Irrigation-Infrastructure-Costs-local ; + machinery? TODO
+  trace (word "DC Tracer - Calculated and reported Infrastructure Costs.  They are $" InfrastructureCosts-local ". Timer is at " Timer)
+  WriteDetailedCropBudget (word "Finished calculating Ownership costs. Outcome is $" InfrastructureCosts-local ".")
+  WriteDetailedCropBudget (word "Breakdown of Infrastructure Costs is either just simply zero or 10 * FieldSize * (CostOfWaterStrategy / LifetimeOfStrategy).")
+  WriteDetailedCropBudget (word "This turns out to be 10 * " FieldSize " * (" item waterstratZ CostOfWaterStrategy " / " item waterstratZ LifetimeOfStrategy ").")
+  report InfrastructureCosts-local
+
+end

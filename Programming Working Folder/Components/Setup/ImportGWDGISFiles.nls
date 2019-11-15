@@ -1,0 +1,61 @@
+to-report ImportGWDGISFiles
+    ; Series of if statements below retrieves the shapefile of JUST the GWD of interest, not the overview file.
+    ; To do so, first sets the working directory for the rest of the simulation - allows all other file names to be identical (Location.txt, etc.)
+    ; Within each call, resize world such that each patch is composed of between 9.9 and 10 acres
+    ; Also change the patch size to make it visible within a standard widescreen computer monitor.
+  
+  ; Just in case GWD is broken. 
+  let GWDgis "Failed"
+  
+    if GWD = "Aberdeen-American Falls GWD" [
+      set Working-Directory "data/AAF/"
+      set GWDgis gis:load-dataset word Working-Directory "AAF.shp"
+      resize-world 0 356 0 461
+      set-patch-size 2
+    ]
+    if GWD = "Bonneville-Jefferson GWD" [
+      set Working-Directory "data/BonnJeff/"
+      set GWDgis gis:load-dataset word Working-Directory "BonnJeff.shp"
+      resize-world 0 242 0 185
+      set-patch-size 4
+    ]
+    if GWD = "Magic Valley GWD" [
+      set Working-Directory "data/MV/"
+      set GWDgis gis:load-dataset word Working-Directory "MV.shp"
+      resize-world 0 308 0 216
+      set-patch-size 4
+    ]
+    if GWD = "North Snake GWD" [
+      set Working-Directory "data/NS/"
+      set GWDgis gis:load-dataset word Working-Directory "NS.shp"
+      resize-world 0 391 0 280
+      set-patch-size 2.75
+    ]
+    if GWD = "Carey Valley GWD" [
+      set Working-Directory "data/CV/"
+      set GWDgis gis:load-dataset word Working-Directory "CV.shp"
+      resize-world 0 471 0 157
+      set-patch-size 2.8
+    ]
+    if GWD = "Bingham GWD" [
+      set Working-Directory "data/Bing/"
+      set GWDgis gis:load-dataset word Working-Directory "Bing.shp"
+      resize-world 0 608 0 304
+      set-patch-size 2
+    ]
+    if GWD = "Jefferson-Clark GWD" [
+      set Working-Directory "data/JC/"
+      set GWDgis gis:load-dataset word Working-Directory "JC.shp"
+      resize-world 0 430 0 400
+      set-patch-size 2
+    ]
+    if GWD = "Test" [
+      set Working-Directory "data/Test/"
+      set GWDgis gis:load-dataset word Working-Directory "NS.shp"
+      resize-world 0 391 0 280
+      set-patch-size 2.75
+    ]
+
+    report GWDgis
+
+end

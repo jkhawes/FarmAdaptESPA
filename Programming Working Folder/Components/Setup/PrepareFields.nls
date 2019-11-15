@@ -1,0 +1,69 @@
+to IdentifyFields
+    ask patches [
+      set FieldNumber -1
+      set FieldSeed 0
+    ]
+    ;  let UnassignedPatches []
+    let Number-of-actual-farms count farmers
+    set j 0
+    while [j < (Number-of-actual-farms) ] [
+      set i 0
+      ask farmer j [
+        set Fields []
+        set FieldSeeds []
+        set NumberFields ceiling (FarmSize / 160)
+        ifelse (FarmSize / 10 / NumberFields) < 1
+        [ set FieldSize 1]
+        [ set FieldSize floor ((FarmSize / 10) / NumberFields)]
+        while [i < NumberFields] [
+          ask one-of patches with [owner = farmer j AND FieldNumber = -1] [ ; identify field seed, which will be the primary patch called for this field throughout the program.
+            set FieldNumber i
+            set FieldSeed 1
+          ]
+          ask n-of (FieldSize - 1) patches with [owner = farmer j AND FieldNumber = -1] [set FieldNumber i] ; identify the other patches in the field, even though they won't be used.
+          let Fieldi (patches with [owner = farmer j AND FieldNumber = i])
+          set Fields lput Fieldi Fields
+          set FieldSeeds lput patches with [FieldNumber = i AND owner = farmer j AND FieldSeed = 1] FieldSeeds
+          set i i + 1
+        ]
+      ]
+      trace (word "end of farmer " j "identifying fields. Beginning farmer" (j + 1) ".")
+      set j j + 1
+    ]
+
+end
+
+
+
+to ParameterizeFields [field-patch] ; in each instance where field is an input, field should be a single patch ... the field seed that got set as the representative patch for the entire field
+  set i 0
+  ask field-patch [
+    ;;Set the input intensity of Pesticides, etc. for a given field (cumulative effect) - assumption
+    if InputIntensityDistribution = "Random" [
+      let temp random-float 0.5
+      let sign random-float 2
+      ifelse sign > 1
+      [ set InputIntensity 1 + temp ]
+      [ set InputIntensity 1 - temp ]
+    ]
+    if InputIntensityDistribution = "Constant" [ set InputIntensity 1 ]
+
+    set FieldSize-PatchVar ([FieldSize] of owner)
+    set CropHistory-fields []
+    ;; This is the former location of the patch history generation system.
+    ; Instead, I'm just oging to generate a level of comfort with each crop for each farmer,
+    ; then we'll start the simulation in 2007.
+
+    ;;Set the irrigation method - ranges defined with Farm and Ranch Irrig. Survey 2013
+    ;;; Pretty intensive simplification here to lump all sprinklers together. Probably not worth changing, just worth noting.
+    let temp-irrigation random-float 1
+    ifelse temp-irrigation <= 0.1955965
+    [ set TypeOfIrrigation "Furrow" ]
+    [ ifelse temp-irrigation > 0.1955965 AND temp-irrigation <= 0.992734
+      [ set TypeOfIrrigation "Center Pivot MESA" ]
+      [ set TypeOfIrrigation "Drip Tape" ]
+    ]
+  ]
+    ;; Need to have the owners go back through their fields' histories and set their familiarity [set AlfalfaFamiliarity lput 1 AlfalfaFamiliarity] [set AlfalfaFamiliarity lput 0 AlfalfaFamiliarity]
+
+end

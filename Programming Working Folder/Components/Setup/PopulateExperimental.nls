@@ -1,0 +1,3 @@
+to PopulateExperimental
+  import-world WorldFileName ; Very simple mechanism for loading previous world ... need to make sure to type exactly correctly in the input section.
+end

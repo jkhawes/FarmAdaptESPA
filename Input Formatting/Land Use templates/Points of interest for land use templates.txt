@@ -1,0 +1,20 @@
+Based on which crop budget?
+  Alfalfa: SE Idaho Alfala Hay - Can find modifications for Year 1 in Establishment sheet
+  Barley: SE Idaho Malt Barley
+  Corn: SC Idaho MV (repeat 2007 for 2009) - SCI-CS - Corn Silage
+  Potatoes: EI-Po5: Russet Potatoes stored on-farm in Southern Region of Eastern Idaho
+  Wheat: EI-HWS: Hard red spring wheat
+
+Projected Sale Price:
+  Alfalfa: $ per ton
+  Barley: $ per bushel
+  Corn:  $ per ton
+  Potato: $ per hundredweight
+  Wheat: $ per bushel
+
+Projected Yield:
+  Alfala: ton per acre
+  Barley: bushels (bu) per acre
+  Corn: tons per acre
+  Potato: Hundredweight (cwt) per acre
+  Wheat: Bushels per acre

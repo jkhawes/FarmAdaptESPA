@@ -1,0 +1,55 @@
+to animate
+  resize-world 0 100 0 130 ; sets the initial world size to present the introductory animation.
+  set-patch-size 6 ; scales the world so that it's visible on Jake's computer at work (standard widescreen monitor). May need to grow or shrink depending on screen you're using.
+  gis:set-drawing-color green ; set color for Idaho to appear
+  let basemap gis:load-dataset "data/Idaho/IdahoMerge.shp" ; retrieve GIS dataset of Idaho (directory begins with directory of .nlogo file) - also includes all the GWDs, but they're just enveloped by Idaho for now.
+  gis:set-transformation gis:envelope-of basemap (list min-pxcor max-pxcor min-pycor max-pycor)
+  ; sets the edges of the basemap (Idaho) to matchup with the edges of the display (display was custom-sized in initial settings to fit Idaho well)
+
+  gis:fill basemap 1 ; Draw Idaho on the screen
+  wait 2 ; Let Idaho sit alone on the screen for 2 seconds
+
+  gis:set-drawing-color blue ; change color so that the GWDs actually show up against the Idaho backgorund
+  let GWDi 0 ; set iteration value.
+  let GWDgis gis:find-greater-than basemap "GRIDCODE" 999 ; create a list of all values within the basemap that have a GRIDCODE (from ArcGIS) greater than 999
+  foreach GWDgis [
+    gis:fill item GWDi GWDgis 1 ; draw each item ... where GWDi is the iteration and GWDgis is the list of GWDs to be drawn.
+    set GWDi (GWDi + 1) ; iterate
+  ]
+
+  wait 1.5 ; let the GWDs sit on the screen for 1.5 seconds.
+  
+  ; sets GWDoI to all shapes possessing the indicated gridcode value. Gridcode values set in ArcGIS Pro
+  if GWD = "Aberdeen-American Falls GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "1000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Bonneville-Jefferson GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "2000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Magic Valley GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "3000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "North Snake GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "4000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Carey Valley GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "5000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Bingham GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "6000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Jefferson-Clark GWD" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "7000"
+    DrawDoI GWDoI
+  ]
+  if GWD = "Test" [
+    let GWDoI gis:find-features basemap "GRIDCODE" "4000"
+    DrawDoI GWDoI
+  ]
+end

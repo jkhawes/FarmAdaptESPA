@@ -1,0 +1,17 @@
+to CalculateROIPeriod [Current-Crop]
+ ;Establish frequency needed below.
+  let FrequencyOfPlanting 0
+  ifelse Current-Crop = "Potatoes" or Current-Crop = "Sugarbeets"
+  [ set FrequencyOfPlanting TractorFreq ]
+  [ifelse Current-Crop = "alfalfa"
+    [ set FrequencyOfPlanting ForageHarvesterFreq ]
+    [ set FrequencyOfPlanting GrainAndBeanCombineFreq ]
+  ]
+  ;;ComparePossibleInvestment to NetExpectedReturns.
+  let ROIPeriodForThisCrop (InfrastructureCostsForThisPlan / (NetExpectedReturnsForThisPlan * NumberFields)) / FrequencyOfPlanting
+  ; TODO - it appears I broke ROI if ROIPeriodForThisCrop > ROISeasonTolerance [set NetExpectedReturnsForThisCrop 0]
+  ; commented out for now, since considering adding this to the Adaptation section.
+
+  print (word "ROI adjustments moved the Net Expected Returns for " Current-Crop " this year to $" NetExpectedReturns ".")
+  print (word "ROI adjustments moved the Gross Expected Returns for " Current-Crop " this year to $" ExpectedGrossReturns ".")
+end

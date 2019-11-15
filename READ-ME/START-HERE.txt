@@ -1,0 +1,15 @@
+Model of Water Scarcity Adaptation in Irrigated Agriculture
+
+By Jason K. Hawes
+
+This read me guides the user through the modeling framework "Model of Water Scarcity
+Adaptation in Irrigated Agriculture."
+This model was developed by Jason Hawes, Zhao Ma, Morey Burnham, and David Yu at
+Purdue University and Idaho State University.
+Written primarily in NetLogo, the program relies upon FAO's AquaCrop for some calculations.
+
+Contents of READ-ME:
+1. Programs
+2. Components
+3. Inputs
+4.

@@ -1,0 +1,9 @@
+to DrawDoI [GWDoI]
+    let GWDi 0 ; set iteration value
+    ; colors in the district of interest red
+    gis:set-drawing-color red ; set drawing color to red to highlight chosen district
+    foreach GWDoI [
+    gis:fill item GWDi GWDoI 1 ; Same code as above, only needs to be a loop because some of the districts are broken into chunks by Arc.
+    set GWDi (GWDi + 1)
+    ]
+end

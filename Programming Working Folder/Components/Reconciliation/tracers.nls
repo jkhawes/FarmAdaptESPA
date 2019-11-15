@@ -1,0 +1,9 @@
+to trace [location-in-model]
+  if tracers? = TRUE
+  [
+    file-open "reporter.txt"
+    file-write (word "Reached " location-in-model ". Timer is at " Timer)
+    file-close
+    print (word "Reached " location-in-model ". Timer is at " Timer)
+  ]
+end

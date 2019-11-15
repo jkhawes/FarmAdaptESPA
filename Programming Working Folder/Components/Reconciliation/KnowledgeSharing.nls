@@ -1,0 +1,125 @@
+to KnowledgeSharing
+  ; Conducted in three stages. 
+  ;; 1. Communicate with other farmers and with your consultants. 
+  ;; 2. Consultants distribute information farther. 
+  ;; 3. Farmers reconcile all of this with attitudes - this is not actually a totally separate step, each agentset just gets asked to do this as we go. 
+  trace "beginning of social network knowledge sharing"
+  ShareWithSocialNetwork
+  trace "beginning of client-consultant knowledge sharing"
+  ShareWithClients  
+  
+  ;ask farmers [ print (word "I am " self " and my perception matrices are " LandUsePerceptions " and " WaterManagementPerceptions ".") ] ; for debugging. 
+
+end
+
+to ShareWithSocialNetwork
+  let impression 0
+  ask farmers [ 
+    foreach FieldSeeds [ 
+      [FieldSeedOI] ->
+      ;print [PreferredLandUse] of FieldSeedOI
+      ;print [PreferredWaterManagementStrat] of FieldSeedOI
+      ;print LandUseList
+      ;print WaterManagementList
+      let position-of-crop position ((item 0 ([PreferredLandUse]) of FieldSeedOI)) LandUseList
+      let position-of-water-mgmt position ((item 0 ([PreferredWaterManagementStrat]) of FieldSeedOI)) WaterManagementList
+      ifelse AnnualReturns > 0 [set impression 1] [set impression 0]
+      ask friendship-neighbors [ 
+        ; let friends know how everything worked this year. 
+        ifelse impression = 1 
+        [
+          if (item position-of-water-mgmt WaterManagementPerceptions) < 1 
+          [set WaterManagementPerceptions replace-item position-of-water-mgmt WaterManagementPerceptions (item position-of-water-mgmt WaterManagementPerceptions + .01)]
+          if (item position-of-crop LandUsePerceptions) < 1 
+          [set LandUsePerceptions replace-item position-of-crop LandUsePerceptions (item position-of-crop LandUsePerceptions + .01)]
+        ]
+        [        
+          if (item position-of-water-mgmt WaterManagementPerceptions) > 0 
+          [set WaterManagementPerceptions replace-item position-of-water-mgmt WaterManagementPerceptions (item position-of-water-mgmt WaterManagementPerceptions - .01)]
+          if (item position-of-crop LandUsePerceptions) > 0
+          [set LandUsePerceptions replace-item position-of-crop LandUsePerceptions (item position-of-crop LandUsePerceptions - .01)]
+        ]
+      ]
+      ask consultancy-neighbors [ 
+        if breed? = "Agronomist" [
+          ; update ???
+        ]
+        if breed? = "Crop Consultant" [
+          ; update consultants' views on crops
+          ifelse impression = 1 
+          [
+            if (item position-of-crop LandUsePerceptions-consultant) < 1 
+            [set LandUsePerceptions-consultant replace-item position-of-crop LandUsePerceptions-consultant (item position-of-crop LandUsePerceptions-consultant + .01)]
+          ]
+          [
+            if (item position-of-crop LandUsePerceptions-consultant) > 0
+            [set LandUsePerceptions-consultant replace-item position-of-crop LandUsePerceptions-consultant (item position-of-crop LandUsePerceptions-consultant - .01)]
+          ]
+        ]
+        if breed? = "Irrigation Consultant" [
+          ; update consultants' views on irrigation methods
+          ifelse impression = 1 
+          [
+            if (item position-of-water-mgmt WaterManagementPerceptions-consultant) < 1 
+            [set WaterManagementPerceptions-consultant replace-item position-of-water-mgmt WaterManagementPerceptions-consultant (item position-of-water-mgmt WaterManagementPerceptions-consultant + .01)]
+          ]
+          [
+            if (item position-of-water-mgmt WaterManagementPerceptions-consultant) > 0 
+            [set WaterManagementPerceptions-consultant replace-item position-of-water-mgmt WaterManagementPerceptions-consultant (item position-of-water-mgmt WaterManagementPerceptions-consultant - .01)]
+          ]
+        ]
+      ]
+    ]
+  ]
+    
+end
+
+to ShareWithClients
+  let consult-iter 0
+  ask agronomists [ 
+    ask consultancy-neighbors [ 
+      ; update ??? 
+    ]      
+  ]
+ 
+  ask IrrigationConsultants [ 
+    set consult-iter 0 
+    foreach WaterManagementPerceptions-consultant [ 
+      [PerceptionOfInterest] -> 
+      ask consultancy-neighbors [ 
+        ; update farmers' views on irrigation methods
+        ifelse PerceptionOfInterest > PerceptionThreshold 
+        [
+          if PerceptionOfInterest < 1 
+          [set WaterManagementPerceptions replace-item consult-iter WaterManagementPerceptions (item consult-iter WaterManagementPerceptions + .01)]
+        ]
+        [
+          if PerceptionOfInterest > 0 
+          [set WaterManagementPerceptions replace-item consult-iter WaterManagementPerceptions (item consult-iter WaterManagementPerceptions - .01)]
+        ]
+      ]
+      set consult-iter consult-iter + 1
+    ]
+  ]
+  
+  ask CropConsultants [ 
+    ; update farmers' views on crops.       
+    set consult-iter 0 
+    foreach LandUsePerceptions-consultant [ 
+      [PerceptionOfInterest] -> 
+      ask consultancy-neighbors [ 
+        ifelse PerceptionOfInterest > PerceptionThreshold 
+        [
+          if PerceptionOfInterest < 1 
+          [set LandUsePerceptions replace-item consult-iter LandUsePerceptions (item consult-iter LandUsePerceptions + .01)]
+        ]
+        [
+          if PerceptionOfInterest > 0 
+          [set LandUsePerceptions replace-item consult-iter LandUsePerceptions (item consult-iter LandUsePerceptions - .01)]
+        ]
+      ]
+      set consult-iter consult-iter + 1
+    ]      
+  ]
+  
+end

@@ -1,0 +1,16 @@
+ "Experiment_DM-Rational Actor Theory_TFL-2500_CFO-0_IS-1_ES-1_EffS-1_RS-1_PT-0.5"
+1
+ "Rational Actor Theory"
+15
+false
+false
+false
+false
+0
+2500
+0
+1
+1
+1
+1
+0.5

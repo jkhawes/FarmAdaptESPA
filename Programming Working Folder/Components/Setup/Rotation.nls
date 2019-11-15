@@ -1,0 +1,191 @@
+to DetermineRotation
+  ;; After a lot of consideration, I'm putting the rotation as a farmer variable. I think this is consistent with the qualitative data, and it simplifies the initialization.
+  ; As a result, this is called as a subsidiary of SetDemographics in the farmer context. That's rather key to keep in mind as you read this.
+  ; So as we go about setting up the rotations, there are a few things to note ...
+  ;; 1. We have a percent of people with each type of rotation ... that is independent of equipment and livestock concerns.
+  ;; 2. Other variables that should come into play here are the type of equipment available to someone and the livestock they have.
+  ;;    With that in mind, I think it's reasonable to do liverstock first, then equipment, then just random.
+  ;;    So based on how this all gets laid out, farmers will be classified at the end of it as farmers of certain things with/without leasing patterns.
+  ;; 3. I think that to effectively incorporate rotations, it is absolutely necessary to incoporate leasing. I kind of think it's safe to treat custom farmers/renters as ghosts ... cash leases only?
+  ;; 4. From a programming perspective, it is easiest to save the rotation both as a name variable and as a list. The list will allow iteration thru the crops when deciding what to plant and id'ing planting history.
+  ;; 5. So I'm thinking the best way to do this will be to have all the rotation have their baseline probability, then add a certain amount of probability to grain-heavy rotations if you have livestock, same idea with equipment
+  ;;    Then with those new probabilities (which we'll have to normalize), we just do the random number generation thing for each farmer. Whatever interval it lands in is their rotation.
+
+  let PotatoGrainBeetGrain_local PotatoGrainBeetGrain
+  let PotatoBeetGrainGrain_local PotatoBeetGrainGrain
+  let HayGrain_local HayGrain
+  let HayGrainPotatoGrain_local HayGrainPotatoGrain
+  let PotatoGrainGrain_local PotatoGrainGrain
+  let HayBarleyPotato_local HayBarleyPotato
+  let HayGrainGrainPotato_local HayGrainGrainPotato
+  let GrainPotatoBeetsHay_local GrainPotatoBeetsHay
+
+  if (beef-cattle? = 1) or (dairy-cattle? = 1) [
+    set HayGrain_local HayGrain_local + (HayGrain_local * 0.5)
+    set HayGrainPotatoGrain_local (HayGrainPotatoGrain_local + (HayGrainPotatoGrain_local * 0.5))
+  ]
+
+  ; For equipment, we're treating lack as the more important distinction.
+  ;; Essentially, if you don't have the requisite equipment, you're X% less likely to put this in your rotation.
+  ;; X is defined as the ease of access to custom farmers.
+  ;; Need tractor for potatoes and beets
+  if (item 0 EquipmentMatrix = 0) [
+    set PotatoGrainBeetGrain_local (PotatoGrainBeetGrain_local - (PotatoGrainBeetGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set PotatoBeetGrainGrain_local (PotatoBeetGrainGrain_local - (PotatoBeetGrainGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainPotatoGrain_local (HayGrainPotatoGrain_local - (HayGrainPotatoGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set PotatoGrainGrain_local (PotatoGrainGrain_local - (PotatoGrainGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayBarleyPotato_local (HayBarleyPotato_local - (HayBarleyPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainGrainPotato_local (HayGrainGrainPotato_local - (HayGrainGrainPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set GrainPotatoBeetsHay_local (GrainPotatoBeetsHay_local - (GrainPotatoBeetsHay_local * (1 - (CustomFarmerAccess / 100))))
+  ]
+  ; Need a Forage Harvester and hay baler for hay
+   if (item 1 EquipmentMatrix = 0) OR (item 3 EquipmentMatrix = 0) [
+    set HayGrain_local (HayGrain_local - (HayGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainPotatoGrain_local (HayGrainPotatoGrain_local - (HayGrainPotatoGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayBarleyPotato_local (HayBarleyPotato_local - (HayBarleyPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainGrainPotato_local (HayGrainGrainPotato_local - (HayGrainGrainPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set GrainPotatoBeetsHay_local (GrainPotatoBeetsHay_local - (GrainPotatoBeetsHay_local * (1 - (CustomFarmerAccess / 100))))
+  ]
+  ; Need a grain and bean combine for barley, wheat, and corn ... Corn and wheat are grain.
+  if (item 2 EquipmentMatrix = 0) [
+    set PotatoGrainBeetGrain_local (PotatoGrainBeetGrain_local - (PotatoGrainBeetGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set PotatoBeetGrainGrain_local (PotatoBeetGrainGrain_local - (PotatoBeetGrainGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrain_local (HayGrain_local - (HayGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainPotatoGrain_local (HayGrainPotatoGrain_local - (HayGrainPotatoGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set PotatoGrainGrain_local (PotatoGrainGrain_local - (PotatoGrainGrain_local * (1 - (CustomFarmerAccess / 100))))
+    set HayBarleyPotato_local (HayBarleyPotato_local - (HayBarleyPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set HayGrainGrainPotato_local (HayGrainGrainPotato_local - (HayGrainGrainPotato_local * (1 - (CustomFarmerAccess / 100))))
+    set GrainPotatoBeetsHay_local (GrainPotatoBeetsHay_local - (GrainPotatoBeetsHay_local * (1 - (CustomFarmerAccess / 100))))
+  ]
+
+  let local_rotation_sum (PotatoGrainBeetGrain_local + PotatoBeetGrainGrain_local + HayGrain_local + HayGrainPotatoGrain_local +
+    PotatoGrainGrain_local + HayBarleyPotato_local + HayGrainGrainPotato_local + GrainPotatoBeetsHay_local)
+  ifelse local_rotation_sum = 0
+  [
+    set rotation "Landlord"
+    set RotationList "Lease"
+  ]
+  [
+    set PotatoGrainBeetGrain_local PotatoGrainBeetGrain_local / local_rotation_sum
+    set PotatoBeetGrainGrain_local PotatoBeetGrainGrain_local / local_rotation_sum
+    set HayGrain_local HayGrain_local / local_rotation_sum
+    set HayGrainPotatoGrain_local HayGrainPotatoGrain_local / local_rotation_sum
+    set PotatoGrainGrain_local PotatoGrainGrain_local / local_rotation_sum
+    set HayBarleyPotato_local HayBarleyPotato_local / local_rotation_sum
+    set HayGrainGrainPotato_local HayGrainGrainPotato_local / local_rotation_sum
+    set GrainPotatoBeetsHay_local GrainPotatoBeetsHay_local / local_rotation_sum
+
+    let PotatoGrainBeetGrain_range PotatoGrainBeetGrain_local
+    let PotatoBeetGrainGrain_range PotatoGrainBeetGrain_range + PotatoBeetGrainGrain_local
+    let HayGrain_range PotatoBeetGrainGrain_range + HayGrain_local
+    let HayGrainPotatoGrain_range HayGrain_range + HayGrainPotatoGrain_local
+    let PotatoGrainGrain_range HayGrainPotatoGrain_range + PotatoGrainGrain_local
+    let HayBarleyPotato_range HayGrainPotatoGrain_range + HayBarleyPotato_local
+    let HayGrainGrainPotato_range HayBarleyPotato_range + HayGrainGrainPotato_local
+    let GrainPotatoBeetsHay_range HayGrainGrainPotato_range + GrainPotatoBeetsHay_local
+
+    let temp-random random-float GrainPotatoBeetsHay_range
+    set rotation "Empty"
+    if (temp-random < PotatoGrainBeetGrain_range) [
+      set rotation "PotatoGrainBeetGrain"
+      set RotationList (list "Potato" "Grain" "Beet" "Grain" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 3
+      set Barley_Contract random ((0 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((1 / (1 + 1 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > PotatoGrainBeetGrain_range) AND (temp-random < PotatoBeetGrainGrain_range) [
+      set rotation "PotatoBeetGrainGrain"
+      set RotationList (list "Potato" "Beet" "Grain" "Grain" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 3
+      set Barley_Contract random ((0 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((1 / (1 + 1 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > PotatoBeetGrainGrain_range) AND (temp-random < HayGrain_range) [
+      set rotation "HayGrain"
+      set RotationList (list "Hay" "Grain" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 1
+      set Barley_Contract random ((0 / 1) * NumberFields)
+      set Potato_Contract random ((0 / 1) * NumberFields)
+      set Sugarbeet_Contract random ((0 / 1) * NumberFields)
+    ]
+
+    if (temp-random > HayGrain_range) AND (temp-random < HayGrainPotatoGrain_range) [
+      set rotation "HayGrainPotatoGrain"
+      set RotationList (list "Hay" "Grain" "Potato" "Grain" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 3
+      set Barley_Contract random ((0 / (6 + 1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (6 + 1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((0 / (6 + 1 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > HayGrainPotatoGrain_range) AND (temp-random < PotatoGrainGrain_range) [
+      set rotation "PotatoGrainGrain"
+      set RotationList (list "Potato" "Grain" "Grain" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 2
+      set Barley_Contract random ((0 / (1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((0 / (1 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > PotatoGrainGrain_range) AND (temp-random < HayBarleyPotato_range) [
+      set rotation "HayBarleyPotato"
+      set RotationList (list "Hay" "Barley" "Potato" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 2
+      set Barley_Contract random ((1 / (6 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (6 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((0 / (6 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > HayBarleyPotato_range) AND (temp-random < HayGrainGrainPotato_range) [
+      set rotation "HayGrainGrainPotato"
+      set RotationList (list "Hay" "Grain" "Grain" "Potato" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 3
+      set Barley_Contract random ((0 / (6 + 1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((1 / (6 + 1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((0 / (6 + 1 + 1 + 1)) * NumberFields)
+    ]
+
+    if (temp-random > HayGrainGrainPotato_range) AND (temp-random < GrainPotatoBeetsHay_range) [
+      set rotation "GrainPotatoBeetsHay"
+      set RotationList (list "Grain" "Potato" "Beet" "Hay" "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 3
+      set Barley_Contract random ((0 / (1 + 1 + 1 + 6)) * NumberFields)
+      set Potato_Contract random ((1 / (1 + 1 + 1 + 6)) * NumberFields)
+      set Sugarbeet_Contract random ((1 / (1 + 1 + 1 + 6)) * NumberFields)
+    ]
+
+    if rotation = "Empty" [
+      set rotation "Landlord"
+      set RotationList (list "Lease"  "end of rotation")
+      set CropHistory RotationList
+      set RotationMaxPosition 0
+      set Barley_Contract random ((0 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Potato_Contract random ((0 / (1 + 1 + 1 + 1)) * NumberFields)
+      set Sugarbeet_Contract random ((0 / (1 + 1 + 1 + 1)) * NumberFields)
+    ]
+  ]
+
+end
+
+
+
+to FixRotations
+
+  ask farmers [
+    let FieldSeeds-local patches with [owner = myself AND FieldSeed = 1]
+    ask FieldSeeds-local [ set RotationPosition RotationPosition - (remainder RotationPosition 1) ]
+  ]
+
+end

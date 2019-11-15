@@ -1,0 +1,28 @@
+to CropSimulation
+  ifelse Use-Aqua-Crop = TRUE [
+    print "This is where the AquaCrop simualtions will happen. If the text files have all been written, this will mostly be pausing then importing."
+    WriteAquaCropFiles
+    let Number-of-AquaCrop-runs length WaterManagementList * length CropList
+    user-message (word "Run AquaCrop " Number-of-AquaCrop-Runs " times. There should be one for each pair of water management and crop.")
+    ;; There is a fair bit of improvement to be done before I can effectively run AquaCrop. But the code below is a workaround.
+  ]
+  [
+    ; this is a method for simulating crop performance somewhat randomly. This is a temporary solution to the issue of crop performance.
+    let CropYield-local 0
+    let CropPrice-local 0
+    let TotalFinancialCostsForThisPlan-local 0
+    set cropZ cropZForUse
+    set waterstratZ waterstratZForUse
+    ifelse ticks < 12
+    [set CropYield-local random-normal item ticks (item cropZForUse TypicalYield) item cropZForUse YieldVariability] ; random normal around an average with SD (both in input)
+    [set CropYield-local random-normal item 11 (item cropZForUse TypicalYield) item cropZForUse YieldVariability] ; only have input for 12 years, so 13th year on goes with 12th - be good to vary this some TODO
+    ifelse ticks < 12
+    [set CropPrice-local random-normal (item cropZForUse CommodityPrice) item cropZForUse PriceVariability] ; random normal around an average with SD (both in input)
+    [set CropPrice-local random-normal (item cropZForUse CommodityPrice) item cropZForUse PriceVariability] ; only have input for 12 years, so 13th year on goes with 12th - be good to vary this some TODO
+    ask owner [ set TotalFinancialCostsForThisPlan-local TotalFinancialCostsForThisPlan]
+    set AnnualReturns ( (CropYield-local * CropPrice-local * 10 * [FieldSize] of owner) - TotalFinancialCostsForThisPlan-local )
+  ]
+
+  print (word owner " planted " PreferredLandUse " this year on " self ". It is worth " AnnualReturns ".")
+
+end

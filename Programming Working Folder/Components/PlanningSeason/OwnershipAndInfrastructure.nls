@@ -1,0 +1,11 @@
+to CalculateOwnershipAndInfrastructureCosts [CropOfInterest]
+  ;;This section is called by CropBudget. It determines the Ownership costs and the Infrastructure costs associated with the current-crop.
+  ; Ownership is simply extracted from the input farm ownership value and the assessment value input on the GUI (this is scaled, since the input is per acre)
+  ; Infrastructure is set based on which machinery is required for the crop of interest. If the farmer owns it, nothing happens. If they don't add the cost of the relevant machinery.
+  set OwnershipCostsForThisCrop item cropZ FarmOwnership + Assessment-Value ; cost per acre
+  set InfrastructureCostsForThisCrop 0
+  if (CropOfInterest = "Potatoes" or CropOfInterest = "Sugarbeets") AND item 0 EquipmentMatrix = 0 [ set InfrastructureCostsForThisCrop InfrastructureCostsForThisCrop + TractorCosts]
+  if CropOfInterest = "Alfalfa" AND item 1 EquipmentMatrix = 0 [set InfrastructureCostsForThisCrop InfrastructureCostsForThisCrop + ForageHarvesterCosts]
+  if (CropOfInterest = "Spring Wheat" or CropOfInterest = "Corn" or CropOfInterest = "Barley") AND item 2 EquipmentMatrix = 0 [set InfrastructureCostsForThisCrop InfrastructureCostsForThisCrop + GrainAndBeanCombineCosts]
+  if CropOfInterest = "Alfalfa" AND item 3 EquipmentMatrix = 0 [set InfrastructureCostsForThisCrop InfrastructureCostsForThisCrop + HayBalerCosts]
+end

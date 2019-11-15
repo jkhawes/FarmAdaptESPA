@@ -1,0 +1,267 @@
+to CalculateReturns [field]
+    ;;CalculateReturns is where the real work happens. This is where the actual decision making algorithms finally show up.
+    ;;CalculateReturns is called in the farmer context for each field they have.
+    ;;The system runs the prescribed utility function for each field and determines which crop (or no crop) would be of interest in each field to each farmer.
+  trace (word "beginning of DetermineCrop for " self ".")
+  set cropZ 0
+  set WasAlfalfa? false
+  set WasAlfalfaYear 0
+  ask field [
+    if (PreferredLandUse = "Alfalfa" OR PreferredLandUse = "Alfalfa_Perennial") [
+      set WasAlfalfa? true
+      set WasAlfalfaYear AlfalfaYear
+    ]
+    if (PreferredLandUse = "Corn" OR PreferredLandUse = "Spring Wheat") [
+      set WasGrain? true
+      set WasGrainYear GrainYear
+    ]
+  ]
+  ask field [
+    ;set the field up so that leasing it out is the default. Assuming endles tenants available - seems mostly consistent with qualitative data.
+    ;; Also assuming that they just effectively cover costs by leading.
+    set HighestReturns 0
+    ;establishing the other variables.
+    set PreferredLandUse "Lease"
+    set ExpectedNetReturnsForAllLandUses []
+    set ExpectedNetReturnsForAllLandUses lput HighestReturns ExpectedNetReturnsForAllLandUses
+    set PreferredWaterManagementStrat TypeOfIrrigation
+    set AlfalfaYear 0
+    set GrainYear 0
+    trace (word "Field started out with " PreferredLandUse " with " PreferredWaterManagementStrat " as irrigation.")
+  ]
+  ; an iteration counter variable
+  let DM-iter 0
+
+  ; local variables used to catalog between owner context and patch context.
+  let PBC-local []
+  let AttitudeConsistency-local []
+  let SubjectiveNorms-local []
+  let Expectations-local []
+  let Affect-local []
+  let SubjectiveCulture-local []
+  let BehaviorIntention-local []
+  let HabitConsistency-local []
+  let Physiological-Arousal-inverse-local []
+  let LUCrossoverList []
+  let MPCrossoverList []
+
+  let FinalReturns []
+  let LandUseList-local LandUseList
+  if WasAlfalfa? = false [set LandUseList-local but-last LandUseList-local]
+  if Decision-Making != "Rational Actor Theory" [WriteSocialCropBudget (word "Starting to calculate social crop budget for season " (ticks + 1) ".")]
+  foreach LandUseList-local [ ; for each type of land use, run the code below once.
+    [Current-Land-Use-local] -> ; this is the new variable that carries the current land use.
+    set waterstratZ 0 ; iterate.
+    foreach WaterManagementList [ ; for each water mgmt type, run the code below once (nested within land uses)
+      [Water-Management-Strategy-local] -> ; same as above, local variable with current mgmt type.
+      ask field [ ; farmer asks their field to start working on this.
+        set field-global field
+        set Current-Land-Use Current-Land-Use-local ; global so we can reach them in reporter functions.
+        set Water-Management-Strategy Water-Management-Strategy-local ; same as above
+        PrepareIrrigation field ; at the have this field figure out its irrigation strategy with the current water management strategy.
+        ;TODO - improve commenting in this area.
+        trace (word "DC Tracer 7 - about to pick a theory. Timer is at " Timer)
+        ask item 0 [owner] of field [  ; patches cannot call some of these commands, so we jump back into the owner's context for a moment.
+          if Decision-Making = "Rational Actor Theory" [ ; do all the math for rationality (economics)
+            trace "entrance to rational actor decision making"
+            WriteDetailedCropBudget (word "Starting to calculate crop budget for season " (ticks + 1) ".")
+            set ExpectedNetReturnsForThisLandUse-farmer NetExpectedReturnsForThisPlan
+            trace "exit of rational actor decision making"
+          ]
+          if Decision-Making = "Theory of Planned Behavior" [ ; Do all the math and catalog for TPB - will come back to later.
+            ; Scale both costs and gains based on scalars set on interface.
+            trace "entrance to theory of planned behavior"
+            WriteDetailedCropBudget (word "Starting to calculate crop budget for season " (ticks + 1) ".")
+            set ExpectedNetReturnsForThisLandUse-farmer NetExpectedReturnsForThisPlan ; Calling a reporter - the economics chunk.
+
+            WriteSocialCropBudget (word "Calculating social returns for current plan. Current plan involves " Current-Land-Use " and " Water-Management-Strategy ".")
+            WriteSocialCropBudget "Results of each sub-calculation below, followed by final expected returns."
+            set PBC-local lput (EfficacyScalar * PerceivedBehavioralControl) PBC-local ; Calling a reporter
+            set AttitudeConsistency-local lput (InternalScalar * AttitudeConsistency) AttitudeConsistency-local ; Calling a reporter
+            set SubjectiveNorms-local lput (ExternalScalar * SubjectiveNormsCompliance) SubjectiveNorms-local  ; Calling a reporter
+            set LUCrossoverList lput Current-Land-Use LUCrossoverList ; for each iteration, make a list of which land use was being considered. Can call back to later to find out.
+            set MPCrossoverList lput Water-Management-Strategy MPCrossoverList ; same as above
+            WriteCropBudget (word "Calculated TPB Returns for " Current-Land-Use " with " Water-Management-Strategy " on " one-of field-global ".") ID_Number
+            WriteCropBudget (word "Expected financial returns are " ExpectedNetReturnsForThisLandUse-farmer ".") ID_Number
+            WriteCropBudget (word "The three components of social scores are PBC (" item DM-iter PBC-local "), Attitude Consistency (" item DM-iter AttitudeConsistency-local "), and Subjective Norms (" item DM-iter SubjectiveNorms-local ").") ID_Number
+            trace "exit of theory of planned behavior"
+            set DM-iter DM-iter + 1
+          ]
+          if Decision-Making = "IAC Framework" [
+            trace "entrance to IAC Framework"
+            WriteDetailedCropBudget (word "Starting to calculate crop budget for season " (ticks + 1) ".")
+            set ExpectedNetReturnsForThisLandUse-farmer NetExpectedReturnsForThisPlan ; Calling a reporter - the economics chunk.
+
+            WriteSocialCropBudget (word "Calculating social returns for current plan. Current plan involves " Current-Land-Use " and " Water-Management-Strategy ".")
+            WriteSocialCropBudget "Results of each sub-calculation below, followed by final expected returns."
+            set LUCrossoverList lput Current-Land-Use LUCrossoverList ; for each iteration, make a list of which land use was being considered. Can call back to later to find out.
+            set MPCrossoverList lput Water-Management-Strategy MPCrossoverList ; same as above
+            set Expectations-local lput (EfficacyScalar * PerceivedBehavioralControl) Expectations-local ; Calling a reporter - see social returns functions
+            set Affect-local lput (InternalScalar * AttitudeConsistency) Affect-local ; Calling a reporter - see social returns functions
+            set SubjectiveCulture-local lput (ExternalScalar * SubjectiveNormsCompliance) SubjectiveCulture-local  ; Calling a reporter - see social returns functions
+            set BehaviorIntention-local lput (item DM-iter Expectations-local + item DM-iter Affect-local + item DM-iter SubjectiveCulture-local) BehaviorIntention-local ; Behavioral Intention equation with scalar for behavior space exploration.
+            let HabitConsistency-unscaled HabitConsistency ; Habit consistency reporter - see social returns functions
+            set HabitConsistency-local lput (HabitConsistency-unscaled * RhythmScalar) HabitConsistency-local ; Scalar for exploration of behavior space.
+            ifelse item DM-iter LUCrossoverList = "Alfalfa"
+            [ set Physiological-Arousal-inverse-local lput (1) Physiological-Arousal-inverse-local ]
+            [
+              ifelse (0 - ExpectedNetReturnsForThisLandUse-farmer) > (IAC-PhysArous-Threshold * AmountFarmerIsWillingToLose)
+              [ set Physiological-Arousal-inverse-local lput (0) Physiological-Arousal-inverse-local ] ; Treating extreme loss of money as physiologically arousing.
+              [ set Physiological-Arousal-inverse-local lput (1) Physiological-Arousal-inverse-local ] ; Treating extreme loss of money as physiologically arousing.
+            ]
+            let IAC-Score (item DM-iter BehaviorIntention-local * item DM-iter HabitConsistency-local * item DM-iter Physiological-Arousal-inverse-local)
+            set FinalReturns lput IAC-Score FinalReturns
+            WriteCropBudget (word "Calculated IAC Returns for " Current-Land-Use " with " Water-Management-Strategy " on " one-of field-global ".") ID_Number
+            WriteCropBudget (word "Expected financial returns are " ExpectedNetReturnsForThisLandUse-farmer ".") ID_Number
+            WriteCropBudget (word "The three components of social scores are Intention (" item DM-iter BehaviorIntention-local "), Habit Consistency (" item DM-iter HabitConsistency-local "), and Physiological Arousal (" item DM-iter Physiological-Arousal-inverse-local ").") ID_Number
+            WriteCropBudget (word "This results in an IAC Score of " IAC-Score ".") ID_Number
+            ;add things to write to the crop budget for troubleshooting
+            ;;;;;
+            ;for troubleshooting
+            set DM-iter DM-iter + 1
+            trace "exit of IAC Framework"
+          ]
+        ] ; this exits ask owner
+
+        set ExpectedNetReturnsForThisLandUse [ExpectedNetReturnsForThisLandUse-farmer] of owner
+        ;print (word [owner] of self " has determined that the Net Expected Returns for " Current-Land-Use " with " Water-Management-Strategy " this year would be $" ExpectedNetReturnsForThisLandUse  " in this field.")
+        ;print (word "Previous highest returns for " [owner] of self " were $" HighestReturns " on " PreferredLandUse " with " PreferredWaterManagementStrat " in this field.")
+        if ExpectedNetReturnsForThisLandUse > max ExpectedNetReturnsForAllLandUses [
+          set PreferredLandUse Current-Land-Use
+          set PreferredWaterManagementStrat Water-Management-Strategy
+          set HighestReturns ExpectedNetReturnsForThisLandUse
+          set cropZForUse cropZ
+          set waterstratZForUse waterstratZ
+        ]
+        set ExpectedNetReturnsForAllLandUses lput ExpectedNetReturnsForThisLandUse ExpectedNetReturnsForAllLandUses
+      ] ; this exits ask field
+      set waterstratZ waterstratZ + 1
+    ] ; this exits water strat foreach
+    set cropZ cropZ + 1
+  ]; this exits land use foreach
+
+  ; Follow up this decision-making section with a section that balances the financial and social returns. Will run separately for TPB and IAC for ease.
+
+  if Decision-Making = "Theory of Planned Behavior" [
+    set DM-iter 0
+    let ExpectedNetReturnsForAllLandUses-improved []
+    let ExpectedNetReturnsForAllLandUses-scaled []
+    ;let IntentionScore []
+    let ActualBehavioralControl []
+    let ExpectedNetReturnsForAllLandUses-actual []
+    trace "beginning of TPB Pre-Reconcile."
+    foreach LandUseList-local [
+      foreach WaterManagementList [
+        ;print (word "(item DM-iter (item 0 ([ExpectedNetReturnsForAllLandUses] of field))) yields " (item DM-iter (item 0 ([ExpectedNetReturnsForAllLandUses] of field))) ".")
+        set ExpectedNetReturnsForAllLandUses-improved replace-item DM-iter (item 0 ([ExpectedNetReturnsForAllLandUses] of field)) ((item DM-iter (item 0 ([ExpectedNetReturnsForAllLandUses] of field))) + AmountFarmerIsWillingToLose) ; offset the value determined by the amount willing to lose
+        trace "TPB - point of improving net expected returns."
+        if item DM-iter ExpectedNetReturnsForAllLandUses-improved < 0 [ set ExpectedNetReturnsForAllLandUses-improved replace-item DM-iter ExpectedNetReturnsForAllLandUses-improved 0 ] ; any values remaining negative are more than willing to lose and can be scaled to zero.
+        trace "TPB - point of editing improved net expected returns."
+        set ExpectedNetReturnsForAllLandUses-scaled lput ((item DM-iter ExpectedNetReturnsForAllLandUses-improved) / (max ExpectedNetReturnsForAllLandUses-improved)) ExpectedNetReturnsForAllLandUses-scaled
+        trace "TPB - point of scaling net expected returns."
+        ;set IntentionScore lput (item DM-iter PBC-local + item DM-iter AttitudeConsistency-local + item DM-iter SubjectiveNorms-local) IntentionScore
+        ifelse item DM-iter LUCrossoverList = "Alfalfa_Perennial"
+        [set ActualBehavioralControl lput 1 ActualBehavioralControl]
+        [ifelse item DM-iter ExpectedNetReturnsForAllLandUses-scaled = 0 [set ActualBehavioralControl lput 0 ActualBehavioralControl] [set ActualBehavioralControl lput 1 ActualBehavioralControl]]
+        trace "TPB - point of setting actual behavioral control."
+        set ExpectedNetReturnsForAllLandUses-actual lput (item DM-iter ActualBehavioralControl * item DM-iter ExpectedNetReturnsForAllLandUses-scaled) ExpectedNetReturnsForAllLandUses-actual
+        trace "TPB - point of setting actual net expected returns."
+        set FinalReturns lput (item DM-iter ActualBehavioralControl * (item DM-iter PBC-local + item DM-iter AttitudeConsistency-local + item DM-iter SubjectiveNorms-local)) FinalReturns
+        trace "TPB - point of setting final returns."
+        set DM-iter DM-iter + 1
+      ]
+    ]
+    let BestLUxMPCombo max FinalReturns
+    let FinalReturns-filtered filter [ return -> return = BestLUxMPCombo ] FinalReturns
+    let NumberOfBestCombos length FinalReturns-filtered
+    if NumberOfBestCombos > 1
+    [
+      let FinalReturns-Simplified []
+      foreach FinalReturns [
+        [Return] ->
+        ifelse Return = BestLUxMPCombo
+        [set FinalReturns-Simplified lput Return FinalReturns-Simplified]
+        [set FinalReturns-Simplified lput 0 FinalReturns-Simplified]
+      ]
+      let FinalReturns-MappedWith-ExpectedReturns (map * FinalReturns-Simplified (but-first (item 0 [ExpectedNetReturnsForAllLandUses] of field-global)))
+      let BestLUxMPCombo-supplemented max FinalReturns-MappedWith-ExpectedReturns
+      let LUxMPPosition-supplemented position BestLUxMPCombo-supplemented FinalReturns-MappedWith-ExpectedReturns
+      set BestLUxMPCombo item LUxMPPosition-supplemented FinalReturns
+    ]
+    let LUxMPPostition position BestLUxMPCombo FinalReturns
+    ask field [
+      set PreferredLandUse item LUxMPPostition LUCrossoverList
+      set PreferredWaterManagementStrat item LUxMPPostition MPCrossoverList
+      set HighestReturns item LUxMPPostition ExpectedNetReturnsForAllLandUses
+      set cropZForUse position PreferredLandUse LandUseList-local
+      set waterstratZForUse position PreferredWaterManagementStrat WaterManagementList
+      WriteCropBudget (word "Farmer actually selected " PreferredLandUse " with " PreferredWaterManagementStrat " for $" HighestReturns " and a utility score of " BestLUxMPCombo ".") ([ID_Number] of owner)
+      WriteCropBudget "--------------------------------------------------------------------------------------------------------------" ([ID_Number] of owner)
+    ]
+  ]
+
+  if Decision-Making = "IAC Framework" [
+    let BestLUxMPCombo max FinalReturns
+    let FinalReturns-filtered filter [ return -> return = BestLUxMPCombo ] FinalReturns
+    let NumberOfBestCombos length FinalReturns-filtered
+    if NumberOfBestCombos > 1
+    [
+      let FinalReturns-Simplified []
+      foreach FinalReturns [
+        [Return] ->
+        ifelse Return = BestLUxMPCombo
+        [set FinalReturns-Simplified lput Return FinalReturns-Simplified]
+        [set FinalReturns-Simplified lput 0 FinalReturns-Simplified]
+      ]
+      let FinalReturns-MappedWith-ExpectedReturns (map * FinalReturns-Simplified (but-first (item 0 [ExpectedNetReturnsForAllLandUses] of field-global)))
+      let BestLUxMPCombo-supplemented max FinalReturns-MappedWith-ExpectedReturns
+      let LUxMPPosition-supplemented position BestLUxMPCombo-supplemented FinalReturns-MappedWith-ExpectedReturns
+      set BestLUxMPCombo item LUxMPPosition-supplemented FinalReturns
+    ]
+    let LUxMPPostition position BestLUxMPCombo FinalReturns
+    ask field [
+      set PreferredLandUse item LUxMPPostition LUCrossoverList
+      set PreferredWaterManagementStrat item LUxMPPostition MPCrossoverList
+      set HighestReturns item (LUxMPPostition + 1) ExpectedNetReturnsForAllLandUses
+      set cropZForUse position PreferredLandUse LandUseList-local
+      set waterstratZForUse position PreferredWaterManagementStrat WaterManagementList
+      WriteCropBudget (word "Farmer actually selected " PreferredLandUse " with " PreferredWaterManagementStrat " for $" HighestReturns " and a utility score of " BestLUxMPCombo ".") ([ID_Number] of owner)
+      WriteCropBudget "--------------------------------------------------------------------------------------------------------------" ([ID_Number] of owner)
+    ]
+  ]
+
+  ask field [
+    ;print (word "Patch " self " and it's surrounding field will be planted with " PreferredLandUse " this year.")
+    if PreferredLandUse = "Winter Wheat" [
+      set PreferredLandUse "Spring Wheat"
+      ;print "Farmer chose Winter Wheat. Was replaced with Spring Wheat for purposes of calculations"
+    ]
+    if PreferredLandUse = "Alfalfa" [
+      set AlfalfaYear 1
+    ]
+    if PreferredLandUse = "Alfalfa_Perennial" [
+      set AlfalfaYear WasAlfalfaYear + 1
+    ]
+    if PreferredLandUse = "Spring Wheat" OR PreferredLandUse = "Corn" [ 
+      ifelse WasGrain? = TRUE 
+      [set GrainYear WasGrainYear + 1]
+      [set GrainYear 1]
+    ]
+  ]
+
+  ask field [
+    if TypeOfIrrigation != PreferredWaterManagementStrat [
+      set TypeOfIrrigation PreferredWaterManagementStrat
+      ask owner [ set ChangedWaterManagementThisYear?  1]
+    ]
+    set CropHistory-fields lput PreferredLandUse CropHistory-fields
+    if PreferredLandUse = "Potatoes" [ set PreferredLandUse-category "Potato" ]
+    if (PreferredLandUse = "Spring Wheat" OR PreferredLandUse = "Corn" OR PreferredLandUse = "Winter Wheat") [ set PreferredLandUse-category "Grain" ]
+    if PreferredLandUse = "Barley" [ set PreferredLandUse-category "Barley" ]
+    if PreferredLandUse = "Alfalfa" [ set PreferredLandUse-category "Hay" ]
+    if PreferredLandUse = "Sugarbeets" [ set PreferredLandUse-category "Beet" ]
+  ]
+  set CropHistory lput [PreferredLandUse] of field CropHistory
+
+
+end

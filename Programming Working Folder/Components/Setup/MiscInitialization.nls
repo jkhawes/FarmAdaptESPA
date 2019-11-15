@@ -1,0 +1,123 @@
+to InitializeCropsAndMisc ; just pulling values from input files to hold in list variables.
+  ; Each list is a type of variable, with each entry representing a different crop. See below for more info.
+  set TypicalYield [] ; make all the relevant variables blank lists
+  set YieldVariability []
+  set CommodityPrice []
+  set PriceVariability []
+  set CommodityPrice-CB []
+  set TypicalYield-CB []
+  set SeedPrice []
+  set Fertilizer []
+  set Pesticides []
+  set CustomConsultants []
+  set WaterAssessment []
+  set IrrigationRepairs []
+  set IrrigationPower []
+  set MachineryAnnual []
+  set FarmOwnership []
+  set LaborCosts []
+  set Crop-SpecificCosts []
+  set MiscCosts []
+  set JanWater []
+  set FebWater []
+  set MarWater []
+  set AprWater []
+  set MayWater []
+  set JunWater []
+  set JulWater []
+  set AugWater []
+  set SepWater []
+  set OctWater []
+  set NovWater []
+  set DecWater []
+  set CropStartDate []
+  set in-ground-length []
+  set PercentOfCropland2016 []
+  set PercentOfCropland2015 []
+  set PercentOfCropland2014 []
+  set PercentOfCropland2013 []
+  set PercentOfCropland2012 []
+  set PercentOfCropland2011 []
+  set PercentOfCropland2010 []
+  set PercentOfCropland2009 []
+  set PercentOfCropland2008 []
+  set PercentOfCropland2007 []
+  set CostOfWaterStrategy []
+  set AnnualCost []
+  set RelativeWaterUse []
+  set LifetimeOfStrategy []
+  foreach LandUseList [ ; iterate through each crop in the croplist. This is where the customization discussed below would have to begin.
+    [LandUseOfInterest] ->
+    file-open (word Working-Directory "Land Use/" LandUseOfInterest ".txt") ; as earlier, opening at end was a problem, so cycling to refresh position.
+    file-close
+    file-open (word Working-Directory "Land Use/" LandUseOfInterest ".txt") ; for now, crops is an identical file in each working directory.
+        ; It's programmed like it could vary, in case it becomes important to actually highlight which crops are used in each district.
+    print (word Working-Directory "Land Use/" LandUseOfInterest ".txt  - for debugging")
+    let CropFile file-read
+    ;;For each actual variable, I am creating a list by that name. Each crop will be stored within each variable. This will let
+    ; us just iterate through those variables instead of having to get creative with how we call each individual crop.
+    set TypicalYield lput file-read TypicalYield
+    set YieldVariability lput file-read YieldVariability
+    set CommodityPrice lput file-read CommodityPrice
+    set PriceVariability lput file-read PriceVariability
+    set CommodityPrice-CB lput file-read CommodityPrice-CB
+    set TypicalYield-CB lput file-read TypicalYield-CB
+    set SeedPrice lput file-read SeedPrice
+    set Fertilizer lput file-read Fertilizer
+    set Pesticides lput file-read Pesticides
+    set CustomConsultants lput file-read CustomConsultants
+    set WaterAssessment lput file-read WaterAssessment
+    set IrrigationRepairs lput file-read IrrigationRepairs
+    set IrrigationPower lput file-read IrrigationPower
+    set MachineryAnnual lput file-read MachineryAnnual
+    set LaborCosts lput file-read  LaborCosts
+    set Crop-SpecificCosts lput file-read Crop-SpecificCosts
+    set MiscCosts lput file-read MiscCosts
+    set FarmOwnership lput file-read FarmOwnership
+    set JanWater lput file-read JanWater
+    set FebWater lput file-read FebWater
+    set MarWater lput file-read MarWater
+    set AprWater lput file-read AprWater
+    set MayWater lput file-read MayWater
+    set JunWater lput file-read JunWater
+    set JulWater lput file-read JulWater
+    set AugWater lput file-read AugWater
+    set SepWater lput file-read SepWater
+    set OctWater lput file-read OctWater
+    set NovWater lput file-read NovWater
+    set DecWater lput file-read DecWater
+    set CropStartDate lput file-read CropStartDate
+    set in-ground-length lput file-read in-ground-length
+    set PercentOfCropland2016 lput file-read PercentOfCropland2016
+    set PercentOfCropland2015 lput file-read PercentOfCropland2015
+    set PercentOfCropland2014 lput file-read PercentOfCropland2014
+    set PercentOfCropland2013 lput file-read PercentOfCropland2013
+    set PercentOfCropland2012 lput file-read PercentOfCropland2012
+    set PercentOfCropland2011 lput file-read PercentOfCropland2011
+    set PercentOfCropland2010 lput file-read PercentOfCropland2010
+    set PercentOfCropland2009 lput file-read PercentOfCropland2009
+    set PercentOfCropland2008 lput file-read PercentOfCropland2008
+    set PercentOfCropland2007 lput file-read PercentOfCropland2007
+    file-close
+  ]
+  ;nearly identical to above, need to import the various water management strategies - a lot less variables this round.
+  foreach WaterManagementList [ ; iterate through each strategy in the list. This is where the customization discussed below would have to begin.
+    [MgmtStratOfInterest] ->
+    file-open (word "data/WaterManagementStrategies/" MgmtStratOfInterest ".txt") ; as earlier, opening at end was a problem, so cycling to refresh position.
+    file-close
+    file-open (word "data/WaterManagementStrategies/" MgmtStratOfInterest ".txt")
+    ; It's programmed like it could vary, in case it becomes important to actually highlight which management strategies are used in each district.
+    print (word "data/WaterManagementStrategies/" MgmtStratOfInterest ".txt - for debugging")
+    let WaterManagementStrategyList file-read
+    ;;For each actual variable, I am creating a list by that name. Each Water Management Strategy will be stored within each variable. This will let
+    ; us just iterate through those variables instead of having to get creative with how we call each individual strategy.
+    set CostOfWaterStrategy lput file-read CostOfWaterStrategy
+    set AnnualCost lput file-read AnnualCost
+    set RelativeWaterUse lput file-read RelativeWaterUse
+    set LifetimeOfStrategy lput file-read LifetimeOfStrategy
+    file-close
+  ]
+
+  InitializeMachinery
+
+end

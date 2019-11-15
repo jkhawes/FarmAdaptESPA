@@ -1,0 +1,257 @@
+to PrepareIrrigation [field]
+
+  ;;Calculate Total irrigation needs for the season
+  ;Begin by creating some date variables needed for determining season length
+  let plant-date-forpass item cropZ CropStartDate
+  let length-in-ground-forpass item cropZ in-ground-length
+  trace (word "DC Tracer3 - Just started PrepareIrrigation. Timer is at " Timer)
+
+  ;Have the farmer calculate the Irrigation Needs for the active field based on the difference between ET and avg. rainfall.
+  CalculateIrrigationNeeds field plant-date-forpass length-in-ground-forpass
+  trace (word "DC Tracer 4 - just set irrigation needs. Timer is at " Timer)
+
+  ;Adjust this irrigation needs value based on the irrigation type, farmer skill, and technology in use
+  CalculateIrrigationPlan field cropZ
+
+  trace (word "DC Tracer 5 - just set irrigation plan. Timer is at " Timer)
+
+  let WaterRight 0
+  ifelse Simulate-ESPA_CAMP = TRUE AND ticks > 10
+  [
+    let MyRight [WaterRightSize] of owner
+    let FarmersWithBetterRights count farmers with [WaterRightSize > MyRight]
+    let FarmersWithWorseRights count farmers with [WaterRightSize < MyRight]
+    let WaterRightPercentile FarmersWithWorseRights / (FarmersWithBetterRights + FarmersWithWorseRights)
+    if WaterRightPercentile = 1 [ set WaterRightPercentile 0.999997]
+    set WaterRight [WaterRightSize] of owner
+    set WaterRight WaterRight * length-in-ground-forpass
+    ; We start our water rights adjustments with priority tiers
+    ;; So let's calculate what those tiers will look like.
+    let TierJump (Max%Decrease - Min%Decrease) / PriorityTiers
+    let Percentile 1 / PriorityTiers
+    let TierCount 0
+    while [WaterRightPercentile > Percentile] [
+      set TierCount TierCount + 1
+      set Percentile Percentile + (1 / PriorityTiers)
+    ]
+    let WaterCut Max%Decrease - (TierJump * TierCount)
+    set WaterRight WaterRight - (WaterRight * (WaterCut / 100))
+    if AFCapMatrix != 999999
+    [
+      ;if there is a cap amtrix, we do everything we did above but then we compare it to a cap matrix for someone of this percentile.
+      ;; if there is no cap matrix, then we just have priority tiers to work from
+      ;; So we take the TierCount we got earlier and see if the new water right is greater than that listed in the Cap Matrix for that tier.
+      if WaterRight > (item TierCount AFCapMatrix * 12) [ set WaterRight (item TierCount AFCapMatrix * 12)]
+    ]
+  ]
+  [
+    set WaterRight [WaterRightSize] of owner
+  ]
+  set WaterRight WaterRight * 198 ; Days from April 1 to Oct 15 * Water right per day
+  set WaterOverdraw TotalIrrigationUseForThisCrop - WaterRight ; "inverse" water overdraw so that it's a positive number
+  ;print (word "Water Overdraw is " WaterOverdraw) ; used for troubleshooting water right volume and irrigation water usage. 
+  ;print (word "Total Irrigation use was " TotalIrrigationUseForThisCrop)
+  ;print (word "Water right was " WaterRight)
+  set WaterOverdrawCatalog lput WaterOverdraw WaterOverdrawCatalog
+
+  trace (word "DC Tracer 6 - just identified expected overdraw. Timer is at " Timer)
+end
+
+
+to CalculateIrrigationNeeds [ field plant-date in-ground-length-local]
+    ;;Called by DetermineCropReturns ... uses a known quantity of water need for each crop (input) to set the amount of water needed over the course of a month.
+    ;; This calculation is not used to calculate actual performance of the crop, that's what AquaCrop is for. Instead, it is used by the farmer to schedule their irrigation.
+  let AnnualWaterNeeds []
+  set j 1
+  ;;Captures the water needs for the crop of interest for the month. Creates a list composed of daily demand based on the expected demand in that month.
+  ; Each crop input file lists the DAILY water demand for each month. So we can import that value directly.
+  ; For example, the value for January comprises items 0 - 30 of AnnualWaterNeeds, 31-58 from Feb., etc.
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ JanWater AnnualWaterNeeds
+    set j j + 1
+  ]
+     ; print "CalcIrrTracer1"
+  set j 1
+  while [j <= 28] [
+    set AnnualWaterNeeds lput item cropZ FebWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ MarWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 30] [
+    set AnnualWaterNeeds lput item cropZ AprWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ MayWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 30] [
+    set AnnualWaterNeeds lput item cropZ JunWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+ ;  print "CalcIrrTracer2"
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ JulWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ AugWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 30] [
+    set AnnualWaterNeeds lput item cropZ SepWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ OctWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 30] [
+    set AnnualWaterNeeds lput item cropZ NovWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+  while [j <= 31] [
+    set AnnualWaterNeeds lput item cropZ DecWater AnnualWaterNeeds
+    set j j + 1
+  ]
+  set j 1
+ ;  print "CalcIrrTracer3"
+  let DailyBalance 0
+  let SoilWater 0
+  let fast-forward 1
+  while [fast-forward < plant-date] [
+    set AnnualWaterNeeds but-first AnnualWaterNeeds
+    set fast-forward fast-forward + 1
+  ]
+ ;  print word "Length of AnnualWaterNeeds after fast-forward is " length AnnualWaterNeeds
+  let rewind plant-date + in-ground-length-local
+  while [rewind <= 365] [
+    set AnnualWaterNeeds but-last AnnualWaterNeeds
+    set rewind rewind + 1
+  ]
+ ;  print word "Length of AnnualWaterNeeds after rewind is " length AnnualWaterNeeds
+  set fast-forward 1
+  set rewind plant-date + in-ground-length-local
+  while [fast-forward < plant-date] [
+    set AnnualWaterNeeds fput 0 AnnualWaterNeeds
+    set fast-forward fast-forward + 1
+  ]
+  while [rewind <= 365] [
+    set AnnualWaterNeeds lput 0 AnnualWaterNeeds
+    set rewind rewind + 1
+  ]
+ ;  print word "Length of AnnualWaterNeeds after repair is " length AnnualWaterNeeds
+
+ ;  print "CalcIrrTracer4"
+  set IrrigationPlanForThisCrop []
+  let WaterI 0
+  set j 0
+  foreach AnnualWaterNeeds [
+    [DailyWaterNeeds] ->
+    ;      print DailyWaterNeed
+    ;      print item j AnnualPrecip
+    ;      print SoilWater
+    set DailyBalance DailyWaterNeeds - item j AnnualPrecip - SoilWater
+    ;      print "Establishing balance sheet tracker"
+    ifelse DailyBalance > 0
+    [
+      ;        print "setting non-zero for item"
+      set IrrigationPlanForThisCrop lput DailyBalance IrrigationPlanForThisCrop
+      set SoilWater 0
+    ]
+    [
+      ;        print "setting zero"
+      set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+      set SoilWater SoilWater + DailyBalance
+    ]
+    set WaterI WaterI + 1
+    set j j + 1
+  ]
+  let DailyWaterNeed IrrigationPlanForThisCrop
+  ;    print (word "Length of Irrigation Plan is " length IrrigationPlan)
+end
+
+
+to CalculateIrrigationPlan [field cropI]
+  set TotalIrrigationUseForThisCrop 0
+  ;start by adjusting the schedule if on center pivot. Can run flood and drip anytime, but center pivot can only be run twice per week. This shouldn't be the end of the world.
+  let OldIrrigationPlan []
+
+  ;    print "about to program the delay in irrigation"
+  ;    print TypeOfIrrigation
+  if TypeOfIrrigation = "Center Pivot MESA" OR TypeOfIrrigation = "Center Pivot LESA" OR TypeOfIrrigation = "Center Pivot LEPA" [
+    let sum-4 0
+    let DateI 1
+    let NewIrrigationSchedule []
+    foreach IrrigationPlanForThisCrop [
+      [IrrigationToday] ->
+      set sum-4 sum-4 + IrrigationToday
+      if remainder DateI 4 = 0 [
+        set NewIrrigationSchedule lput sum-4 NewIrrigationSchedule
+        set sum-4 0
+      ]
+      set DateI DateI + 1
+    ]
+    set DateI 1
+    set IrrigationPlanForThisCrop []
+    while [DateI <= 360] [
+      ifelse remainder DateI 4 != 0
+      [ set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+        set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+        set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+        set DateI DateI + 3
+      ]
+      [
+        set IrrigationPlanForThisCrop lput (item ((DateI / 4)) NewIrrigationSchedule) IrrigationPlanForThisCrop
+        set DateI DateI + 1
+      ]
+    ]
+    set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+    set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+    set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+    set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+    set IrrigationPlanForThisCrop lput 0 IrrigationPlanForThisCrop
+    ;      print (word "Length of irrigation plan after sprinkler intervention is " length irrigationplan)
+  ]
+  set TotalIrrigationUseForThisCrop sum IrrigationPlanForThisCrop
+  ;    print "Now transtitioning to 'fuzzy' plan"
+  if OffsetIrrigationWithSkill? = TRUE [
+      ;;Now we make the plan "fuzzy" ... this means that there is some time delay incorporated into irrigation, and they miss the mark on some irrigations.
+      set TotalIrrigationUseForThisCrop 0
+      set OldIrrigationPlan IrrigationPlanForThisCrop
+      set IrrigationPlanForThisCrop  []
+      ;    print (word "Field " field " set with new, shifted plan.")
+
+      ;      let IrrigationI 0
+      foreach OldIrrigationPlan [
+        [unmodifiedValue] ->
+        ; Not currently using the delay mechanism ... feels too artificial for now.
+        ;        while IrrigationI < IrrigataionPlanningDelay [
+        ;          set IrrigationPlan lput 0 irrigationPlan
+        ;          set IrrigationI IrrigationI + 1
+        ;        ]
+        let ModifiedValue (random-normal unmodifiedValue (IrrigataionPlanningStandardDeviation * unmodifiedValue))
+        if ModifiedValue < 0 [set ModifiedValue 0]
+        set IrrigationPlanForThisCrop lput ModifiedValue IrrigationPlanForThisCrop
+        set TotalIrrigationUseForThisCrop TotalIrrigationUseForThisCrop + ModifiedValue
+      ]
+    ]
+
+    ; scale everything based on the water management strategy
+    set TotalIrrigationUseForThisCrop TotalIrrigationUseForThisCrop * item waterstratZ RelativeWaterUse
+
+    ;  print (word "Farmer has set their irrigation plan.")
+end

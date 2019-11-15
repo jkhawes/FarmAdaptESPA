@@ -1,0 +1,42 @@
+to ImportInterfaceVariables [file-name]
+
+  file-open(file-name)
+  set FixRandomSeed? file-read
+  set RandomSeed file-read
+  set PopulateMethod file-read
+  set WorldFileName file-read
+  file-close
+
+end
+
+
+to ImportExperimentVariables
+  
+  print (word "About to import experiment variables. File name is " ExperimentVariablesFile)
+  
+  file-open(ExperimentVariablesFile)
+  set ExperimentName file-read
+  set RandomSeed file-read
+  set Decision-Making file-read
+  set NumberOfSeasons file-read
+  set Tracers? file-read
+  set WriteCropBudgets? file-read
+  set WriteDetailedCropBudgets? file-read
+  set WriteOutputs? file-read
+  set StartingTicks file-read
+  set ExperimentalToleranceforLoss file-read
+  set ChargeForOverdraw file-read
+  set InternalScalar file-read
+  set ExternalScalar file-read
+  set EfficacyScalar file-read
+  set RhythmScalar file-read
+  set PerceptionThreshold file-read
+  file-close
+  
+  let tick-iter 0 
+  while [tick-iter < StartingTicks] [ 
+    tick
+    set tick-iter tick-iter + 1
+  ]
+  
+end

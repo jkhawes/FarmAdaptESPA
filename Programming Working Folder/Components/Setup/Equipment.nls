@@ -1,0 +1,44 @@
+to-report HaveRequiredEquipment
+
+    let HaveRequiredEquipment-local TRUE
+    if Current-Land-Use = "Alfalfa" OR Current-Land-Use = "Alfalfa_Perennial"
+        [ ifelse item 2 EquipmentMatrix = 0
+            [set HaveRequiredEquipment-local FALSE]
+            [set HaveRequiredEquipment-local TRUE]
+        ]
+    if Current-Land-Use = "Potatoes" OR Current-Land-Use = "Sugarbeets"
+        [ ifelse item 0 EquipmentMatrix = 0
+            [set HaveRequiredEquipment-local FALSE]
+            [set HaveRequiredEquipment-local TRUE]
+        ]
+    if Current-Land-Use = "Spring Wheat" OR Current-Land-Use = "Winter Wheat" OR  Current-Land-Use = "Corn" OR Current-Land-Use = "Winter Barley"
+        [ ifelse item 1 EquipmentMatrix = 0 OR item 3 EquipmentMatrix = 0
+            [set HaveRequiredEquipment-local FALSE]
+            [set HaveRequiredEquipment-local TRUE]
+        ]
+
+    report HaveRequiredEquipment-local
+
+end
+
+to InitializeMachinery
+
+; while initializing, import the machinery costs from the input file. This is one of those things that could be hardcoded, but txt files are easier to edit.
+  file-open "/data/MachineryCosts.txt" ; same as above with position cycling.
+  file-close
+  file-open "/data/MachineryCosts.txt"
+  set TractorCosts file-read
+  set TractorCostsSD file-read
+  set TractorFreq file-read
+  set ForageHarvesterCosts file-read
+  set ForageHarvesterCostsSD file-read
+  set ForageHarvesterFreq file-read
+  set GrainAndBeanCombineCosts file-read
+  set GrainAndBeanCombineCostsSD file-read
+  set GrainAndBeanCombineFreq file-read
+  set HayBalerCosts file-read
+  set HayBalerCostsSD file-read
+  set HayBalerFreq file-read
+  file-close
+
+end

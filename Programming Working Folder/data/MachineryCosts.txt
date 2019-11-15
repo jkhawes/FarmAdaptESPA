@@ -1,0 +1,13 @@
+85000
+7000
+0.75
+120000
+7500
+1.0
+100000
+20000
+0.6
+60000
+10000
+1.0
+File is laid out in the following order: TractorCosts (+SD) (+Frequency), ForageHarvesterCosts (+SD) (+Frequency), GrainAndBeanCombineCosts (+SD) (+Frequency), HayBalerCosts (+SD) (+Frequency)

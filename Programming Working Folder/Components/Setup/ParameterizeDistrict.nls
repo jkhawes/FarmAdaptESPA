@@ -1,0 +1,160 @@
+to ParameterizeDistrict
+  trace "beginning of district parameterization."
+  ; "word" keyword combines the next two things (can be used for more with parentheses)
+  file-open word Working-Directory "Location.txt" ; Finds the descriptive file for the location of interest (defined by the working directory) and opens it.
+  file-close ; had some trouble with the file opening at the end (never figured out why) so we close it to refresh the read location.
+  trace "opening location file"
+  file-open word Working-Directory "Location.txt" ; Reopen for actual use.
+  set District-name file-read ; Reads out the district name as input on the first line of the file.
+  set Number-of-Farms file-read ; Reads number of farms as appears in second line ...
+  set Total-Acres file-read ; Same as above, throughout remainder of section.
+  set Total-Irrigated-Acres file-read
+  set Average-Farm-Size file-read
+  set Median-Farm-Size file-read
+  set Number-Farmers-Primarily-Farm file-read
+  set Number-Farmers-Primarily-Other file-read
+  set Farms-With-A-Tractor file-read
+  set Farms-with-Grain-and-Bean-Combine file-read
+  set Farms-with-Forage-Harvester file-read
+  set Farms-with-Hay-Baler file-read
+  set Farms-with-Beef-Cattle file-read
+  set Farms-with-Dairy-Cattle file-read
+  set One-to-9-Acre-farms file-read
+  set Ten-to-49-acre-farms file-read
+  set Fifty-to-179-acre-farms file-read
+  set OneHundredEighty-to-499-acre-farms file-read
+  set FiveHundred-to-999-acre-farms file-read
+  set OneThousand-to-10000-acre-farms file-read
+  ;set Assessment-Value 15 ; Assessment value hard-coded because variance is currently unknown between districts. Hope to update later.
+  set PriorityTiers file-read
+  set Min%Decrease file-read
+  set Max%Decrease file-read
+  set AFCapMatrix file-read
+  set JanETRef file-read
+  set FebETRef file-read
+  set MarETRef file-read
+  set AprETRef file-read
+  set MayETRef file-read
+  set JunETRef file-read
+  set JulETRef file-read
+  set AugETRef file-read
+  set SepETRef file-read
+  set OctETRef file-read
+  set NovETRef file-read
+  set DecETRef file-read
+  set Rent08 file-read
+  set Rent09 file-read
+  set Rent10 file-read
+  set Rent11 file-read
+  set Rent12 file-read
+  set Rent13 file-read
+  set Rent14 file-read
+  set Rent16 file-read
+  set Rent17 file-read
+  set CropscapePercentAlfalfa file-read
+  set CropscapePercentBarley file-read
+  set CropscapePercentCorn file-read
+  set CropscapePercentPotatoes file-read
+  set CropscapePercentSpringWheat file-read
+  set CropscapePercentSugarbeets file-read
+  set CropscapePercentWinterWheat file-read
+  file-close
+  set RentList (list Rent08 Rent09 Rent10 Rent11 Rent12 Rent13 Rent14 Rent16 Rent17)
+  trace "closed location file, determining rotations."
+  if (UseRandomRotations? = FALSE) [
+    ; set up local version of these to be edited as we go through this process. 
+    let local-CropscapePercentGrain (CropscapePercentSpringWheat + CropscapePercentCorn + CropscapePercentWinterWheat)
+    let local-CropscapePercentAlfalfa CropscapePercentAlfalfa
+    let local-CropscapePercentBarley CropscapePercentBarley
+    let local-CropscapePercentPotatoes CropscapePercentPotatoes
+    let local-CropscapePercentSugarbeets CropscapePercentSugarbeets
+    
+    ; set HayBarleyPotato first, since it's the only one with Barley
+    set HayBarleyPotato local-CropscapePercentBarley
+    set local-CropscapePercentPotatoes local-CropscapePercentPotatoes - local-CropscapePercentBarley
+    set local-CropscapePercentAlfalfa local-CropscapePercentPotatoes - local-CropscapePercentBarley
+    
+    let iter-rotation 0
+    while [iter-rotation < local-CropscapePercentSugarbeets] [
+      let temp-rotation random-float 1
+      if temp-rotation < (1 / 3) [
+        set PotatoGrainBeetGrain PotatoGrainBeetGrain + .01
+        set local-CropscapePercentPotatoes local-CropscapePercentPotatoes - .01
+        set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+      ]
+      if ((temp-rotation > (1 / 3)) AND (temp-rotation < (2 / 3))) [
+        set PotatoBeetGrainGrain PotatoBeetGrainGrain + .01
+        set local-CropscapePercentPotatoes local-CropscapePercentPotatoes - .01
+        set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+      ]
+      if temp-rotation > (2 / 3) [
+        set GrainPotatoBeetsHay GrainPotatoBeetsHay + .01
+        set local-CropscapePercentPotatoes local-CropscapePercentPotatoes - .01
+        set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+        set local-CropscapePercentAlfalfa local-CropscapePercentAlfalfa - .01
+      ]
+      set iter-rotation iter-rotation + 0.01
+    ]
+    
+    if local-CropscapePercentPotatoes > 0 [ 
+      set iter-rotation 0
+      while [iter-rotation < local-CropscapePercentPotatoes] [
+        let temp-rotation random-float 1
+        if temp-rotation < (1 / 3) [
+          set HayGrainPotatoGrain HayGrainPotatoGrain + .01
+          set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+          set local-CropscapePercentAlfalfa local-CropscapePercentAlfalfa - .01
+        ]
+        if ((temp-rotation > (1 / 3)) AND (temp-rotation < (2 / 3))) [
+          set PotatoGrainGrain PotatoGrainGrain + .01
+          set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+        ]
+        if temp-rotation > (2 / 3) [
+          set HayGrainGrainPotato HayGrainGrainPotato + .01
+          set local-CropscapePercentGrain local-CropscapePercentGrain - .01
+          set local-CropscapePercentAlfalfa local-CropscapePercentAlfalfa - .01
+        ]
+        set iter-rotation iter-rotation + 0.01
+      ]
+    ]
+    
+    ;finish it off by allocating everything left to the hay-grain basic rotation
+    set HayGrain 0
+    if local-CropscapePercentAlfalfa > 0 [ 
+      set HayGrain local-CropscapePercentAlfalfa
+    ]
+    if local-CropscapePercentGrain > 0 [ 
+      set HayGrain HayGrain + local-CropscapePercentGrain
+    ]
+    
+    let PercentSum (PotatoGrainBeetGrain + PotatoBeetGrainGrain + HayGrain + HayGrainPotatoGrain + PotatoGrainGrain + HayBarleyPotato + HayGrainGrainPotato + GrainPotatoBeetsHay)
+    set PotatoGrainBeetGrain (PotatoGrainBeetGrain / PercentSum)
+    set PotatoBeetGrainGrain (PotatoBeetGrainGrain / PercentSum)
+    set HayGrain (HayGrain / PercentSum)
+    set HayGrainPotatoGrain (HayGrainPotatoGrain / PercentSum)
+    set PotatoGrainGrain (PotatoGrainGrain / PercentSum)
+    set HayBarleyPotato (HayBarleyPotato / PercentSum)
+    set HayGrainGrainPotato (HayGrainGrainPotato / PercentSum)
+    set GrainPotatoBeetsHay (GrainPotatoBeetsHay / PercentSum)
+  ]
+  if (UseRandomRotations? = TRUE) [
+    set PotatoGrainBeetGrain random-float 1
+    set PotatoBeetGrainGrain random-float 1
+    set HayGrain random-float 1
+    set HayGrainPotatoGrain random-float 1
+    set PotatoGrainGrain random-float 1
+    set HayBarleyPotato random-float 1
+    set HayGrainGrainPotato random-float 1
+    set GrainPotatoBeetsHay random-float 1
+    let PercentSum (PotatoGrainBeetGrain + PotatoBeetGrainGrain + HayGrain + HayGrainPotatoGrain + PotatoGrainGrain + HayBarleyPotato + HayGrainGrainPotato + GrainPotatoBeetsHay)
+    set PotatoGrainBeetGrain (PotatoGrainBeetGrain / PercentSum)
+    set PotatoBeetGrainGrain (PotatoBeetGrainGrain / PercentSum)
+    set HayGrain (HayGrain / PercentSum)
+    set HayGrainPotatoGrain (HayGrainPotatoGrain / PercentSum)
+    set PotatoGrainGrain (PotatoGrainGrain / PercentSum)
+    set HayBarleyPotato (HayBarleyPotato / PercentSum)
+    set HayGrainGrainPotato (HayGrainGrainPotato / PercentSum)
+    set GrainPotatoBeetsHay (GrainPotatoBeetsHay / PercentSum)
+  ]
+  trace "end of district parameterization."
+end

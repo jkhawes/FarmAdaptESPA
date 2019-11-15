@@ -1,0 +1,60 @@
+to PopulateRandom
+  ;set random-seed 7 ; if we want to generate the same distribution multiple times in a row, uncomment this ... However, we can also just load previously generated worlds, which is less computationally intensive.
+  set i 0 ; set iteration values used in random distribution generation
+  set j 0 ; another iteration variable
+  set X [] ; X is the list variable used for the acreages in the farm size distributions.
+
+  ; each random distribution is generated through an algorithm pulled from "Computer Generation of Statistical Distributions" by Richard Saucier at the Army Research Lab
+  if AcreageDistributionType = "Gamma" [Gamma] ; based on the gamma distribution
+  if AcreageDistributionType = "Chi-square" [Chi-square] ; based on the chi-square distribution
+  if AcreageDistributionType = "F-Ratio" [F-Ratio] ; based on the F-Ratio distribution
+  if AcreageDistributionType = "Lognormal" [Lognormal] ; based on the lognormal distribution
+  if AcreageDistributionType = "Categorical" [Categorical] ; based on the actual distribution ... takes each size range and creates as many farms as are recorded there in the AgCensus.
+
+  trace "drawing stage. Distribution complete."
+
+  DrawFarms ; Draw farms randomly on GUI based on sizes determined by distribution.
+  ; Is this step necessary if we're not showing the GUI anyway? Could speed up the simulations considerably when generating original population. Not worth pursuing yet ... makes no difference when using pre-loaded worlds.
+  trace "demographics work. Drawing complete."
+
+  SetDemographics ; Set farmers-own variables like irrigation strategies, money available, and equipment available.
+
+  trace "end of demographics initialization. Working to ID and parameterize fields."
+
+  IdentifyFields ; Part of PrepareFields file - finds a patch to serve as the seed/representative of the field, then assigns all patches to a field so things can be tracked by field.
+
+  trace "end of identifying fields. About to parameterize them."
+
+  ; Field parameterization is the other half of the PrepareFields file. Sets all values needed for field calculations
+  ask farmers [
+    let FieldSeeds-local patches with [owner = myself AND FieldSeed = 1]
+    ask FieldSeeds-local[
+      let RepresentativeFieldPatch self
+      ;print RepresentativeFieldPatch
+      ParameterizeFields RepresentativeFieldPatch
+    ]
+
+    ask FieldSeeds-local [set RotationPosition "unset"]
+    let ContractsList (list Potato_Contract Barley_Contract Sugarbeet_Contract)
+    let Rotation-iter 0
+    while [Rotation-iter < RotationMaxPosition]
+    [
+      ask n-of (max ContractsList) (FieldSeeds-local with [RotationPosition = "unset"]) [
+        set RotationPosition Rotation-iter
+      ]
+      set Rotation-iter Rotation-iter + 1
+    ]
+    ask (FieldSeeds-local with [RotationPosition = "unset"]) [set RotationPosition random ([RotationMaxPosition] of owner + .01)] ; randomly set the rest - need the .01 because random only does integers strictly less than input
+  ]
+
+  trace "end of field development. Generating consultants and setting social networks."
+  GenerateConsultants
+  SetFarmerNetwork
+  SetConsultantNetwork
+  ask farmers [ set breed? "Farmer" ]
+  ask Agronomists [ set breed? "Agronomist" ]
+  ask CropConsultants [ set breed? "Crop Consultant" ]
+  ask IrrigationConsultants[ set breed? "Irrigation Consultant" ]
+  trace "end of PopulateRandom. Moving back to Populate Random IfElse."
+
+end

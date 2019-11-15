@@ -1,0 +1,36 @@
+to PlanningSeason
+  ;; Planning season is called by Go in the simulation while loop. This is where most of the decision-making legwork happens.
+  ask farmers [ set PlanningSeasonComplete? FALSE ]
+  ; First, I am going to write a general precip file that will describe the general weathe rin the area as a percent likelihood it will rain.
+  ; Then on each plot (probably by field), I will determine if it actually rains on a given day. That will be recorded in the file for each field.
+  ; Farmers will determine whether or not to irrigate by BR, TPB, and IAC algorithms for irrigation.
+  trace "beginning of planning. Annual Precipitation up first."
+  ; First, we need to determine the year-specific precipitation.
+  GenerateAnnualWeather ; RepresentativeFieldPatch ; Previously: passing a single patch (the field seed) to save computational power
+  ; By eliminating Specific Weather for each field,we greatly reduced the number of simulations that need to be run for Aqua Crop.
+  ; At this point, if we have a running list of the combinations of irrigation strategies and crops, we can just run that set of combinations.
+  ; That may still be a fairly significant list of AquaCrop simulations that we need to run, so ideally we'd be able to run at least some of those in parallel.
+  trace "end of annual precipitation. Farmer-specific development up next."
+
+  ;;Each farmer will evaluate all the options for each field they have.
+  let f 0
+  ask farmers [
+    set Active-Farmer self
+    set i 0
+    set ChangedWaterManagementThisYear? 0
+    foreach FieldSeeds [
+      [RepresentativeFieldPatch] ->
+      ; First, we can determine what land use works best in this field this year.
+      DetermineLandUse RepresentativeFieldPatch
+      set i i + 1
+      trace (word "field " i " of " self " land use determined.")
+    ]
+    set f f + 1
+    set CropHistory lput (word "End of Season " (ticks + 1) ".") CropHistory
+    trace (word "end of farmer planting season. " f " / " Number-of-Farms " completed so far. Timer is at " Timer ".")
+
+    set PlanningSeasonComplete? TRUE
+  ]
+  set NumberOfFarmersWithChangedWM lput (count (farmers with [ChangedWaterManagementThisYear? = 1])) NumberOfFarmersWithChangedWM
+
+end

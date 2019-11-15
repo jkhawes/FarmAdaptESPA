@@ -1,0 +1,90 @@
+to SetFarmerNetwork
+  ;; This is the classic Erdős-Rényi random network.
+  ;; It uses WHILE to ensure we get NUM-LINKS links.
+  let num-friendships Social-Connections-per-Farmer * Number-of-Farms
+  ask links [ die ]
+  if num-friendships > max-friendships [ set num-friendships max-friendships ]
+  while [ count friendships < num-friendships ] [
+    ask one-of farmers [
+      create-friendship-with one-of other farmers
+    ]
+  ]
+  ask links [hide-link]
+end
+
+to SetConsultantNetwork
+  ;; Again, this is the classic Erdős-Rényi random network.
+  ;; It uses WHILE to ensure we get NUM-LINKS links.
+  let num-consultancies Consultants-per-Farmer * Number-of-Farms
+  if num-consultancies > max-consultancies [ set num-consultancies max-consultancies ]
+  while [ count consultancies < num-consultancies ] [
+    let temp-consult random 3
+    if (temp-consult = 0) [
+      ask one-of farmers [
+        create-consultancy-with one-of CropConsultants
+      ]
+    ]
+    if (temp-consult = 1) [
+      ask one-of farmers [
+        create-consultancy-with one-of Agronomists
+      ]
+    ]
+    if (temp-consult = 2) [
+      ask one-of farmers [
+        create-consultancy-with one-of IrrigationConsultants
+      ]
+    ]
+  ]
+  ask links [hide-link]
+end
+
+;; Report the maximum number of links that can be added to a random network, given the specified number of nodes.
+; Incuded here, since this is a direct reporter to the function above.
+to-report max-friendships
+  report (Number-of-Farms * (Number-of-Farms - 1) / 2)
+end
+
+;; Report the maximum number of consultancies that can be created in this water district.
+; Incuded here, since this is a direct reporter to the function above.
+to-report max-consultancies
+  report (Number-of-Farms * (Number-of-Consultants - 1) / 2)
+end
+
+;;Before generating consultant networks, we have to have consultants.
+; This generate a number of consultants according to user inputs.
+to GenerateConsultants
+  ask patch (world-width / 2) (world-height / 2) [
+    sprout-CropConsultants Number-of-CropConsultants [fd 5]
+    sprout-Agronomists Number-of-Agronomists [fd 10]
+    sprout-IrrigationConsultants Number-of-IrrigationConsultants [fd 15]
+  ]
+  let consult-iter 0  
+  ask CropConsultants [ 
+    set LandUsePerceptions-consultant []
+    foreach LandUseList [ set LandUsePerceptions-consultant lput random-float 1 LandUsePerceptions-consultant ]
+  ]
+  ask IrrigationConsultants [ 
+    set WaterManagementPerceptions-consultant []
+    foreach WaterManagementList [ set WaterManagementPerceptions-consultant lput random-float 1 WaterManagementPerceptions-consultant ] 
+  ]
+end
+
+;; Used to report Number-of-Consultants when it's needed in any context.
+to-report Number-of-Consultants
+    report (Number-of-CropConsultants + Number-of-Agronomists + Number-of-IrrigationConsultants)
+end
+
+;; Used to report Number-of-CropConsultants when it's needed in any context.
+to-report Number-of-CropConsultants
+    report (Consultants-per-Farmer * Number-of-Farms / 3)
+end
+
+;; Used to report Number-of-Agronomists when it's needed in any context.
+to-report Number-of-Agronomists
+    report (Consultants-per-Farmer * Number-of-Farms / 3)
+end
+
+;; Used to report Number-of-IrrigationConsultants when it's needed in any context.
+to-report Number-of-IrrigationConsultants
+    report (Consultants-per-Farmer * Number-of-Farms / 3)
+end

@@ -1,0 +1,35 @@
+to Reconcile
+
+  let f 0
+  ask farmers [
+    set i 0
+    set AnnualReturns-farmer []
+    set LandUseThisYear []
+    foreach FieldSeeds [
+      [RepresentativeFieldPatch] ->
+      ;print (word "Annual returns of Rep Field pathc are " [AnnualReturns] of RepresentativeFieldPatch)
+      set AnnualReturns-farmer lput [AnnualReturns] of RepresentativeFieldPatch AnnualReturns-farmer
+      ; set LandUseThisYear lput [PreferredLandUse] of RepresentativeFieldPatch LandUseThisYear
+      ask RepresentativeFieldPatch [set RotationPosition-local RotationPosition]
+      if ((item RotationPosition-local RotationList) = PreferredLandUse-category) [
+        ifelse RotationPosition-local < RotationMaxPosition
+        [ set RotationPosition-local RotationPosition-local + 1 ]
+        [ set RotationPosition-local 0 ]
+        ask RepresentativeFieldPatch [set RotationPosition RotationPosition-local]
+      ]
+      set i i + 1
+      trace (word "field " i " of " self " reconciled.")
+    ]
+    set AnnualReturns-farmer-extracted []
+    foreach AnnualReturns-farmer [
+      [AnnualReturns-isolated] ->
+      set AnnualReturns-farmer-extracted lput item 0 AnnualReturns-isolated AnnualReturns-farmer-extracted
+    ]
+    set MoneyAvailable MoneyAvailable + sum(AnnualReturns-Farmer-extracted)
+    ; set LandUsesKnown lput LandUseThisYear LandUsesKnown
+    set f f + 1
+  ]
+
+  GenerateEndOfYearReport
+
+end

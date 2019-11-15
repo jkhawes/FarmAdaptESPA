@@ -1,0 +1,36 @@
+to DetermineLandUse [field]
+  trace "beginning of determining land use. About to initialize variables."
+  set CropHistory lput (word (one-of field) "planted with: ") CropHistory
+  InitializeDetermineLandUseVariables field
+  CalculateReturns field
+  trace "end of Determine Land Use."
+end
+
+
+to InitializeDetermineLandUseVariables [field]
+  ; Initialize Variables and do any of the general record keeping here. Use Calculate Returns for the math.
+  ask field [
+    ;;Operating costs: Seeds + Fertilizer + Pesticides + Custom/Consultants + Irrigation costs + Machinery + Labor + Crop Insurance + Social dimensions
+    set cropZ 0
+    set InfrastructureCostsCatalog []
+    set WaterOverdrawCatalog []
+    set TotalIrrigationUseCatalog []
+    set IrrigationPlan []
+    set OwnershipCostsCatalog []
+    set SettlementCostsCatalog []
+    set SocialCostsCatalog []
+    set SocialGainsCatalog []
+    set OperatingCostsCatalog []
+    set ExpectedGrossFinancialReturns []
+    set ExpectedGrossReturns []
+    set NetExpectedReturns []
+    set ROIPeriod []
+    set TotalCostsCatalog []
+  ] ; End ask field here so I can use ask field as a subset of the foreach loop. Need to not reset the values above on every iteration.
+  if ticks = 0 OR ticks = 1 [ set TimeListValue 0 ]
+  if ticks = 2 OR ticks = 3 [ set TimeListValue 1 ]
+  if ticks = 4 OR ticks = 5 [ set TimeListValue 2 ]
+  if ticks = 6 OR ticks = 7 OR ticks = 8 OR ticks = 9 [ set TimeListValue 3 ]
+  if ticks >= 10 [ set TimeListValue 4 ]
+
+end

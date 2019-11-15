@@ -1,0 +1,134 @@
+to CatalogConditions [location-in-model]
+  
+  let file-name (word "/Results/Conditions_" location-in-model "_seed_set-" FixRandomSeed?"_ESPACAMP-" Simulate-ESPA_CAMP "_DM-" Decision-Making "_" RandomSeed ".txt") ; same as world name - changed to random seed for iterating
+  file-open file-name
+  file-print FixRandomSeed?
+  file-print Simulate-ESPA_CAMP
+  file-print Run-Number
+  file-print RandomSeed
+  file-print Decision-Making
+  ask farmers [ 
+    file-print (word "I am " self ".")
+    file-print (word "During this simulation, I had planted " CropHistory ".")
+    foreach FieldSeeds [ [field] -> file-print (word "Field around " (one-of field) " was planted with " (item 0 ([CropHistory-fields] of field)) ".")]
+    file-print (word "I ended up with $" MoneyAvailable ".")
+  ]
+  file-close
+  
+  if WriteOutputs? = TRUE AND location-in-model != "Initial_post-setup" [ 
+    ; first w'll set a record of overall outcomes. 
+    set file-name (word "/Results/Thesis/Experiments/" ExperimentName ".csv")
+    file-open file-name
+    let EndPrintList  []
+    ask farmers [ 
+      set EndPrintList lput (list ID_Number FarmSize MoneyAvailable CropHistory ) EndPrintList
+    ]
+    csv:to-file file-name EndPrintList
+    file-close
+    ; make a record of the annual outcomes as well
+    set file-name (word "/Results/Thesis/Experiments/YearlyDecisions_" ExperimentName ".csv")
+    file-open file-name
+    csv:to-file file-name FinalCSVPrintList
+    file-close
+  ]
+  
+end
+
+to CreateCleanCropBudget
+  
+  if WriteCropBudgets? = TRUE [ 
+    let file-name (word "/Results/CropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_Number ".txt") ; same as above
+    if file-exists? file-name = TRUE [file-delete file-name]
+  ]
+  
+end
+
+to WriteCropBudget [new-line ID_number-local]
+
+  if WriteCropBudgets? = TRUE [ 
+    let file-name (word "/Results/CropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_number-local ".txt") ; same as above
+    file-open file-name
+    file-print new-line
+    file-close
+  ]
+
+end
+
+
+to CreateCleanDetailedCropBudget
+  
+  if WriteDetailedCropBudgets? = TRUE [ 
+    let file-name (word "/Results/DetailedCropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_Number ".txt") ; same as above
+    if file-exists? file-name = TRUE [file-delete file-name]
+  ]
+  
+end
+
+to WriteDetailedCropBudget [new-line]
+
+  if WriteDetailedCropBudgets? = TRUE [ 
+    let file-name (word "/Results/DetailedCropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_Number ".txt") ; same as above
+    file-open file-name
+    file-print new-line
+    file-close
+  ]
+
+end
+
+to CreateCleanSocialCropBudget
+
+  if WriteDetailedCropBudgets? = TRUE [ 
+    let file-name (word "/Results/SocialCropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_Number ".txt") ; same as above
+    if file-exists? file-name = TRUE [file-delete file-name]
+  ]
+  
+end
+
+to WriteSocialCropBudget [new-line]
+
+  if WriteDetailedCropBudgets? = TRUE [ 
+    let file-name (word "/Results/SocialCropBudgets/" GWD "_" Decision-Making "_" RandomSeed "_farmer " ID_Number ".txt") ; same as above
+    file-open file-name
+    file-print new-line
+    file-close
+  ]
+
+end
+
+to GenerateEndOfYearReport
+  
+  if WriteDetailedCropBudgets? = TRUE [ 
+    let file-name (word "/Results/EOYReports/" GWD "_" Decision-Making "_End of Year Report for Year " (ticks + 1) ".txt")
+    ask farmers [
+      file-open file-name
+      file-print (word "Farmer " ID_Number " made $" sum AnnualReturns-farmer-extracted " this year.")
+      file-print "To do so, they planted the following: "
+      set i 0
+      foreach FieldSeeds [
+        [RepresentativeFieldPatch] ->
+        set i i + 1
+        let EOYMoney item 0 [AnnualReturns] of RepresentativeFieldPatch
+        let EOYLandUse item 0 [PreferredLandUse] of RepresentativeFieldPatch
+        file-print (word "Field " i ":" EOYLandUse ", which was worth $" EOYMoney ".")
+        ; (word "Field " i ":" EOYLandUse ", which was worth $" EOYMoney ".")
+      ]
+      file-close
+    ]
+  ]
+  
+  if WriteOutputs? = TRUE [ 
+    ask farmers [
+      set i 0
+      foreach FieldSeeds [
+        [RepresentativeFieldPatch] ->
+        set i i + 1
+        let EOYMoney item 0 [AnnualReturns] of RepresentativeFieldPatch
+        let EOYLandUse item 0 [PreferredLandUse] of RepresentativeFieldPatch
+        let EOYTypeOfIrrigation item 0 [TypeOfIrrigation] of RepresentativeFieldPatch
+        ; each row will contain the farmer number, patch, land use, irrigaiton strategy, and money made on that field that year. 
+        set FinalCSVPrintList lput (list ID_Number (one-of RepresentativeFieldPatch) EOYLandUse EOYTypeOfIrrigation EOYMoney) FinalCSVPrintList
+      ]
+    ]
+  ]
+  
+end 

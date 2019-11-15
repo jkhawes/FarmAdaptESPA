@@ -1,0 +1,4 @@
+Strategy Name
+Cost to enact/install strategy ($/acre)
+Annual cost to operate ($/ac-in of water)
+Relative water use (compared to center pivot MESA)

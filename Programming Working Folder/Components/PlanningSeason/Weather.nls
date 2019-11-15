@@ -1,0 +1,437 @@
+to ImportGeneralWeather
+
+  ;;General Weather is called by Planning Season. So a new general annual weather pattern is generated each "season."
+  ;;So the goal of this section is simple. Generate a general probability and volume of rain for each day.
+  ; This general probability and volume will in turn be applied to each field by a basic random number generation.
+  file-open word Working-Directory "Precipitation.txt"
+ ;  if file-at-end? = TRUE [ print "File at end 1" ] ; testing code when I was trying to verify that the file was working properly.
+  file-close
+  file-open word Working-Directory "Precipitation.txt"
+ ;  if file-at-end? = TRUE [ print "File at end 2" ] ; testing code when I was trying to verify that the file was working properly.
+  set January-.01-inch-days file-read
+  set January-.10-inch-days file-read
+  set January-.50-inch-days file-read
+  set January-1.0-inch-days file-read
+  set February-.01-inch-days file-read
+  set February-.10-inch-days file-read
+  set February-.50-inch-days file-read
+  set February-1.0-inch-days file-read
+  set March-.01-inch-days file-read
+  set March-.10-inch-days file-read
+  set March-.50-inch-days file-read
+  set March-1.0-inch-days file-read
+  set April-.01-inch-days file-read
+  set April-.10-inch-days file-read
+  set April-.50-inch-days file-read
+  set April-1.0-inch-days file-read
+  set May-.01-inch-days file-read
+  set May-.10-inch-days file-read
+  set May-.50-inch-days file-read
+  set May-1.0-inch-days file-read
+  set June-.01-inch-days file-read
+  set June-.10-inch-days file-read
+  set June-.50-inch-days file-read
+  set June-1.0-inch-days file-read
+  set July-.01-inch-days file-read
+  set July-.10-inch-days file-read
+  set July-.50-inch-days file-read
+  set July-1.0-inch-days file-read
+  set August-.01-inch-days file-read
+  set August-.10-inch-days file-read
+  set August-.50-inch-days file-read
+  set August-1.0-inch-days file-read
+  set September-.01-inch-days file-read
+  set September-.10-inch-days file-read
+  set September-.50-inch-days file-read
+  set September-1.0-inch-days file-read
+  set October-.01-inch-days file-read
+  set October-.10-inch-days file-read
+  set October-.50-inch-days file-read
+  set October-1.0-inch-days file-read
+  set November-.01-inch-days file-read
+  set November-.10-inch-days file-read
+  set November-.50-inch-days file-read
+  set November-1.0-inch-days file-read
+  set December-.01-inch-days file-read
+  set December-.10-inch-days file-read
+  set December-.50-inch-days file-read
+  set December-1.0-inch-days file-read
+  file-close
+
+
+  file-open word Working-Directory "Temperature.txt"
+ ;  if file-at-end? = TRUE [ print "File at end 1" ] ; testing code when I was trying to verify that the file was working properly.
+  file-close
+  file-open word Working-Directory "Temperature.txt"
+  set Jan-Avg-Max-Temp file-read
+  set Jan-Avg-Min-Temp file-read
+  set Feb-Avg-Max-Temp file-read
+  set Feb-Avg-Min-Temp file-read
+  set Mar-Avg-Max-Temp file-read
+  set Mar-Avg-Min-Temp file-read
+  set Apr-Avg-Max-Temp file-read
+  set Apr-Avg-Min-Temp file-read
+  set May-Avg-Max-Temp file-read
+  set May-Avg-Min-Temp file-read
+  set Jun-Avg-Max-Temp file-read
+  set Jun-Avg-Min-Temp file-read
+  set Jul-Avg-Max-Temp file-read
+  set Jul-Avg-Min-Temp file-read
+  set Aug-Avg-Max-Temp file-read
+  set Aug-Avg-Min-Temp file-read
+  set Sep-Avg-Max-Temp file-read
+  set Sep-Avg-Min-Temp file-read
+  set Oct-Avg-Max-Temp file-read
+  set Oct-Avg-Min-Temp file-read
+  set Nov-Avg-Max-Temp file-read
+  set Nov-Avg-Min-Temp file-read
+  set Dec-Avg-Max-Temp file-read
+  set Dec-Avg-Min-Temp file-read
+  set Jan-Avg-Max-Temp-SD file-read
+  set Feb-Avg-Max-Temp-SD file-read
+  set Mar-Avg-Max-Temp-SD file-read
+  set Apr-Avg-Max-Temp-SD file-read
+  set May-Avg-Max-Temp-SD file-read
+  set Jun-Avg-Max-Temp-SD file-read
+  set Jul-Avg-Max-Temp-SD file-read
+  set Aug-Avg-Max-Temp-SD file-read
+  set Sep-Avg-Max-Temp-SD file-read
+  set Oct-Avg-Max-Temp-SD file-read
+  set Nov-Avg-Max-Temp-SD file-read
+  set Dec-Avg-Max-Temp-SD file-read
+  set Jan-Avg-Min-Temp-SD file-read
+  set Feb-Avg-Min-Temp-SD file-read
+  set Mar-Avg-Min-Temp-SD file-read
+  set Apr-Avg-Min-Temp-SD file-read
+  set May-Avg-Min-Temp-SD file-read
+  set Jun-Avg-Min-Temp-SD file-read
+  set Jul-Avg-Min-Temp-SD file-read
+  set Aug-Avg-Min-Temp-SD file-read
+  set Sep-Avg-Min-Temp-SD file-read
+  set Oct-Avg-Min-Temp-SD file-read
+  set Nov-Avg-Min-Temp-SD file-read
+  set Dec-Avg-Min-Temp-SD file-read
+
+end
+
+to GenerateAnnualWeather
+
+  ;; GenerateAnnualWeather is called by Planning Season outside the farmer context. In other words, it is the universal weather for that year.
+  ;; This code has changed dramatically since I am only using AquaCrop as a categorical mechanism.
+
+  ;; Originally, the farmer was working with perfect information or this this needed to be regenerated before the actual run.
+  ;; 201805 - Corrected for this by introducing error into the calculations that the farmers make for setting their irrigation schedule.
+
+ ;; So the way the precipitation works is that it pulls numbers from the input file and sets the number of days with a certain rainfall intensity.
+ ;; based on their recorded frequency from weather stations in Idaho.
+ ;; To make that happen, the number of days where rainfall exceeds 0.01, 0.1. 0.5, and 1.0 are recorded.
+ ;; To clarify, this means that # days for  0.01 > 0.1 > 0.5 > 1.0 - this makes sense, since any 1.0 rain day obviously exceeds the other thresholds.
+ ;; So we start with the lowest value (1.0 inch days) and ask if the random float is less than it. If so, set the rain to somewhere between 1 and 2 inches.
+ ;; This continues down the rungs, with the threshold supposedly becoming more likely each time. Each day's weather is saved in a list.
+ ;; It's worth noting that a bit of randomness is introduced here where extreme weather can occur with 1 in 1000 frequency.
+ ;; I actually think this may not be the best way to do this - rather, we could just scale every value. This would also allow for droughts to be considered as part of extreme weather.
+ ;; So this is a TODO when it comes time to run the climate change simulations.
+ ;; After precipitation, temperature is set as a normally distributed random value around the average max and min (SD provided by weather stations as well). 
+
+  let TempPrecip []
+  let TempMaxTemperature []
+  let TempMinTemperature []
+
+  let day 1
+  ;;set January Weather
+  ; It's worth noting that the only variance from the WRCC data is the 1/1000 random extreme event.
+  ; Too unrealistic to completely eliminate extreme precip. events, so schedule them randomly.
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < January-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < January-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < January-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < January-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Jan-Avg-Max-Temp Jan-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Jan-Avg-Min-Temp Jan-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set February Weather
+  while [day <= 28] [
+    let temp random-float 28
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < February-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < February-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < February-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < February-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Feb-Avg-Max-Temp Feb-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Feb-Avg-Min-Temp Feb-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set March Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < March-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < March-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < March-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < March-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+
+    ]
+    set TempMaxTemperature lput (random-normal Mar-Avg-Max-Temp Mar-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Mar-Avg-Min-Temp Mar-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set April Weather
+  while [day <= 30] [
+    let temp random-float 30
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < April-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < April-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < April-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < April-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Apr-Avg-Max-Temp Apr-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Apr-Avg-Min-Temp Apr-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set May Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < May-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < May-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < May-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < May-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal May-Avg-Max-Temp May-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal May-Avg-Min-Temp May-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set June Weather
+  while [day <= 30] [
+    let temp random-float 30
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < June-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < June-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < June-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < June-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Jun-Avg-Max-Temp Jun-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Jun-Avg-Min-Temp Jun-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set July Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < July-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < July-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < July-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < July-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Jul-Avg-Max-Temp Jul-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Jul-Avg-Min-Temp Jul-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set August Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < August-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < August-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < August-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < August-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Aug-Avg-Max-Temp Aug-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Aug-Avg-Min-Temp Aug-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set September Weather
+  while [day <= 30] [
+    let temp random-float 30
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < September-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < September-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < September-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < September-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Sep-Avg-Max-Temp Sep-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Sep-Avg-Min-Temp Sep-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set October Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < October-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < October-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < October-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < October-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Oct-Avg-Max-Temp Oct-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Oct-Avg-Min-Temp Oct-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set November Weather
+  while [day <= 30] [
+    let temp random-float 30
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < November-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < November-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < November-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < November-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Nov-Avg-Max-Temp Nov-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Nov-Avg-Min-Temp Nov-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  set day 1
+  ;;set December Weather
+  while [day <= 31] [
+    let temp random-float 31
+    let tempEvent random 1000
+    ifelse tempEvent = 1000
+    [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+    [ ifelse temp < December-1.0-inch-days
+      [ set TempPrecip lput (1.0 + ( 1.0 * random-float 1)) TempPrecip ]
+      [ ifelse temp < December-.50-inch-days
+        [ set TempPrecip lput (0.5 + ( 0.5 * random-float 0.5)) TempPrecip ]
+        [ ifelse temp < December-.10-inch-days
+          [ set TempPrecip lput (0.1 + ( 0.1 * random-float 0.4)) TempPrecip ]
+          [ ifelse temp < December-.01-inch-days
+            [ set TempPrecip lput (0.01 + ( 0.01 * random-float 0.09)) TempPrecip ]
+            [ set TempPrecip lput 0 TempPrecip ]
+          ]
+        ]
+      ]
+    ]
+    set TempMaxTemperature lput (random-normal Dec-Avg-Max-Temp Dec-Avg-Max-Temp-SD) TempMaxTemperature
+    set TempMinTemperature lput (random-normal Dec-Avg-Min-Temp Dec-Avg-Min-Temp-SD) TempMinTemperature
+    set day day + 1
+  ]
+  ;; Once these lists are developed for the year, they're saved as globals.
+  set AnnualPrecip TempPrecip
+  set MaxTemperature TempMaxTemperature
+  set MinTemperature TempMinTemperature
+
+
+end

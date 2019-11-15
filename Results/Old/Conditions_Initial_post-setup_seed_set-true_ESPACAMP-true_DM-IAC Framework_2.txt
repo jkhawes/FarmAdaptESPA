@@ -1,0 +1,3008 @@
+true
+true
+0
+2
+IAC Framework
+I am (farmer 367).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 223 117) was planted with [].
+I ended up with $0.
+I am (farmer 256).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 262 83) was planted with [].
+I ended up with $0.
+I am (farmer 123).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 203 80) was planted with [].
+I ended up with $0.
+I am (farmer 421).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 266 134) was planted with [].
+I ended up with $0.
+I am (farmer 181).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 179 85) was planted with [].
+I ended up with $0.
+I am (farmer 349).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 144 55) was planted with [].
+I ended up with $0.
+I am (farmer 195).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 196 82) was planted with [].
+Field around (patch 189 85) was planted with [].
+Field around (patch 197 80) was planted with [].
+Field around (patch 191 82) was planted with [].
+Field around (patch 185 80) was planted with [].
+Field around (patch 191 84) was planted with [].
+Field around (patch 197 83) was planted with [].
+Field around (patch 188 89) was planted with [].
+Field around (patch 187 82) was planted with [].
+I ended up with $0.
+I am (farmer 460).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 283 105) was planted with [].
+Field around (patch 286 109) was planted with [].
+Field around (patch 287 109) was planted with [].
+I ended up with $0.
+I am (farmer 18).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 219 95) was planted with [].
+I ended up with $0.
+I am (farmer 100).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 211 95) was planted with [].
+I ended up with $0.
+I am (farmer 387).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 187 124) was planted with [].
+I ended up with $0.
+I am (farmer 257).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 149 8) was planted with [].
+I ended up with $0.
+I am (farmer 210).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 161 57) was planted with [].
+I ended up with $0.
+I am (farmer 505).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 219 135) was planted with [].
+I ended up with $0.
+I am (farmer 378).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 227 38) was planted with [].
+I ended up with $0.
+I am (farmer 122).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 251 65) was planted with [].
+Field around (patch 255 65) was planted with [].
+Field around (patch 249 62) was planted with [].
+Field around (patch 254 60) was planted with [].
+Field around (patch 248 61) was planted with [].
+Field around (patch 246 59) was planted with [].
+Field around (patch 255 60) was planted with [].
+Field around (patch 247 75) was planted with [].
+Field around (patch 257 66) was planted with [].
+I ended up with $0.
+I am (farmer 87).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 173 19) was planted with [].
+I ended up with $0.
+I am (farmer 132).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 160 24) was planted with [].
+I ended up with $0.
+I am (farmer 36).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 281 82) was planted with [].
+I ended up with $0.
+I am (farmer 321).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 256 37) was planted with [].
+I ended up with $0.
+I am (farmer 432).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 159 89) was planted with [].
+I ended up with $0.
+I am (farmer 469).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 103 25) was planted with [].
+I ended up with $0.
+I am (farmer 465).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 169 102) was planted with [].
+I ended up with $0.
+I am (farmer 396).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 288 46) was planted with [].
+I ended up with $0.
+I am (farmer 227).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 134 34) was planted with [].
+I ended up with $0.
+I am (farmer 326).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 238 34) was planted with [].
+Field around (patch 241 35) was planted with [].
+I ended up with $0.
+I am (farmer 360).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 75 40) was planted with [].
+Field around (patch 71 35) was planted with [].
+Field around (patch 67 41) was planted with [].
+Field around (patch 72 45) was planted with [].
+Field around (patch 65 40) was planted with [].
+Field around (patch 69 42) was planted with [].
+Field around (patch 64 42) was planted with [].
+Field around (patch 69 43) was planted with [].
+Field around (patch 76 46) was planted with [].
+Field around (patch 67 38) was planted with [].
+Field around (patch 74 42) was planted with [].
+Field around (patch 73 37) was planted with [].
+Field around (patch 70 43) was planted with [].
+I ended up with $0.
+I am (farmer 512).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 270 129) was planted with [].
+I ended up with $0.
+I am (farmer 361).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 62 32) was planted with [].
+I ended up with $0.
+I am (farmer 124).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 190 89) was planted with [].
+I ended up with $0.
+I am (farmer 170).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 196 106) was planted with [].
+I ended up with $0.
+I am (farmer 458).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 177 107) was planted with [].
+I ended up with $0.
+I am (farmer 192).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 193 86) was planted with [].
+I ended up with $0.
+I am (farmer 119).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 182 82) was planted with [].
+Field around (patch 180 81) was planted with [].
+I ended up with $0.
+I am (farmer 489).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 46 32) was planted with [].
+I ended up with $0.
+I am (farmer 179).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 258 118) was planted with [].
+Field around (patch 260 114) was planted with [].
+Field around (patch 261 118) was planted with [].
+Field around (patch 252 117) was planted with [].
+Field around (patch 249 115) was planted with [].
+Field around (patch 264 121) was planted with [].
+Field around (patch 257 112) was planted with [].
+Field around (patch 254 114) was planted with [].
+Field around (patch 250 122) was planted with [].
+Field around (patch 253 118) was planted with [].
+Field around (patch 253 109) was planted with [].
+Field around (patch 266 125) was planted with [].
+Field around (patch 254 116) was planted with [].
+Field around (patch 249 123) was planted with [].
+Field around (patch 261 119) was planted with [].
+Field around (patch 253 122) was planted with [].
+Field around (patch 255 121) was planted with [].
+I ended up with $0.
+I am (farmer 252).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 162 62) was planted with [].
+I ended up with $0.
+I am (farmer 485).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 292 100) was planted with [].
+Field around (patch 292 99) was planted with [].
+I ended up with $0.
+I am (farmer 405).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 279 102) was planted with [].
+I ended up with $0.
+I am (farmer 374).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 281 96) was planted with [].
+Field around (patch 279 97) was planted with [].
+I ended up with $0.
+I am (farmer 287).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 155 48) was planted with [].
+Field around (patch 156 45) was planted with [].
+Field around (patch 150 52) was planted with [].
+Field around (patch 150 51) was planted with [].
+Field around (patch 149 49) was planted with [].
+Field around (patch 153 48) was planted with [].
+Field around (patch 147 51) was planted with [].
+Field around (patch 146 51) was planted with [].
+Field around (patch 153 52) was planted with [].
+Field around (patch 158 46) was planted with [].
+Field around (patch 146 44) was planted with [].
+Field around (patch 153 44) was planted with [].
+Field around (patch 153 46) was planted with [].
+I ended up with $0.
+I am (farmer 217).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 166 30) was planted with [].
+I ended up with $0.
+I am (farmer 160).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 170 26) was planted with [].
+I ended up with $0.
+I am (farmer 200).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 188 36) was planted with [].
+I ended up with $0.
+I am (farmer 101).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 256 85) was planted with [].
+Field around (patch 254 82) was planted with [].
+I ended up with $0.
+I am (farmer 16).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 225 33) was planted with [].
+Field around (patch 214 49) was planted with [].
+Field around (patch 225 49) was planted with [].
+Field around (patch 218 36) was planted with [].
+Field around (patch 219 45) was planted with [].
+Field around (patch 215 39) was planted with [].
+Field around (patch 210 33) was planted with [].
+Field around (patch 222 34) was planted with [].
+Field around (patch 218 35) was planted with [].
+Field around (patch 216 35) was planted with [].
+Field around (patch 214 50) was planted with [].
+Field around (patch 223 42) was planted with [].
+Field around (patch 213 48) was planted with [].
+Field around (patch 219 36) was planted with [].
+Field around (patch 219 35) was planted with [].
+Field around (patch 221 40) was planted with [].
+Field around (patch 226 45) was planted with [].
+Field around (patch 227 49) was planted with [].
+Field around (patch 219 41) was planted with [].
+Field around (patch 216 40) was planted with [].
+I ended up with $0.
+I am (farmer 338).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 149 30) was planted with [].
+I ended up with $0.
+I am (farmer 452).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 109 23) was planted with [].
+I ended up with $0.
+I am (farmer 163).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 212 31) was planted with [].
+Field around (patch 211 29) was planted with [].
+I ended up with $0.
+I am (farmer 161).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 221 88) was planted with [].
+Field around (patch 221 90) was planted with [].
+I ended up with $0.
+I am (farmer 46).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 179 39) was planted with [].
+I ended up with $0.
+I am (farmer 159).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 221 102) was planted with [].
+I ended up with $0.
+I am (farmer 313).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 168 96) was planted with [].
+I ended up with $0.
+I am (farmer 148).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 228 61) was planted with [].
+Field around (patch 238 55) was planted with [].
+Field around (patch 241 49) was planted with [].
+Field around (patch 225 59) was planted with [].
+Field around (patch 244 43) was planted with [].
+Field around (patch 227 53) was planted with [].
+Field around (patch 232 53) was planted with [].
+Field around (patch 227 52) was planted with [].
+Field around (patch 235 50) was planted with [].
+Field around (patch 239 44) was planted with [].
+Field around (patch 232 45) was planted with [].
+Field around (patch 232 43) was planted with [].
+Field around (patch 242 55) was planted with [].
+Field around (patch 242 43) was planted with [].
+Field around (patch 230 62) was planted with [].
+Field around (patch 242 50) was planted with [].
+Field around (patch 232 51) was planted with [].
+Field around (patch 241 47) was planted with [].
+Field around (patch 241 43) was planted with [].
+Field around (patch 234 61) was planted with [].
+Field around (patch 240 59) was planted with [].
+Field around (patch 232 41) was planted with [].
+Field around (patch 239 46) was planted with [].
+Field around (patch 239 45) was planted with [].
+Field around (patch 230 61) was planted with [].
+Field around (patch 237 49) was planted with [].
+Field around (patch 243 55) was planted with [].
+I ended up with $0.
+I am (farmer 295).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 184 97) was planted with [].
+I ended up with $0.
+I am (farmer 304).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 289 133) was planted with [].
+Field around (patch 288 135) was planted with [].
+Field around (patch 288 134) was planted with [].
+I ended up with $0.
+I am (farmer 220).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 158 58) was planted with [].
+I ended up with $0.
+I am (farmer 369).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 149 37) was planted with [].
+Field around (patch 146 36) was planted with [].
+Field around (patch 145 32) was planted with [].
+Field around (patch 154 34) was planted with [].
+Field around (patch 154 33) was planted with [].
+Field around (patch 145 33) was planted with [].
+I ended up with $0.
+I am (farmer 33).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 238 78) was planted with [].
+I ended up with $0.
+I am (farmer 268).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 166 46) was planted with [].
+I ended up with $0.
+I am (farmer 320).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 284 90) was planted with [].
+I ended up with $0.
+I am (farmer 9).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 209 99) was planted with [].
+I ended up with $0.
+I am (farmer 19).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 217 76) was planted with [].
+Field around (patch 221 74) was planted with [].
+Field around (patch 223 73) was planted with [].
+I ended up with $0.
+I am (farmer 420).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 292 51) was planted with [].
+I ended up with $0.
+I am (farmer 309).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 286 90) was planted with [].
+I ended up with $0.
+I am (farmer 83).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 292 90) was planted with [].
+I ended up with $0.
+I am (farmer 231).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 290 112) was planted with [].
+I ended up with $0.
+I am (farmer 52).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 168 62) was planted with [].
+I ended up with $0.
+I am (farmer 523).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 138 4) was planted with [].
+I ended up with $0.
+I am (farmer 510).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 150 92) was planted with [].
+I ended up with $0.
+I am (farmer 514).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 227 120) was planted with [].
+I ended up with $0.
+I am (farmer 93).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 291 88) was planted with [].
+I ended up with $0.
+I am (farmer 173).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 87 19) was planted with [].
+I ended up with $0.
+I am (farmer 519).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 299 121) was planted with [].
+Field around (patch 288 127) was planted with [].
+Field around (patch 302 125) was planted with [].
+Field around (patch 287 114) was planted with [].
+Field around (patch 289 109) was planted with [].
+Field around (patch 301 121) was planted with [].
+Field around (patch 293 121) was planted with [].
+Field around (patch 300 126) was planted with [].
+Field around (patch 292 117) was planted with [].
+Field around (patch 287 127) was planted with [].
+I ended up with $0.
+I am (farmer 65).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 167 43) was planted with [].
+I ended up with $0.
+I am (farmer 38).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 232 64) was planted with [].
+Field around (patch 233 71) was planted with [].
+Field around (patch 226 82) was planted with [].
+Field around (patch 246 71) was planted with [].
+Field around (patch 246 67) was planted with [].
+Field around (patch 236 72) was planted with [].
+Field around (patch 230 84) was planted with [].
+Field around (patch 238 75) was planted with [].
+Field around (patch 236 69) was planted with [].
+Field around (patch 231 73) was planted with [].
+Field around (patch 231 68) was planted with [].
+Field around (patch 233 70) was planted with [].
+Field around (patch 231 84) was planted with [].
+Field around (patch 245 73) was planted with [].
+Field around (patch 228 68) was planted with [].
+Field around (patch 234 79) was planted with [].
+Field around (patch 232 80) was planted with [].
+Field around (patch 237 72) was planted with [].
+Field around (patch 243 66) was planted with [].
+Field around (patch 238 81) was planted with [].
+I ended up with $0.
+I am (farmer 137).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 240 105) was planted with [].
+Field around (patch 246 104) was planted with [].
+Field around (patch 245 100) was planted with [].
+Field around (patch 248 101) was planted with [].
+Field around (patch 237 108) was planted with [].
+Field around (patch 241 99) was planted with [].
+Field around (patch 249 96) was planted with [].
+Field around (patch 227 98) was planted with [].
+Field around (patch 241 106) was planted with [].
+Field around (patch 242 100) was planted with [].
+Field around (patch 239 104) was planted with [].
+Field around (patch 239 103) was planted with [].
+Field around (patch 238 103) was planted with [].
+Field around (patch 245 105) was planted with [].
+I ended up with $0.
+I am (farmer 66).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 202 50) was planted with [].
+I ended up with $0.
+I am (farmer 60).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 227 94) was planted with [].
+I ended up with $0.
+I am (farmer 189).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 173 78) was planted with [].
+Field around (patch 174 76) was planted with [].
+Field around (patch 173 75) was planted with [].
+I ended up with $0.
+I am (farmer 428).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 133 23) was planted with [].
+I ended up with $0.
+I am (farmer 288).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 296 126) was planted with [].
+Field around (patch 297 127) was planted with [].
+I ended up with $0.
+I am (farmer 280).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 167 27) was planted with [].
+I ended up with $0.
+I am (farmer 58).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 223 92) was planted with [].
+I ended up with $0.
+I am (farmer 51).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 273 82) was planted with [].
+I ended up with $0.
+I am (farmer 330).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 184 105) was planted with [].
+I ended up with $0.
+I am (farmer 232).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 195 102) was planted with [].
+I ended up with $0.
+I am (farmer 186).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 246 121) was planted with [].
+I ended up with $0.
+I am (farmer 253).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 286 104) was planted with [].
+I ended up with $0.
+I am (farmer 4).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 227 75) was planted with [].
+Field around (patch 230 73) was planted with [].
+Field around (patch 227 74) was planted with [].
+I ended up with $0.
+I am (farmer 212).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 151 44) was planted with [].
+I ended up with $0.
+I am (farmer 301).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 175 89) was planted with [].
+I ended up with $0.
+I am (farmer 194).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 166 57) was planted with [].
+I ended up with $0.
+I am (farmer 300).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 281 98) was planted with [].
+I ended up with $0.
+I am (farmer 202).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 256 52) was planted with [].
+I ended up with $0.
+I am (farmer 169).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 261 82) was planted with [].
+I ended up with $0.
+I am (farmer 247).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 191 96) was planted with [].
+Field around (patch 194 100) was planted with [].
+Field around (patch 194 98) was planted with [].
+I ended up with $0.
+I am (farmer 524).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 134 7) was planted with [].
+I ended up with $0.
+I am (farmer 413).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 203 103) was planted with [].
+I ended up with $0.
+I am (farmer 411).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 260 50) was planted with [].
+I ended up with $0.
+I am (farmer 503).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 278 96) was planted with [].
+I ended up with $0.
+I am (farmer 271).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 173 69) was planted with [].
+I ended up with $0.
+I am (farmer 151).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 283 96) was planted with [].
+I ended up with $0.
+I am (farmer 43).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 193 51) was planted with [].
+Field around (patch 191 49) was planted with [].
+Field around (patch 190 52) was planted with [].
+Field around (patch 188 51) was planted with [].
+Field around (patch 184 49) was planted with [].
+Field around (patch 187 49) was planted with [].
+I ended up with $0.
+I am (farmer 197).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 165 50) was planted with [].
+I ended up with $0.
+I am (farmer 350).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 216 119) was planted with [].
+Field around (patch 214 116) was planted with [].
+I ended up with $0.
+I am (farmer 365).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 145 41) was planted with [].
+I ended up with $0.
+I am (farmer 384).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 168 47) was planted with [].
+I ended up with $0.
+I am (farmer 42).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 204 48) was planted with [].
+I ended up with $0.
+I am (farmer 302).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 166 75) was planted with [].
+I ended up with $0.
+I am (farmer 230).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 288 99) was planted with [].
+I ended up with $0.
+I am (farmer 487).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 272 130) was planted with [].
+I ended up with $0.
+I am (farmer 293).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 171 97) was planted with [].
+I ended up with $0.
+I am (farmer 13).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 285 91) was planted with [].
+I ended up with $0.
+I am (farmer 399).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 287 48) was planted with [].
+I ended up with $0.
+I am (farmer 464).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 173 117) was planted with [].
+I ended up with $0.
+I am (farmer 53).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 247 66) was planted with [].
+I ended up with $0.
+I am (farmer 49).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 220 66) was planted with [].
+I ended up with $0.
+I am (farmer 376).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 232 36) was planted with [].
+I ended up with $0.
+I am (farmer 75).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 261 93) was planted with [].
+Field around (patch 262 97) was planted with [].
+Field around (patch 262 94) was planted with [].
+Field around (patch 263 89) was planted with [].
+Field around (patch 264 91) was planted with [].
+Field around (patch 263 90) was planted with [].
+I ended up with $0.
+I am (farmer 499).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 292 110) was planted with [].
+I ended up with $0.
+I am (farmer 481).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 267 130) was planted with [].
+I ended up with $0.
+I am (farmer 281).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 217 119) was planted with [].
+I ended up with $0.
+I am (farmer 354).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 201 98) was planted with [].
+I ended up with $0.
+I am (farmer 390).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 288 88) was planted with [].
+I ended up with $0.
+I am (farmer 478).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 163 85) was planted with [].
+I ended up with $0.
+I am (farmer 329).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 147 67) was planted with [].
+I ended up with $0.
+I am (farmer 463).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 289 119) was planted with [].
+I ended up with $0.
+I am (farmer 347).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 220 120) was planted with [].
+I ended up with $0.
+I am (farmer 508).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 93 50) was planted with [].
+Field around (patch 97 51) was planted with [].
+Field around (patch 95 53) was planted with [].
+I ended up with $0.
+I am (farmer 277).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 177 26) was planted with [].
+Field around (patch 175 25) was planted with [].
+I ended up with $0.
+I am (farmer 498).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 203 144) was planted with [].
+Field around (patch 206 142) was planted with [].
+Field around (patch 205 141) was planted with [].
+Field around (patch 192 142) was planted with [].
+Field around (patch 199 144) was planted with [].
+Field around (patch 192 144) was planted with [].
+Field around (patch 194 141) was planted with [].
+Field around (patch 199 146) was planted with [].
+Field around (patch 192 140) was planted with [].
+Field around (patch 204 144) was planted with [].
+Field around (patch 202 141) was planted with [].
+Field around (patch 194 140) was planted with [].
+Field around (patch 205 145) was planted with [].
+Field around (patch 197 142) was planted with [].
+Field around (patch 203 142) was planted with [].
+I ended up with $0.
+I am (farmer 393).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 217 90) was planted with [].
+I ended up with $0.
+I am (farmer 336).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 251 48) was planted with [].
+Field around (patch 252 49) was planted with [].
+Field around (patch 255 49) was planted with [].
+Field around (patch 254 49) was planted with [].
+Field around (patch 253 46) was planted with [].
+I ended up with $0.
+I am (farmer 218).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 228 118) was planted with [].
+I ended up with $0.
+I am (farmer 21).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 171 21) was planted with [].
+I ended up with $0.
+I am (farmer 457).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 128 21) was planted with [].
+I ended up with $0.
+I am (farmer 484).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 154 86) was planted with [].
+I ended up with $0.
+I am (farmer 162).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 246 79) was planted with [].
+I ended up with $0.
+I am (farmer 454).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 228 133) was planted with [].
+I ended up with $0.
+I am (farmer 238).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 248 82) was planted with [].
+Field around (patch 247 81) was planted with [].
+I ended up with $0.
+I am (farmer 78).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 200 32) was planted with [].
+I ended up with $0.
+I am (farmer 466).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 284 94) was planted with [].
+Field around (patch 286 91) was planted with [].
+I ended up with $0.
+I am (farmer 480).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 209 37) was planted with [].
+I ended up with $0.
+I am (farmer 176).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 282 112) was planted with [].
+Field around (patch 283 112) was planted with [].
+Field around (patch 280 112) was planted with [].
+Field around (patch 280 113) was planted with [].
+Field around (patch 271 107) was planted with [].
+Field around (patch 282 108) was planted with [].
+Field around (patch 269 113) was planted with [].
+Field around (patch 264 104) was planted with [].
+Field around (patch 266 111) was planted with [].
+Field around (patch 271 101) was planted with [].
+Field around (patch 264 103) was planted with [].
+Field around (patch 275 108) was planted with [].
+Field around (patch 272 105) was planted with [].
+Field around (patch 282 111) was planted with [].
+Field around (patch 270 110) was planted with [].
+Field around (patch 268 114) was planted with [].
+Field around (patch 276 117) was planted with [].
+Field around (patch 268 108) was planted with [].
+Field around (patch 275 100) was planted with [].
+Field around (patch 282 113) was planted with [].
+Field around (patch 264 120) was planted with [].
+Field around (patch 278 120) was planted with [].
+Field around (patch 272 114) was planted with [].
+I ended up with $0.
+I am (farmer 57).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 271 96) was planted with [].
+Field around (patch 269 94) was planted with [].
+Field around (patch 270 94) was planted with [].
+Field around (patch 278 89) was planted with [].
+Field around (patch 280 94) was planted with [].
+Field around (patch 277 92) was planted with [].
+I ended up with $0.
+I am (farmer 67).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 189 81) was planted with [].
+I ended up with $0.
+I am (farmer 205).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 179 63) was planted with [].
+I ended up with $0.
+I am (farmer 165).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 196 95) was planted with [].
+Field around (patch 193 87) was planted with [].
+Field around (patch 194 91) was planted with [].
+I ended up with $0.
+I am (farmer 294).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 245 52) was planted with [].
+I ended up with $0.
+I am (farmer 185).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 161 45) was planted with [].
+Field around (patch 163 45) was planted with [].
+Field around (patch 161 46) was planted with [].
+I ended up with $0.
+I am (farmer 430).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 163 35) was planted with [].
+I ended up with $0.
+I am (farmer 415).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 167 50) was planted with [].
+I ended up with $0.
+I am (farmer 74).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 176 40) was planted with [].
+I ended up with $0.
+I am (farmer 116).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 204 91) was planted with [].
+I ended up with $0.
+I am (farmer 447).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 292 106) was planted with [].
+Field around (patch 288 105) was planted with [].
+I ended up with $0.
+I am (farmer 424).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 185 32) was planted with [].
+I ended up with $0.
+I am (farmer 246).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 301 129) was planted with [].
+I ended up with $0.
+I am (farmer 504).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 168 37) was planted with [].
+I ended up with $0.
+I am (farmer 275).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 178 72) was planted with [].
+I ended up with $0.
+I am (farmer 290).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 274 126) was planted with [].
+I ended up with $0.
+I am (farmer 475).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 146 28) was planted with [].
+I ended up with $0.
+I am (farmer 133).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 164 60) was planted with [].
+I ended up with $0.
+I am (farmer 395).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 143 37) was planted with [].
+Field around (patch 143 35) was planted with [].
+I ended up with $0.
+I am (farmer 355).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 288 130) was planted with [].
+I ended up with $0.
+I am (farmer 402).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 210 124) was planted with [].
+Field around (patch 210 127) was planted with [].
+Field around (patch 208 128) was planted with [].
+I ended up with $0.
+I am (farmer 70).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 212 93) was planted with [].
+I ended up with $0.
+I am (farmer 381).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 224 83) was planted with [].
+I ended up with $0.
+I am (farmer 259).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 173 24) was planted with [].
+I ended up with $0.
+I am (farmer 102).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 174 64) was planted with [].
+I ended up with $0.
+I am (farmer 448).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 282 104) was planted with [].
+I ended up with $0.
+I am (farmer 0).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 250 100) was planted with [].
+I ended up with $0.
+I am (farmer 171).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 287 90) was planted with [].
+I ended up with $0.
+I am (farmer 11).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 182 57) was planted with [].
+I ended up with $0.
+I am (farmer 10).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 243 81) was planted with [].
+Field around (patch 243 79) was planted with [].
+Field around (patch 241 80) was planted with [].
+I ended up with $0.
+I am (farmer 316).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 288 50) was planted with [].
+I ended up with $0.
+I am (farmer 63).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 193 46) was planted with [].
+Field around (patch 193 47) was planted with [].
+Field around (patch 197 50) was planted with [].
+I ended up with $0.
+I am (farmer 348).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 208 43) was planted with [].
+I ended up with $0.
+I am (farmer 154).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 224 85) was planted with [].
+I ended up with $0.
+I am (farmer 337).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 202 112) was planted with [].
+I ended up with $0.
+I am (farmer 325).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 176 101) was planted with [].
+I ended up with $0.
+I am (farmer 167).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 249 87) was planted with [].
+Field around (patch 251 89) was planted with [].
+I ended up with $0.
+I am (farmer 311).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 174 73) was planted with [].
+I ended up with $0.
+I am (farmer 477).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 219 127) was planted with [].
+I ended up with $0.
+I am (farmer 371).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 146 94) was planted with [].
+Field around (patch 143 95) was planted with [].
+Field around (patch 148 96) was planted with [].
+Field around (patch 143 96) was planted with [].
+Field around (patch 146 98) was planted with [].
+Field around (patch 145 95) was planted with [].
+I ended up with $0.
+I am (farmer 440).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 290 103) was planted with [].
+I ended up with $0.
+I am (farmer 55).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 255 92) was planted with [].
+Field around (patch 254 93) was planted with [].
+Field around (patch 257 91) was planted with [].
+I ended up with $0.
+I am (farmer 239).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 114 29) was planted with [].
+I ended up with $0.
+I am (farmer 130).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 185 30) was planted with [].
+I ended up with $0.
+I am (farmer 85).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 107 35) was planted with [].
+I ended up with $0.
+I am (farmer 32).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 270 72) was planted with [].
+I ended up with $0.
+I am (farmer 383).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 187 108) was planted with [].
+I ended up with $0.
+I am (farmer 372).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 281 93) was planted with [].
+I ended up with $0.
+I am (farmer 139).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 182 104) was planted with [].
+I ended up with $0.
+I am (farmer 248).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 170 14) was planted with [].
+I ended up with $0.
+I am (farmer 68).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 248 96) was planted with [].
+I ended up with $0.
+I am (farmer 525).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 147 86) was planted with [].
+I ended up with $0.
+I am (farmer 388).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 220 117) was planted with [].
+I ended up with $0.
+I am (farmer 283).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 279 103) was planted with [].
+I ended up with $0.
+I am (farmer 488).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 159 39) was planted with [].
+I ended up with $0.
+I am (farmer 2).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 205 61) was planted with [].
+Field around (patch 203 67) was planted with [].
+Field around (patch 208 65) was planted with [].
+Field around (patch 203 64) was planted with [].
+Field around (patch 202 57) was planted with [].
+Field around (patch 206 56) was planted with [].
+Field around (patch 202 62) was planted with [].
+Field around (patch 215 61) was planted with [].
+Field around (patch 207 65) was planted with [].
+Field around (patch 200 57) was planted with [].
+Field around (patch 213 66) was planted with [].
+Field around (patch 215 65) was planted with [].
+Field around (patch 215 64) was planted with [].
+Field around (patch 207 58) was planted with [].
+Field around (patch 207 59) was planted with [].
+Field around (patch 215 75) was planted with [].
+Field around (patch 211 60) was planted with [].
+Field around (patch 200 60) was planted with [].
+Field around (patch 212 56) was planted with [].
+I ended up with $0.
+I am (farmer 213).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 184 89) was planted with [].
+Field around (patch 185 88) was planted with [].
+Field around (patch 181 87) was planted with [].
+I ended up with $0.
+I am (farmer 501).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 228 30) was planted with [].
+I ended up with $0.
+I am (farmer 286).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 150 15) was planted with [].
+I ended up with $0.
+I am (farmer 314).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 163 80) was planted with [].
+Field around (patch 164 82) was planted with [].
+Field around (patch 160 74) was planted with [].
+Field around (patch 167 82) was planted with [].
+Field around (patch 157 74) was planted with [].
+Field around (patch 169 77) was planted with [].
+Field around (patch 159 76) was planted with [].
+Field around (patch 154 73) was planted with [].
+Field around (patch 156 74) was planted with [].
+Field around (patch 162 81) was planted with [].
+Field around (patch 169 82) was planted with [].
+Field around (patch 161 76) was planted with [].
+Field around (patch 158 76) was planted with [].
+Field around (patch 156 72) was planted with [].
+Field around (patch 156 77) was planted with [].
+Field around (patch 154 71) was planted with [].
+Field around (patch 167 84) was planted with [].
+Field around (patch 169 67) was planted with [].
+Field around (patch 171 69) was planted with [].
+Field around (patch 156 70) was planted with [].
+I ended up with $0.
+I am (farmer 446).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 241 152) was planted with [].
+Field around (patch 240 153) was planted with [].
+Field around (patch 241 150) was planted with [].
+I ended up with $0.
+I am (farmer 221).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 220 70) was planted with [].
+I ended up with $0.
+I am (farmer 434).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 205 130) was planted with [].
+I ended up with $0.
+I am (farmer 386).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 141 27) was planted with [].
+I ended up with $0.
+I am (farmer 400).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 132 25) was planted with [].
+I ended up with $0.
+I am (farmer 412).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 210 121) was planted with [].
+I ended up with $0.
+I am (farmer 398).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 146 60) was planted with [].
+I ended up with $0.
+I am (farmer 357).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 222 30) was planted with [].
+I ended up with $0.
+I am (farmer 265).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 238 120) was planted with [].
+Field around (patch 241 121) was planted with [].
+Field around (patch 237 117) was planted with [].
+Field around (patch 238 130) was planted with [].
+Field around (patch 244 130) was planted with [].
+Field around (patch 243 113) was planted with [].
+Field around (patch 248 126) was planted with [].
+Field around (patch 241 127) was planted with [].
+Field around (patch 247 118) was planted with [].
+Field around (patch 244 113) was planted with [].
+Field around (patch 231 121) was planted with [].
+Field around (patch 243 110) was planted with [].
+Field around (patch 249 131) was planted with [].
+Field around (patch 242 116) was planted with [].
+Field around (patch 247 112) was planted with [].
+Field around (patch 234 119) was planted with [].
+Field around (patch 244 119) was planted with [].
+Field around (patch 248 119) was planted with [].
+Field around (patch 247 126) was planted with [].
+Field around (patch 229 121) was planted with [].
+Field around (patch 241 120) was planted with [].
+Field around (patch 228 124) was planted with [].
+Field around (patch 243 127) was planted with [].
+Field around (patch 247 130) was planted with [].
+I ended up with $0.
+I am (farmer 172).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 163 70) was planted with [].
+I ended up with $0.
+I am (farmer 54).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 185 76) was planted with [].
+Field around (patch 196 72) was planted with [].
+Field around (patch 191 61) was planted with [].
+Field around (patch 196 57) was planted with [].
+Field around (patch 180 60) was planted with [].
+Field around (patch 189 65) was planted with [].
+Field around (patch 183 69) was planted with [].
+Field around (patch 196 71) was planted with [].
+Field around (patch 184 57) was planted with [].
+Field around (patch 191 70) was planted with [].
+Field around (patch 197 75) was planted with [].
+Field around (patch 183 59) was planted with [].
+Field around (patch 188 73) was planted with [].
+Field around (patch 185 54) was planted with [].
+Field around (patch 190 60) was planted with [].
+Field around (patch 180 72) was planted with [].
+Field around (patch 193 75) was planted with [].
+Field around (patch 196 58) was planted with [].
+Field around (patch 192 65) was planted with [].
+Field around (patch 192 62) was planted with [].
+Field around (patch 183 62) was planted with [].
+Field around (patch 190 56) was planted with [].
+Field around (patch 182 72) was planted with [].
+Field around (patch 185 72) was planted with [].
+Field around (patch 181 53) was planted with [].
+Field around (patch 189 67) was planted with [].
+I ended up with $0.
+I am (farmer 146).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 262 105) was planted with [].
+I ended up with $0.
+I am (farmer 89).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 284 100) was planted with [].
+I ended up with $0.
+I am (farmer 98).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 255 67) was planted with [].
+I ended up with $0.
+I am (farmer 90).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 219 73) was planted with [].
+I ended up with $0.
+I am (farmer 191).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 254 55) was planted with [].
+I ended up with $0.
+I am (farmer 377).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 151 22) was planted with [].
+Field around (patch 149 21) was planted with [].
+Field around (patch 149 19) was planted with [].
+I ended up with $0.
+I am (farmer 368).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 190 77) was planted with [].
+I ended up with $0.
+I am (farmer 97).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 235 92) was planted with [].
+I ended up with $0.
+I am (farmer 91).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 250 86) was planted with [].
+I ended up with $0.
+I am (farmer 500).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 200 106) was planted with [].
+I ended up with $0.
+I am (farmer 319).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 235 41) was planted with [].
+I ended up with $0.
+I am (farmer 479).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 204 111) was planted with [].
+I ended up with $0.
+I am (farmer 366).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 170 100) was planted with [].
+I ended up with $0.
+I am (farmer 318).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 151 37) was planted with [].
+I ended up with $0.
+I am (farmer 112).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 217 67) was planted with [].
+Field around (patch 223 60) was planted with [].
+Field around (patch 222 58) was planted with [].
+Field around (patch 224 59) was planted with [].
+Field around (patch 219 59) was planted with [].
+Field around (patch 217 61) was planted with [].
+Field around (patch 224 67) was planted with [].
+Field around (patch 217 70) was planted with [].
+Field around (patch 222 69) was planted with [].
+Field around (patch 224 62) was planted with [].
+I ended up with $0.
+I am (farmer 518).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 216 76) was planted with [].
+I ended up with $0.
+I am (farmer 516).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 286 118) was planted with [].
+I ended up with $0.
+I am (farmer 449).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 287 128) was planted with [].
+I ended up with $0.
+I am (farmer 382).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 195 108) was planted with [].
+I ended up with $0.
+I am (farmer 249).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 284 89) was planted with [].
+I ended up with $0.
+I am (farmer 502).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 127 43) was planted with [].
+Field around (patch 126 46) was planted with [].
+Field around (patch 137 33) was planted with [].
+Field around (patch 127 39) was planted with [].
+Field around (patch 127 38) was planted with [].
+Field around (patch 119 45) was planted with [].
+Field around (patch 131 38) was planted with [].
+Field around (patch 120 30) was planted with [].
+Field around (patch 128 38) was planted with [].
+Field around (patch 131 39) was planted with [].
+Field around (patch 124 40) was planted with [].
+Field around (patch 117 43) was planted with [].
+Field around (patch 125 32) was planted with [].
+Field around (patch 129 36) was planted with [].
+Field around (patch 119 25) was planted with [].
+Field around (patch 122 34) was planted with [].
+Field around (patch 138 32) was planted with [].
+Field around (patch 132 36) was planted with [].
+Field around (patch 121 39) was planted with [].
+Field around (patch 123 35) was planted with [].
+Field around (patch 131 42) was planted with [].
+Field around (patch 120 28) was planted with [].
+Field around (patch 118 32) was planted with [].
+Field around (patch 129 37) was planted with [].
+I ended up with $0.
+I am (farmer 513).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 225 148) was planted with [].
+I ended up with $0.
+I am (farmer 292).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 175 97) was planted with [].
+I ended up with $0.
+I am (farmer 235).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 198 105) was planted with [].
+I ended up with $0.
+I am (farmer 394).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 226 31) was planted with [].
+I ended up with $0.
+I am (farmer 305).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 202 107) was planted with [].
+I ended up with $0.
+I am (farmer 144).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 248 78) was planted with [].
+I ended up with $0.
+I am (farmer 187).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 201 72) was planted with [].
+I ended up with $0.
+I am (farmer 493).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 261 40) was planted with [].
+Field around (patch 260 43) was planted with [].
+Field around (patch 260 36) was planted with [].
+Field around (patch 261 42) was planted with [].
+I ended up with $0.
+I am (farmer 433).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 178 75) was planted with [].
+I ended up with $0.
+I am (farmer 8).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 258 88) was planted with [].
+I ended up with $0.
+I am (farmer 164).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 155 19) was planted with [].
+Field around (patch 158 18) was planted with [].
+Field around (patch 156 22) was planted with [].
+Field around (patch 158 23) was planted with [].
+Field around (patch 166 20) was planted with [].
+Field around (patch 152 27) was planted with [].
+Field around (patch 161 23) was planted with [].
+Field around (patch 151 11) was planted with [].
+Field around (patch 159 24) was planted with [].
+Field around (patch 165 20) was planted with [].
+Field around (patch 161 25) was planted with [].
+Field around (patch 164 11) was planted with [].
+Field around (patch 159 20) was planted with [].
+Field around (patch 164 13) was planted with [].
+Field around (patch 161 24) was planted with [].
+Field around (patch 157 19) was planted with [].
+Field around (patch 162 12) was planted with [].
+I ended up with $0.
+I am (farmer 392).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 248 133) was planted with [].
+I ended up with $0.
+I am (farmer 385).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 138 36) was planted with [].
+I ended up with $0.
+I am (farmer 461).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 290 45) was planted with [].
+I ended up with $0.
+I am (farmer 111).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 192 35) was planted with [].
+Field around (patch 192 38) was planted with [].
+Field around (patch 192 34) was planted with [].
+I ended up with $0.
+I am (farmer 406).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 176 108) was planted with [].
+I ended up with $0.
+I am (farmer 215).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 184 32) was planted with [].
+I ended up with $0.
+I am (farmer 341).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 239 37) was planted with [].
+Field around (patch 249 40) was planted with [].
+Field around (patch 249 44) was planted with [].
+Field around (patch 245 40) was planted with [].
+Field around (patch 253 38) was planted with [].
+Field around (patch 252 42) was planted with [].
+Field around (patch 248 36) was planted with [].
+Field around (patch 239 36) was planted with [].
+Field around (patch 245 47) was planted with [].
+Field around (patch 246 38) was planted with [].
+Field around (patch 258 46) was planted with [].
+Field around (patch 242 34) was planted with [].
+Field around (patch 238 38) was planted with [].
+Field around (patch 256 43) was planted with [].
+Field around (patch 243 33) was planted with [].
+Field around (patch 251 41) was planted with [].
+Field around (patch 237 38) was planted with [].
+I ended up with $0.
+I am (farmer 109).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 267 66) was planted with [].
+Field around (patch 268 67) was planted with [].
+I ended up with $0.
+I am (farmer 69).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 249 59) was planted with [].
+Field around (patch 248 55) was planted with [].
+I ended up with $0.
+I am (farmer 359).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 163 95) was planted with [].
+I ended up with $0.
+I am (farmer 188).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 282 88) was planted with [].
+I ended up with $0.
+I am (farmer 1).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 203 77) was planted with [].
+I ended up with $0.
+I am (farmer 380).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 188 116) was planted with [].
+I ended up with $0.
+I am (farmer 407).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 189 78) was planted with [].
+Field around (patch 185 78) was planted with [].
+I ended up with $0.
+I am (farmer 472).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 260 135) was planted with [].
+Field around (patch 259 131) was planted with [].
+Field around (patch 264 134) was planted with [].
+I ended up with $0.
+I am (farmer 180).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 175 84) was planted with [].
+I ended up with $0.
+I am (farmer 72).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 269 78) was planted with [].
+I ended up with $0.
+I am (farmer 272).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 178 96) was planted with [].
+I ended up with $0.
+I am (farmer 245).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 189 77) was planted with [].
+I ended up with $0.
+I am (farmer 120).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 222 100) was planted with [].
+I ended up with $0.
+I am (farmer 207).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 156 33) was planted with [].
+I ended up with $0.
+I am (farmer 264).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 262 49) was planted with [].
+I ended up with $0.
+I am (farmer 476).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 126 30) was planted with [].
+I ended up with $0.
+I am (farmer 108).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 292 98) was planted with [].
+I ended up with $0.
+I am (farmer 219).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 227 90) was planted with [].
+I ended up with $0.
+I am (farmer 150).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 187 35) was planted with [].
+I ended up with $0.
+I am (farmer 491).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 219 126) was planted with [].
+Field around (patch 218 124) was planted with [].
+Field around (patch 215 120) was planted with [].
+I ended up with $0.
+I am (farmer 45).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 276 97) was planted with [].
+Field around (patch 276 96) was planted with [].
+I ended up with $0.
+I am (farmer 296).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 110 44) was planted with [].
+I ended up with $0.
+I am (farmer 344).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 167 97) was planted with [].
+Field around (patch 179 92) was planted with [].
+Field around (patch 185 83) was planted with [].
+Field around (patch 165 94) was planted with [].
+Field around (patch 174 92) was planted with [].
+Field around (patch 175 92) was planted with [].
+Field around (patch 166 93) was planted with [].
+Field around (patch 169 94) was planted with [].
+Field around (patch 165 95) was planted with [].
+Field around (patch 176 94) was planted with [].
+Field around (patch 174 87) was planted with [].
+I ended up with $0.
+I am (farmer 353).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 291 93) was planted with [].
+I ended up with $0.
+I am (farmer 198).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 163 54) was planted with [].
+I ended up with $0.
+I am (farmer 444).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 188 114) was planted with [].
+Field around (patch 180 108) was planted with [].
+Field around (patch 183 110) was planted with [].
+Field around (patch 182 119) was planted with [].
+Field around (patch 180 112) was planted with [].
+Field around (patch 190 116) was planted with [].
+Field around (patch 186 113) was planted with [].
+Field around (patch 182 117) was planted with [].
+Field around (patch 189 116) was planted with [].
+I ended up with $0.
+I am (farmer 138).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 284 104) was planted with [].
+I ended up with $0.
+I am (farmer 209).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 232 117) was planted with [].
+I ended up with $0.
+I am (farmer 80).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 262 78) was planted with [].
+Field around (patch 260 81) was planted with [].
+Field around (patch 261 77) was planted with [].
+I ended up with $0.
+I am (farmer 175).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 183 92) was planted with [].
+I ended up with $0.
+I am (farmer 322).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 166 40) was planted with [].
+I ended up with $0.
+I am (farmer 23).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 281 64) was planted with [].
+I ended up with $0.
+I am (farmer 129).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 235 62) was planted with [].
+I ended up with $0.
+I am (farmer 59).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 207 47) was planted with [].
+Field around (patch 206 50) was planted with [].
+I ended up with $0.
+I am (farmer 64).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 286 82) was planted with [].
+I ended up with $0.
+I am (farmer 274).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 183 84) was planted with [].
+I ended up with $0.
+I am (farmer 77).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 273 76) was planted with [].
+Field around (patch 268 72) was planted with [].
+Field around (patch 274 74) was planted with [].
+Field around (patch 288 83) was planted with [].
+Field around (patch 268 82) was planted with [].
+Field around (patch 271 78) was planted with [].
+Field around (patch 270 75) was planted with [].
+Field around (patch 268 80) was planted with [].
+Field around (patch 288 79) was planted with [].
+Field around (patch 281 85) was planted with [].
+Field around (patch 289 72) was planted with [].
+Field around (patch 288 74) was planted with [].
+Field around (patch 292 76) was planted with [].
+Field around (patch 290 82) was planted with [].
+Field around (patch 266 81) was planted with [].
+Field around (patch 285 77) was planted with [].
+Field around (patch 286 75) was planted with [].
+Field around (patch 269 70) was planted with [].
+Field around (patch 275 73) was planted with [].
+Field around (patch 281 79) was planted with [].
+Field around (patch 292 77) was planted with [].
+Field around (patch 281 83) was planted with [].
+Field around (patch 275 74) was planted with [].
+Field around (patch 281 75) was planted with [].
+Field around (patch 276 79) was planted with [].
+Field around (patch 284 82) was planted with [].
+Field around (patch 270 77) was planted with [].
+Field around (patch 280 84) was planted with [].
+I ended up with $0.
+I am (farmer 34).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 219 54) was planted with [].
+I ended up with $0.
+I am (farmer 251).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 217 31) was planted with [].
+Field around (patch 217 30) was planted with [].
+I ended up with $0.
+I am (farmer 307).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 251 128) was planted with [].
+Field around (patch 250 126) was planted with [].
+I ended up with $0.
+I am (farmer 333).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 226 130) was planted with [].
+Field around (patch 227 128) was planted with [].
+I ended up with $0.
+I am (farmer 486).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 163 101) was planted with [].
+Field around (patch 157 100) was planted with [].
+Field around (patch 154 89) was planted with [].
+Field around (patch 159 95) was planted with [].
+Field around (patch 155 95) was planted with [].
+Field around (patch 156 100) was planted with [].
+Field around (patch 161 96) was planted with [].
+Field around (patch 166 102) was planted with [].
+Field around (patch 156 103) was planted with [].
+Field around (patch 161 93) was planted with [].
+I ended up with $0.
+I am (farmer 327).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 204 100) was planted with [].
+I ended up with $0.
+I am (farmer 334).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 285 97) was planted with [].
+I ended up with $0.
+I am (farmer 244).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 155 39) was planted with [].
+I ended up with $0.
+I am (farmer 155).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 269 65) was planted with [].
+Field around (patch 269 68) was planted with [].
+I ended up with $0.
+I am (farmer 15).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 217 86) was planted with [].
+Field around (patch 216 85) was planted with [].
+I ended up with $0.
+I am (farmer 103).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 190 30) was planted with [].
+I ended up with $0.
+I am (farmer 306).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 174 24) was planted with [].
+I ended up with $0.
+I am (farmer 131).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 201 90) was planted with [].
+Field around (patch 202 93) was planted with [].
+Field around (patch 197 91) was planted with [].
+I ended up with $0.
+I am (farmer 223).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 156 49) was planted with [].
+I ended up with $0.
+I am (farmer 260).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 97 16) was planted with [].
+I ended up with $0.
+I am (farmer 403).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 291 91) was planted with [].
+I ended up with $0.
+I am (farmer 375).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 127 25) was planted with [].
+I ended up with $0.
+I am (farmer 419).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 156 84) was planted with [].
+I ended up with $0.
+I am (farmer 414).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 91 21) was planted with [].
+I ended up with $0.
+I am (farmer 482).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 292 101) was planted with [].
+I ended up with $0.
+I am (farmer 255).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 275 99) was planted with [].
+I ended up with $0.
+I am (farmer 270).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 230 39) was planted with [].
+I ended up with $0.
+I am (farmer 208).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 167 54) was planted with [].
+I ended up with $0.
+I am (farmer 437).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 143 22) was planted with [].
+I ended up with $0.
+I am (farmer 113).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 285 100) was planted with [].
+I ended up with $0.
+I am (farmer 342).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 278 129) was planted with [].
+I ended up with $0.
+I am (farmer 462).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 141 41) was planted with [].
+I ended up with $0.
+I am (farmer 226).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 143 4) was planted with [].
+I ended up with $0.
+I am (farmer 426).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 291 95) was planted with [].
+I ended up with $0.
+I am (farmer 177).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 172 29) was planted with [].
+I ended up with $0.
+I am (farmer 99).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 202 78) was planted with [].
+I ended up with $0.
+I am (farmer 497).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 106 31) was planted with [].
+Field around (patch 85 22) was planted with [].
+Field around (patch 95 11) was planted with [].
+Field around (patch 100 21) was planted with [].
+Field around (patch 107 20) was planted with [].
+Field around (patch 103 16) was planted with [].
+Field around (patch 101 29) was planted with [].
+Field around (patch 100 25) was planted with [].
+Field around (patch 84 19) was planted with [].
+Field around (patch 102 24) was planted with [].
+Field around (patch 93 14) was planted with [].
+Field around (patch 106 23) was planted with [].
+Field around (patch 101 27) was planted with [].
+Field around (patch 91 13) was planted with [].
+Field around (patch 107 22) was planted with [].
+Field around (patch 107 27) was planted with [].
+Field around (patch 90 12) was planted with [].
+Field around (patch 98 12) was planted with [].
+Field around (patch 102 21) was planted with [].
+I ended up with $0.
+I am (farmer 470).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 261 47) was planted with [].
+I ended up with $0.
+I am (farmer 183).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 162 30) was planted with [].
+Field around (patch 161 29) was planted with [].
+I ended up with $0.
+I am (farmer 203).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 57 25) was planted with [].
+I ended up with $0.
+I am (farmer 193).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 165 32) was planted with [].
+I ended up with $0.
+I am (farmer 258).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 218 72) was planted with [].
+I ended up with $0.
+I am (farmer 27).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 231 93) was planted with [].
+I ended up with $0.
+I am (farmer 7).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 234 67) was planted with [].
+I ended up with $0.
+I am (farmer 423).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 286 126) was planted with [].
+I ended up with $0.
+I am (farmer 442).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 166 48) was planted with [].
+I ended up with $0.
+I am (farmer 104).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 273 98) was planted with [].
+I ended up with $0.
+I am (farmer 427).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 302 121) was planted with [].
+I ended up with $0.
+I am (farmer 267).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 201 103) was planted with [].
+I ended up with $0.
+I am (farmer 416).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 136 34) was planted with [].
+I ended up with $0.
+I am (farmer 28).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 225 88) was planted with [].
+I ended up with $0.
+I am (farmer 228).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 233 36) was planted with [].
+I ended up with $0.
+I am (farmer 31).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 234 99) was planted with [].
+I ended up with $0.
+I am (farmer 96).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 220 85) was planted with [].
+I ended up with $0.
+I am (farmer 158).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 197 86) was planted with [].
+I ended up with $0.
+I am (farmer 121).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 218 89) was planted with [].
+I ended up with $0.
+I am (farmer 6).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 212 54) was planted with [].
+I ended up with $0.
+I am (farmer 135).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 286 100) was planted with [].
+I ended up with $0.
+I am (farmer 509).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 262 128) was planted with [].
+I ended up with $0.
+I am (farmer 495).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 212 127) was planted with [].
+I ended up with $0.
+I am (farmer 404).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 246 136) was planted with [].
+Field around (patch 240 145) was planted with [].
+Field around (patch 248 148) was planted with [].
+Field around (patch 247 139) was planted with [].
+Field around (patch 247 136) was planted with [].
+Field around (patch 250 136) was planted with [].
+Field around (patch 241 143) was planted with [].
+Field around (patch 237 146) was planted with [].
+Field around (patch 246 148) was planted with [].
+Field around (patch 236 137) was planted with [].
+Field around (patch 237 138) was planted with [].
+Field around (patch 241 146) was planted with [].
+I ended up with $0.
+I am (farmer 297).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 155 87) was planted with [].
+I ended up with $0.
+I am (farmer 453).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 199 120) was planted with [].
+I ended up with $0.
+I am (farmer 285).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 158 38) was planted with [].
+Field around (patch 159 38) was planted with [].
+I ended up with $0.
+I am (farmer 82).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 197 88) was planted with [].
+I ended up with $0.
+I am (farmer 88).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 173 31) was planted with [].
+Field around (patch 179 37) was planted with [].
+Field around (patch 178 33) was planted with [].
+Field around (patch 180 35) was planted with [].
+Field around (patch 182 43) was planted with [].
+Field around (patch 169 58) was planted with [].
+Field around (patch 175 38) was planted with [].
+Field around (patch 173 55) was planted with [].
+Field around (patch 176 34) was planted with [].
+Field around (patch 179 51) was planted with [].
+Field around (patch 177 40) was planted with [].
+Field around (patch 170 48) was planted with [].
+Field around (patch 177 53) was planted with [].
+Field around (patch 175 48) was planted with [].
+Field around (patch 169 37) was planted with [].
+Field around (patch 171 39) was planted with [].
+Field around (patch 175 37) was planted with [].
+Field around (patch 176 57) was planted with [].
+Field around (patch 169 47) was planted with [].
+Field around (patch 169 48) was planted with [].
+Field around (patch 176 43) was planted with [].
+Field around (patch 175 54) was planted with [].
+Field around (patch 176 33) was planted with [].
+Field around (patch 177 61) was planted with [].
+Field around (patch 181 40) was planted with [].
+Field around (patch 182 39) was planted with [].
+Field around (patch 173 61) was planted with [].
+I ended up with $0.
+I am (farmer 496).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 303 122) was planted with [].
+Field around (patch 303 126) was planted with [].
+I ended up with $0.
+I am (farmer 507).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 147 75) was planted with [].
+I ended up with $0.
+I am (farmer 107).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 240 78) was planted with [].
+I ended up with $0.
+I am (farmer 92).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 243 99) was planted with [].
+I ended up with $0.
+I am (farmer 168).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 201 74) was planted with [].
+I ended up with $0.
+I am (farmer 520).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 222 71) was planted with [].
+I ended up with $0.
+I am (farmer 343).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 198 100) was planted with [].
+I ended up with $0.
+I am (farmer 312).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 177 69) was planted with [].
+Field around (patch 179 70) was planted with [].
+Field around (patch 172 70) was planted with [].
+Field around (patch 173 72) was planted with [].
+Field around (patch 179 69) was planted with [].
+Field around (patch 176 70) was planted with [].
+I ended up with $0.
+I am (farmer 242).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 289 92) was planted with [].
+I ended up with $0.
+I am (farmer 471).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 144 32) was planted with [].
+I ended up with $0.
+I am (farmer 178).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 256 106) was planted with [].
+Field around (patch 256 97) was planted with [].
+Field around (patch 257 102) was planted with [].
+Field around (patch 256 98) was planted with [].
+Field around (patch 257 99) was planted with [].
+Field around (patch 257 107) was planted with [].
+I ended up with $0.
+I am (farmer 62).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 261 80) was planted with [].
+I ended up with $0.
+I am (farmer 22).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 65 30) was planted with [].
+I ended up with $0.
+I am (farmer 234).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 176 84) was planted with [].
+I ended up with $0.
+I am (farmer 35).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 258 85) was planted with [].
+I ended up with $0.
+I am (farmer 106).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 205 99) was planted with [].
+I ended up with $0.
+I am (farmer 459).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 97 34) was planted with [].
+I ended up with $0.
+I am (farmer 184).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 164 44) was planted with [].
+I ended up with $0.
+I am (farmer 363).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 84 36) was planted with [].
+I ended up with $0.
+I am (farmer 328).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 216 78) was planted with [].
+I ended up with $0.
+I am (farmer 29).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 290 83) was planted with [].
+I ended up with $0.
+I am (farmer 153).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 254 104) was planted with [].
+Field around (patch 256 105) was planted with [].
+I ended up with $0.
+I am (farmer 41).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 250 99) was planted with [].
+I ended up with $0.
+I am (farmer 291).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 168 85) was planted with [].
+Field around (patch 167 87) was planted with [].
+I ended up with $0.
+I am (farmer 76).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 184 85) was planted with [].
+I ended up with $0.
+I am (farmer 37).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 230 78) was planted with [].
+I ended up with $0.
+I am (farmer 39).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 185 40) was planted with [].
+I ended up with $0.
+I am (farmer 222).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 183 96) was planted with [].
+I ended up with $0.
+I am (farmer 303).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 248 44) was planted with [].
+I ended up with $0.
+I am (farmer 81).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 241 95) was planted with [].
+I ended up with $0.
+I am (farmer 61).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 192 77) was planted with [].
+I ended up with $0.
+I am (farmer 299).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 178 83) was planted with [].
+I ended up with $0.
+I am (farmer 352).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 293 126) was planted with [].
+I ended up with $0.
+I am (farmer 182).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 195 77) was planted with [].
+I ended up with $0.
+I am (farmer 149).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 285 92) was planted with [].
+I ended up with $0.
+I am (farmer 401).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 181 109) was planted with [].
+I ended up with $0.
+I am (farmer 250).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 267 98) was planted with [].
+I ended up with $0.
+I am (farmer 196).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 187 97) was planted with [].
+I ended up with $0.
+I am (farmer 323).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 165 36) was planted with [].
+Field around (patch 165 37) was planted with [].
+I ended up with $0.
+I am (farmer 204).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 90 38) was planted with [].
+I ended up with $0.
+I am (farmer 142).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 253 104) was planted with [].
+I ended up with $0.
+I am (farmer 345).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 216 124) was planted with [].
+I ended up with $0.
+I am (farmer 425).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 265 125) was planted with [].
+I ended up with $0.
+I am (farmer 358).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 204 101) was planted with [].
+I ended up with $0.
+I am (farmer 474).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 290 111) was planted with [].
+I ended up with $0.
+I am (farmer 528).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 226 122) was planted with [].
+I ended up with $0.
+I am (farmer 521).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 140 30) was planted with [].
+I ended up with $0.
+I am (farmer 298).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 160 89) was planted with [].
+I ended up with $0.
+I am (farmer 20).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 234 57) was planted with [].
+I ended up with $0.
+I am (farmer 418).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 106 44) was planted with [].
+I ended up with $0.
+I am (farmer 526).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 254 87) was planted with [].
+I ended up with $0.
+I am (farmer 71).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 199 53) was planted with [].
+I ended up with $0.
+I am (farmer 241).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 206 118) was planted with [].
+Field around (patch 212 115) was planted with [].
+Field around (patch 209 118) was planted with [].
+Field around (patch 206 116) was planted with [].
+I ended up with $0.
+I am (farmer 289).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 150 39) was planted with [].
+Field around (patch 152 39) was planted with [].
+I ended up with $0.
+I am (farmer 473).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 282 99) was planted with [].
+I ended up with $0.
+I am (farmer 332).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 247 79) was planted with [].
+I ended up with $0.
+I am (farmer 391).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 283 125) was planted with [].
+Field around (patch 281 125) was planted with [].
+I ended up with $0.
+I am (farmer 451).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 291 127) was planted with [].
+I ended up with $0.
+I am (farmer 236).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 245 115) was planted with [].
+I ended up with $0.
+I am (farmer 370).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 188 38) was planted with [].
+Field around (patch 187 39) was planted with [].
+I ended up with $0.
+I am (farmer 467).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 221 115) was planted with [].
+I ended up with $0.
+I am (farmer 73).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 264 97) was planted with [].
+Field around (patch 266 96) was planted with [].
+I ended up with $0.
+I am (farmer 44).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 217 55) was planted with [].
+I ended up with $0.
+I am (farmer 156).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 274 105) was planted with [].
+Field around (patch 274 108) was planted with [].
+I ended up with $0.
+I am (farmer 431).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 287 88) was planted with [].
+I ended up with $0.
+I am (farmer 468).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 159 92) was planted with [].
+I ended up with $0.
+I am (farmer 315).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 294 124) was planted with [].
+I ended up with $0.
+I am (farmer 126).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 209 95) was planted with [].
+I ended up with $0.
+I am (farmer 379).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 286 95) was planted with [].
+I ended up with $0.
+I am (farmer 95).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 207 43) was planted with [].
+I ended up with $0.
+I am (farmer 492).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 161 113) was planted with [].
+I ended up with $0.
+I am (farmer 483).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 40 48) was planted with [].
+I ended up with $0.
+I am (farmer 94).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 86 25) was planted with [].
+I ended up with $0.
+I am (farmer 140).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 238 51) was planted with [].
+I ended up with $0.
+I am (farmer 362).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 199 113) was planted with [].
+Field around (patch 191 116) was planted with [].
+Field around (patch 203 117) was planted with [].
+Field around (patch 199 109) was planted with [].
+Field around (patch 193 121) was planted with [].
+Field around (patch 198 109) was planted with [].
+Field around (patch 195 115) was planted with [].
+I ended up with $0.
+I am (farmer 147).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 158 30) was planted with [].
+I ended up with $0.
+I am (farmer 456).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 191 134) was planted with [].
+Field around (patch 185 136) was planted with [].
+Field around (patch 190 127) was planted with [].
+Field around (patch 189 120) was planted with [].
+Field around (patch 210 136) was planted with [].
+Field around (patch 205 133) was planted with [].
+Field around (patch 194 127) was planted with [].
+Field around (patch 186 129) was planted with [].
+Field around (patch 201 122) was planted with [].
+Field around (patch 209 122) was planted with [].
+Field around (patch 201 136) was planted with [].
+Field around (patch 206 121) was planted with [].
+Field around (patch 193 124) was planted with [].
+Field around (patch 194 135) was planted with [].
+Field around (patch 192 133) was planted with [].
+Field around (patch 199 133) was planted with [].
+Field around (patch 203 136) was planted with [].
+Field around (patch 201 128) was planted with [].
+Field around (patch 187 130) was planted with [].
+Field around (patch 209 136) was planted with [].
+Field around (patch 191 133) was planted with [].
+Field around (patch 190 120) was planted with [].
+Field around (patch 187 127) was planted with [].
+Field around (patch 184 128) was planted with [].
+Field around (patch 190 129) was planted with [].
+Field around (patch 200 130) was planted with [].
+Field around (patch 187 122) was planted with [].
+I ended up with $0.
+I am (farmer 389).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 160 37) was planted with [].
+I ended up with $0.
+I am (farmer 455).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 164 103) was planted with [].
+I ended up with $0.
+I am (farmer 5).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 261 90) was planted with [].
+I ended up with $0.
+I am (farmer 115).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 234 64) was planted with [].
+I ended up with $0.
+I am (farmer 266).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 273 49) was planted with [].
+Field around (patch 274 47) was planted with [].
+Field around (patch 272 39) was planted with [].
+Field around (patch 272 45) was planted with [].
+Field around (patch 280 45) was planted with [].
+Field around (patch 286 39) was planted with [].
+Field around (patch 274 51) was planted with [].
+Field around (patch 271 42) was planted with [].
+Field around (patch 273 45) was planted with [].
+Field around (patch 266 41) was planted with [].
+Field around (patch 271 47) was planted with [].
+Field around (patch 265 42) was planted with [].
+Field around (patch 282 45) was planted with [].
+Field around (patch 275 50) was planted with [].
+Field around (patch 264 50) was planted with [].
+Field around (patch 265 45) was planted with [].
+Field around (patch 281 45) was planted with [].
+Field around (patch 267 40) was planted with [].
+Field around (patch 265 49) was planted with [].
+Field around (patch 270 39) was planted with [].
+Field around (patch 262 40) was planted with [].
+I ended up with $0.
+I am (farmer 494).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 84 41) was planted with [].
+Field around (patch 79 34) was planted with [].
+Field around (patch 80 37) was planted with [].
+Field around (patch 85 26) was planted with [].
+Field around (patch 91 37) was planted with [].
+Field around (patch 86 42) was planted with [].
+Field around (patch 83 36) was planted with [].
+Field around (patch 94 42) was planted with [].
+Field around (patch 97 38) was planted with [].
+Field around (patch 91 25) was planted with [].
+Field around (patch 84 37) was planted with [].
+Field around (patch 97 29) was planted with [].
+Field around (patch 87 32) was planted with [].
+Field around (patch 89 39) was planted with [].
+Field around (patch 87 26) was planted with [].
+Field around (patch 81 28) was planted with [].
+Field around (patch 97 27) was planted with [].
+Field around (patch 94 27) was planted with [].
+Field around (patch 92 25) was planted with [].
+Field around (patch 82 29) was planted with [].
+Field around (patch 79 33) was planted with [].
+Field around (patch 90 33) was planted with [].
+Field around (patch 96 42) was planted with [].
+Field around (patch 97 33) was planted with [].
+Field around (patch 81 33) was planted with [].
+Field around (patch 88 35) was planted with [].
+I ended up with $0.
+I am (farmer 40).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 287 97) was planted with [].
+I ended up with $0.
+I am (farmer 441).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 285 96) was planted with [].
+I ended up with $0.
+I am (farmer 152).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 277 61) was planted with [].
+Field around (patch 289 63) was planted with [].
+Field around (patch 277 64) was planted with [].
+Field around (patch 282 59) was planted with [].
+Field around (patch 275 67) was planted with [].
+Field around (patch 291 69) was planted with [].
+Field around (patch 276 66) was planted with [].
+Field around (patch 288 63) was planted with [].
+Field around (patch 273 57) was planted with [].
+Field around (patch 288 58) was planted with [].
+Field around (patch 281 65) was planted with [].
+Field around (patch 275 54) was planted with [].
+Field around (patch 292 64) was planted with [].
+Field around (patch 274 66) was planted with [].
+Field around (patch 275 62) was planted with [].
+Field around (patch 277 65) was planted with [].
+Field around (patch 282 57) was planted with [].
+Field around (patch 289 56) was planted with [].
+Field around (patch 273 60) was planted with [].
+Field around (patch 274 60) was planted with [].
+Field around (patch 291 60) was planted with [].
+Field around (patch 285 67) was planted with [].
+Field around (patch 282 66) was planted with [].
+I ended up with $0.
+I am (farmer 373).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 286 94) was planted with [].
+I ended up with $0.
+I am (farmer 240).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 197 103) was planted with [].
+I ended up with $0.
+I am (farmer 276).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 277 99) was planted with [].
+I ended up with $0.
+I am (farmer 105).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 223 95) was planted with [].
+I ended up with $0.
+I am (farmer 408).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 162 92) was planted with [].
+I ended up with $0.
+I am (farmer 225).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 163 31) was planted with [].
+Field around (patch 167 28) was planted with [].
+I ended up with $0.
+I am (farmer 206).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 259 60) was planted with [].
+Field around (patch 267 57) was planted with [].
+Field around (patch 262 62) was planted with [].
+Field around (patch 265 56) was planted with [].
+Field around (patch 262 54) was planted with [].
+Field around (patch 266 60) was planted with [].
+Field around (patch 270 56) was planted with [].
+Field around (patch 265 52) was planted with [].
+Field around (patch 267 51) was planted with [].
+Field around (patch 255 50) was planted with [].
+Field around (patch 256 55) was planted with [].
+Field around (patch 263 64) was planted with [].
+Field around (patch 261 71) was planted with [].
+Field around (patch 260 58) was planted with [].
+Field around (patch 254 56) was planted with [].
+Field around (patch 266 56) was planted with [].
+Field around (patch 262 57) was planted with [].
+Field around (patch 269 52) was planted with [].
+Field around (patch 262 72) was planted with [].
+I ended up with $0.
+I am (farmer 317).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 280 125) was planted with [].
+Field around (patch 279 126) was planted with [].
+Field around (patch 276 125) was planted with [].
+Field around (patch 280 123) was planted with [].
+Field around (patch 273 123) was planted with [].
+Field around (patch 280 126) was planted with [].
+I ended up with $0.
+I am (farmer 17).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 275 87) was planted with [].
+Field around (patch 273 84) was planted with [].
+I ended up with $0.
+I am (farmer 310).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 195 110) was planted with [].
+Field around (patch 195 111) was planted with [].
+Field around (patch 193 111) was planted with [].
+I ended up with $0.
+I am (farmer 263).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 203 96) was planted with [].
+I ended up with $0.
+I am (farmer 506).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 149 40) was planted with [].
+I ended up with $0.
+I am (farmer 128).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 162 47) was planted with [].
+I ended up with $0.
+I am (farmer 14).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 198 68) was planted with [].
+I ended up with $0.
+I am (farmer 436).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 133 41) was planted with [].
+Field around (patch 133 42) was planted with [].
+I ended up with $0.
+I am (farmer 284).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 178 78) was planted with [].
+I ended up with $0.
+I am (farmer 435).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 223 125) was planted with [].
+Field around (patch 223 119) was planted with [].
+Field around (patch 219 123) was planted with [].
+I ended up with $0.
+I am (farmer 340).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 190 106) was planted with [].
+Field around (patch 190 98) was planted with [].
+Field around (patch 180 104) was planted with [].
+Field around (patch 190 101) was planted with [].
+Field around (patch 184 103) was planted with [].
+Field around (patch 187 105) was planted with [].
+Field around (patch 186 100) was planted with [].
+Field around (patch 181 100) was planted with [].
+Field around (patch 180 103) was planted with [].
+I ended up with $0.
+I am (farmer 243).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 175 70) was planted with [].
+I ended up with $0.
+I am (farmer 351).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 151 62) was planted with [].
+I ended up with $0.
+I am (farmer 201).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 167 60) was planted with [].
+I ended up with $0.
+I am (farmer 237).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 131 22) was planted with [].
+I ended up with $0.
+I am (farmer 364).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 290 126) was planted with [].
+I ended up with $0.
+I am (farmer 278).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 129 30) was planted with [].
+Field around (patch 131 33) was planted with [].
+I ended up with $0.
+I am (farmer 114).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 160 42) was planted with [].
+I ended up with $0.
+I am (farmer 346).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 263 127) was planted with [].
+I ended up with $0.
+I am (farmer 211).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 218 100) was planted with [].
+I ended up with $0.
+I am (farmer 110).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 281 63) was planted with [].
+I ended up with $0.
+I am (farmer 118).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 248 90) was planted with [].
+Field around (patch 227 88) was planted with [].
+Field around (patch 232 93) was planted with [].
+Field around (patch 235 89) was planted with [].
+Field around (patch 230 92) was planted with [].
+Field around (patch 233 93) was planted with [].
+Field around (patch 233 87) was planted with [].
+Field around (patch 235 94) was planted with [].
+Field around (patch 229 88) was planted with [].
+Field around (patch 235 88) was planted with [].
+Field around (patch 243 90) was planted with [].
+Field around (patch 246 92) was planted with [].
+Field around (patch 239 92) was planted with [].
+Field around (patch 246 88) was planted with [].
+Field around (patch 242 84) was planted with [].
+I ended up with $0.
+I am (farmer 214).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 209 108) was planted with [].
+Field around (patch 223 90) was planted with [].
+Field around (patch 220 95) was planted with [].
+Field around (patch 220 110) was planted with [].
+Field around (patch 205 100) was planted with [].
+Field around (patch 226 93) was planted with [].
+Field around (patch 205 97) was planted with [].
+Field around (patch 209 102) was planted with [].
+Field around (patch 225 92) was planted with [].
+Field around (patch 225 95) was planted with [].
+Field around (patch 210 98) was planted with [].
+Field around (patch 210 105) was planted with [].
+Field around (patch 220 97) was planted with [].
+Field around (patch 217 97) was planted with [].
+Field around (patch 209 96) was planted with [].
+Field around (patch 210 102) was planted with [].
+Field around (patch 212 103) was planted with [].
+Field around (patch 210 110) was planted with [].
+Field around (patch 215 107) was planted with [].
+Field around (patch 219 96) was planted with [].
+Field around (patch 224 100) was planted with [].
+Field around (patch 218 113) was planted with [].
+Field around (patch 212 112) was planted with [].
+Field around (patch 214 97) was planted with [].
+I ended up with $0.
+I am (farmer 279).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 171 20) was planted with [].
+I ended up with $0.
+I am (farmer 517).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 189 41) was planted with [].
+I ended up with $0.
+I am (farmer 30).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 248 73) was planted with [].
+Field around (patch 250 75) was planted with [].
+Field around (patch 250 80) was planted with [].
+Field around (patch 259 74) was planted with [].
+Field around (patch 250 77) was planted with [].
+Field around (patch 254 76) was planted with [].
+Field around (patch 256 77) was planted with [].
+Field around (patch 253 77) was planted with [].
+I ended up with $0.
+I am (farmer 166).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 281 105) was planted with [].
+I ended up with $0.
+I am (farmer 331).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 146 17) was planted with [].
+I ended up with $0.
+I am (farmer 136).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 216 94) was planted with [].
+Field around (patch 203 93) was planted with [].
+Field around (patch 200 84) was planted with [].
+Field around (patch 206 90) was planted with [].
+Field around (patch 208 90) was planted with [].
+Field around (patch 208 83) was planted with [].
+Field around (patch 209 83) was planted with [].
+Field around (patch 212 91) was planted with [].
+Field around (patch 212 83) was planted with [].
+Field around (patch 216 91) was planted with [].
+Field around (patch 206 91) was planted with [].
+Field around (patch 206 81) was planted with [].
+Field around (patch 207 79) was planted with [].
+Field around (patch 209 85) was planted with [].
+Field around (patch 215 80) was planted with [].
+Field around (patch 203 83) was planted with [].
+Field around (patch 198 83) was planted with [].
+Field around (patch 206 86) was planted with [].
+I ended up with $0.
+I am (farmer 254).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 165 63) was planted with [].
+Field around (patch 155 58) was planted with [].
+Field around (patch 165 68) was planted with [].
+Field around (patch 165 59) was planted with [].
+Field around (patch 162 60) was planted with [].
+Field around (patch 162 59) was planted with [].
+Field around (patch 164 69) was planted with [].
+Field around (patch 162 58) was planted with [].
+Field around (patch 161 66) was planted with [].
+Field around (patch 156 63) was planted with [].
+Field around (patch 160 59) was planted with [].
+Field around (patch 166 60) was planted with [].
+Field around (patch 159 61) was planted with [].
+Field around (patch 165 61) was planted with [].
+Field around (patch 159 54) was planted with [].
+Field around (patch 165 58) was planted with [].
+I ended up with $0.
+I am (farmer 515).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 282 100) was planted with [].
+I ended up with $0.
+I am (farmer 282).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 199 97) was planted with [].
+I ended up with $0.
+I am (farmer 443).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 146 79) was planted with [].
+Field around (patch 150 82) was planted with [].
+Field around (patch 148 77) was planted with [].
+I ended up with $0.
+I am (farmer 145).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 181 29) was planted with [].
+I ended up with $0.
+I am (farmer 157).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 291 124) was planted with [].
+Field around (patch 288 122) was planted with [].
+I ended up with $0.
+I am (farmer 439).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 141 61) was planted with [].
+Field around (patch 137 58) was planted with [].
+Field around (patch 147 65) was planted with [].
+Field around (patch 134 51) was planted with [].
+Field around (patch 145 66) was planted with [].
+Field around (patch 146 72) was planted with [].
+Field around (patch 132 65) was planted with [].
+Field around (patch 135 68) was planted with [].
+Field around (patch 143 57) was planted with [].
+Field around (patch 138 56) was planted with [].
+Field around (patch 128 56) was planted with [].
+Field around (patch 135 64) was planted with [].
+Field around (patch 129 62) was planted with [].
+Field around (patch 149 71) was planted with [].
+Field around (patch 135 54) was planted with [].
+Field around (patch 145 61) was planted with [].
+Field around (patch 138 59) was planted with [].
+Field around (patch 141 72) was planted with [].
+Field around (patch 146 66) was planted with [].
+Field around (patch 148 70) was planted with [].
+Field around (patch 132 52) was planted with [].
+Field around (patch 143 56) was planted with [].
+Field around (patch 142 56) was planted with [].
+Field around (patch 131 60) was planted with [].
+Field around (patch 134 73) was planted with [].
+Field around (patch 144 66) was planted with [].
+I ended up with $0.
+I am (farmer 522).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 260 126) was planted with [].
+I ended up with $0.
+I am (farmer 410).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 201 107) was planted with [].
+I ended up with $0.
+I am (farmer 86).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 197 41) was planted with [].
+I ended up with $0.
+I am (farmer 224).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 229 35) was planted with [].
+I ended up with $0.
+I am (farmer 56).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 263 82) was planted with [].
+I ended up with $0.
+I am (farmer 134).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 197 46) was planted with [].
+Field around (patch 199 49) was planted with [].
+Field around (patch 207 45) was planted with [].
+Field around (patch 214 52) was planted with [].
+Field around (patch 199 48) was planted with [].
+Field around (patch 202 49) was planted with [].
+Field around (patch 204 50) was planted with [].
+Field around (patch 217 51) was planted with [].
+Field around (patch 213 51) was planted with [].
+I ended up with $0.
+I am (farmer 397).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 162 86) was planted with [].
+I ended up with $0.
+I am (farmer 445).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 229 32) was planted with [].
+I ended up with $0.
+I am (farmer 216).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 281 103) was planted with [].
+I ended up with $0.
+I am (farmer 324).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 157 6) was planted with [].
+I ended up with $0.
+I am (farmer 269).
+During this simulation, I had planted [Hay Grain Grain Potato end of rotation].
+Field around (patch 172 83) was planted with [].
+I ended up with $0.
+I am (farmer 141).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 166 65) was planted with [].
+I ended up with $0.
+I am (farmer 12).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 198 72) was planted with [].
+I ended up with $0.
+I am (farmer 335).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 178 93) was planted with [].
+Field around (patch 177 93) was planted with [].
+Field around (patch 182 98) was planted with [].
+I ended up with $0.
+I am (farmer 24).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 247 99) was planted with [].
+I ended up with $0.
+I am (farmer 356).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 169 30) was planted with [].
+Field around (patch 151 7) was planted with [].
+Field around (patch 160 5) was planted with [].
+Field around (patch 168 25) was planted with [].
+Field around (patch 169 29) was planted with [].
+Field around (patch 148 3) was planted with [].
+Field around (patch 168 14) was planted with [].
+Field around (patch 148 4) was planted with [].
+Field around (patch 169 21) was planted with [].
+Field around (patch 149 13) was planted with [].
+Field around (patch 150 4) was planted with [].
+Field around (patch 170 23) was planted with [].
+Field around (patch 143 8) was planted with [].
+Field around (patch 138 3) was planted with [].
+Field around (patch 174 29) was planted with [].
+Field around (patch 146 15) was planted with [].
+Field around (patch 162 9) was planted with [].
+Field around (patch 141 18) was planted with [].
+Field around (patch 169 16) was planted with [].
+Field around (patch 147 13) was planted with [].
+Field around (patch 143 9) was planted with [].
+Field around (patch 145 14) was planted with [].
+Field around (patch 170 16) was planted with [].
+Field around (patch 148 11) was planted with [].
+Field around (patch 144 13) was planted with [].
+Field around (patch 139 14) was planted with [].
+Field around (patch 151 4) was planted with [].
+Field around (patch 140 8) was planted with [].
+I ended up with $0.
+I am (farmer 48).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 189 34) was planted with [].
+I ended up with $0.
+I am (farmer 527).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 138 7) was planted with [].
+I ended up with $0.
+I am (farmer 199).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 197 107) was planted with [].
+I ended up with $0.
+I am (farmer 25).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 228 106) was planted with [].
+Field around (patch 226 108) was planted with [].
+Field around (patch 226 115) was planted with [].
+Field around (patch 237 113) was planted with [].
+Field around (patch 227 105) was planted with [].
+Field around (patch 222 103) was planted with [].
+Field around (patch 224 108) was planted with [].
+Field around (patch 223 106) was planted with [].
+Field around (patch 233 110) was planted with [].
+Field around (patch 232 108) was planted with [].
+Field around (patch 232 112) was planted with [].
+Field around (patch 229 108) was planted with [].
+Field around (patch 225 109) was planted with [].
+Field around (patch 227 104) was planted with [].
+Field around (patch 231 105) was planted with [].
+Field around (patch 224 112) was planted with [].
+Field around (patch 223 116) was planted with [].
+I ended up with $0.
+I am (farmer 174).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 89 30) was planted with [].
+I ended up with $0.
+I am (farmer 262).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 291 98) was planted with [].
+I ended up with $0.
+I am (farmer 233).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 170 65) was planted with [].
+I ended up with $0.
+I am (farmer 127).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 221 72) was planted with [].
+I ended up with $0.
+I am (farmer 511).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 286 129) was planted with [].
+I ended up with $0.
+I am (farmer 3).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 272 94) was planted with [].
+I ended up with $0.
+I am (farmer 450).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 285 95) was planted with [].
+I ended up with $0.
+I am (farmer 117).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 167 40) was planted with [].
+I ended up with $0.
+I am (farmer 409).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 203 126) was planted with [].
+I ended up with $0.
+I am (farmer 339).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 201 105) was planted with [].
+I ended up with $0.
+I am (farmer 26).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 243 87) was planted with [].
+I ended up with $0.
+I am (farmer 422).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 288 41) was planted with [].
+I ended up with $0.
+I am (farmer 261).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 189 106) was planted with [].
+I ended up with $0.
+I am (farmer 190).
+During this simulation, I had planted [Hay Grain Potato Grain end of rotation].
+Field around (patch 102 26) was planted with [].
+I ended up with $0.
+I am (farmer 429).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 222 127) was planted with [].
+I ended up with $0.
+I am (farmer 84).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 288 90) was planted with [].
+I ended up with $0.
+I am (farmer 47).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 194 66) was planted with [].
+I ended up with $0.
+I am (farmer 273).
+During this simulation, I had planted [Potato Grain Grain end of rotation].
+Field around (patch 200 118) was planted with [].
+Field around (patch 199 118) was planted with [].
+I ended up with $0.
+I am (farmer 490).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 227 36) was planted with [].
+I ended up with $0.
+I am (farmer 308).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 301 128) was planted with [].
+Field around (patch 299 128) was planted with [].
+I ended up with $0.
+I am (farmer 79).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 233 92) was planted with [].
+I ended up with $0.
+I am (farmer 229).
+During this simulation, I had planted [Potato Grain Beet Grain end of rotation].
+Field around (patch 217 72) was planted with [].
+I ended up with $0.
+I am (farmer 143).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 273 110) was planted with [].
+I ended up with $0.
+I am (farmer 417).
+During this simulation, I had planted [Hay Grain end of rotation].
+Field around (patch 165 85) was planted with [].
+I ended up with $0.
+I am (farmer 50).
+During this simulation, I had planted [Potato Beet Grain Grain end of rotation].
+Field around (patch 195 71) was planted with [].
+I ended up with $0.
+I am (farmer 438).
+During this simulation, I had planted [Grain Potato Beet Hay end of rotation].
+Field around (patch 251 132) was planted with [].
+Field around (patch 258 133) was planted with [].
+Field around (patch 231 142) was planted with [].
+Field around (patch 233 136) was planted with [].
+Field around (patch 240 132) was planted with [].
+Field around (patch 235 133) was planted with [].
+Field around (patch 256 131) was planted with [].
+Field around (patch 230 136) was planted with [].
+Field around (patch 254 140) was planted with [].
+Field around (patch 242 134) was planted with [].
+Field around (patch 252 131) was planted with [].
+Field around (patch 255 131) was planted with [].
+Field around (patch 235 143) was planted with [].
+Field around (patch 253 132) was planted with [].
+Field around (patch 252 137) was planted with [].
+Field around (patch 256 128) was planted with [].
+Field around (patch 231 133) was planted with [].
+Field around (patch 253 137) was planted with [].
+I ended up with $0.
+I am (farmer 125).
+During this simulation, I had planted [Hay Barley Potato end of rotation].
+Field around (patch 197 38) was planted with [].
+Field around (patch 207 35) was planted with [].
+Field around (patch 203 37) was planted with [].
+Field around (patch 206 29) was planted with [].
+Field around (patch 195 41) was planted with [].
+Field around (patch 202 29) was planted with [].
+Field around (patch 201 43) was planted with [].
+Field around (patch 207 37) was planted with [].
+Field around (patch 200 38) was planted with [].
+Field around (patch 193 40) was planted with [].
+Field around (patch 200 43) was planted with [].
+Field around (patch 204 44) was planted with [].
+Field around (patch 197 29) was planted with [].
+Field around (patch 197 40) was planted with [].
+Field around (patch 201 35) was planted with [].
+I ended up with $0.
