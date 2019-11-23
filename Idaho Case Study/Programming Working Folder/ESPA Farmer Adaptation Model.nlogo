@@ -747,8 +747,8 @@ end
 GRAPHICS-WINDOW
 646
 80
-2498
-1384
+2508
+1391
 -1
 -1
 6.0
@@ -1097,16 +1097,6 @@ TEXTBOX
 29
 Interface Preferences
 15
-0.0
-1
-
-TEXTBOX
-32
-798
-182
-826
-Should add a short note for each of these.
-11
 0.0
 1
 
@@ -1482,7 +1472,7 @@ SWITCH
 451
 GeneratingWorlds?
 GeneratingWorlds?
-0
+1
 1
 -1000
 
@@ -1558,41 +1548,57 @@ NIL
 HORIZONTAL
 
 @#$#@#$#@
+This write-up is a work-in-progress, along with some of the other documentation and will be updated as the author is able. If you wish to use the model in the meantime, please contact jasonkhawes@gmail.com for information and assistance. 
+
+
 ## WHAT IS IT?
 
-(a general understanding of what the model is trying to show or explain)
+The model was designed as part of a study with two primary goals. First, the study was intended to examine patterns of adaptation among groundwater farmers in the Eastern Snake Plain. Due to the introduction of a new groundwater management agreement, farmers throughout the plain have been required to cut an average of 13% of their groundwater use. This has led to the adoption of a variety of new practices and strategies for reducing water use. This model is intended to simulate this adoption. Adaptation and decision-making practices are simulated through the operationalization of three social decision-making theories; the model can be run using any of these three theories, thus allowing for parallel investigation of the first research question with three different theoretical drivers. This, then, lays the groundwork for the second objective. The team seeks to better understand the implications of the adopted decision-making model for the results and conclusions of a modeling effort. To do this, the team sought to investigate the first research question using all three decision-making models and compare these results and outcomes to each other as well as to empirical data. The implementation of three separate, theory-based decision-making mechanisms to govern farmer agent behavior within a fully functional model of an agricultural system allowed the study team to investigate the original, applied research question, while also improving the collective understanding of the type of variability introduced when decision-making rules are varied. 
 
 ## HOW IT WORKS
 
-(what rules the agents use to create the overall behavior of the model)
+Farmers are the only actors with true agency. They proceed through a four-season year, which approximates their real-world schedule.
+1.	Planning season – traditional: Farmers determine preferred crop, plan for planting that best meets their requirements – may still be revised in adaptation planning. With each crop, farmers calculate their expected water use and analyze various water-saving measures, including more efficient irrigation, less water-intensive crops, and fallowing acres or corners. This is all considered in an overall utility function that uses the selected decision-making theory to approximate a farmer’s decision-making process in light of available information. 
+2.	Planting season: Farmers execute plan developed in planning season. Simulation determines total water use by farmers, yields (AquaCrop), and net revenue.
+3.	Harvest Season (Reconciliation): Farmers calculate their yield and income and adapt their attitudes based on this year’s outcomes.  
+4.	Offseason: Farmers communicate results with other farmers and with consultants in their social network. Afterwards, consultants speak with their farmer clients about the new attitudes they’ve developed after seeing that year’s performance for a variety of farmers. 
+Other agents only participate in the offseason section of the model, communicating with farmers and sharing their opinions about each possible crop and irrigation method. 
+
+Farmer behavior is governed by one of three decision-making theories, selected by the user. A general description is included here and more details can be found in the model READ-ME and ODD+D. The first decision-making theory, profit-seeking bounded rationality, is the control setting for this model, mocking itself after many of the early models developed in ABM. Farmers are motivated only to maximize economic profits based on their limited perceptions. The second theory is the Theory of Planned Behvaior developed by Azjen. This theory incoporates social psychology into the decision-making algorithms, engaging social norms, individual attitudes, and perceived behavioral control as constructs informing ultimate action. Finally, the Integrated Agent-Centered Framework is a recent proposal from Feola and Binder, which integrates two previous theories of decision making to propose a new, more model-friendly theory. Major differences between TPB and IAC include the presence of habit in IAC and the more explicit integration of the surrounding social-ecological system. 
 
 ## HOW TO USE IT
 
-(how to use the model, including a description of each of the items in the Interface tab)
+The model as it stands can be directly downloaded and used on any computer capable of running NetLogo. It has not been tested on Mac or Linux OS, but the authors have no reason to suspect that it would not work. 
+
+If there are problems running the model, it is recommended that the first area of investigation be the directories of the input files - it is possible that differences in directory formatting could cause problems. 
+
+Broadly, the user is expected to input four main things from the interface before beginning - all other inptus can be left on the default. First, the user must determine the number of years they want the model to run for. Second, the user must determine the social theory they want to employ. Third, the user must identify in which groundwater district the simulation should be run - this is not actually necessary if the simulation will be an experiment one. Therefore finally, the user must indicate if the model should generate a new world to run in (Random Populate) or use an existing one (Experimental Populate). If the user wishes to run an experimental populate, they should ensure that the text boxes for the world file location and the two input files are filled in. More information on the contents of the input files can be found in the Inputs folder in the GitHub. 
+
 
 ## THINGS TO NOTICE
 
-(suggested things for the user to notice while running the model)
+Not much happens while the mdoel is running. Future releases may include color-coding for crops in each field to allow a but more interaction. THe user is invited to add graphs to the Interface tab to track key variables. Variables of interest may be the number of fields with each crop and the number of fields with each irrigation strategy. 
 
 ## THINGS TO TRY
 
-(suggested things for the user to try to do (move sliders, switches, etc.) with the model)
+There are many inputs on the interface tab, and not all of them have been thoroughly tested to determine their impacts in a wide variety of scenarios. Knowing this, it is recommended that the user use caution when experimenting with inputs. Inputs that have been tested and found to have significant impact on the model include the Charge for Overdraw, the Number of Consultants, the ROI Threshold, and Perception Threshold. Again, reach out to the primary author for more information- further tests may have been run between the updating of this document and today. If the user is interested in seeing a variety of runs, these inputs would allow for significant variation. 
 
 ## EXTENDING THE MODEL
 
-(suggested things to add or change in the Code tab to make the model more complicated, detailed, accurate, etc.)
+The model is many thousands of lines of code long, and it is not recommended that the user roll out significant changes to the code unless they intend to invest significant time in troubleshooting. Many changes cna be implemented through the inputs, and a huge amount of testing remains to be done to know the degree to which these different inputs change outcomes of the model. 
+From an inputs perspective, an important extension which the original authors hope to include would be the expansion of adaptation beyond infrastructural improvements. A variety of other categories of adaptation were analyzed in empirical evidence, and the model could be analyzed along several new dimesnions from the extension of this input. Ultimately, this will have a significant impact on the decision making algorithms and would be a non-trivial undertaking, which is why it remains incomplete to-date. 
 
 ## NETLOGO FEATURES
 
-(interesting or unusual features of NetLogo that the model uses, particularly in the Code tab; or where workarounds were needed for missing features)
+The model employs the NetLogo GIS extension as a mechanism for integrating spatially accurate worlds. It does not employ the actual locations of each farm, but the use of a vector file means that if a dedicated user wanted to, they could integrate real-world soill data, hydrologic data, and farmer information without too much overhaul of the program. 
 
 ## RELATED MODELS
 
-(models in the NetLogo Models Library and elsewhere which are of related interest)
+None to-date. A generalized form of Farm-Adapt is in the works, although only this version initialized in Idaho is available as of late 2019. 
 
 ## CREDITS AND REFERENCES
 
-(a reference to the model's URL on the web if it has one, as well as any other necessary credits, citations, and links)
+The program was developed and implemented by Jason Hawes, who can be reached at jasonkhawes@gmail.com. He would like to thank Dr. Zhao Ma, Dr. Morey Burnham, and Dr. David Yu for their input and support on this project. 
 @#$#@#$#@
 default
 true
@@ -1899,7 +1905,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.1.1
+NetLogo 6.0.2
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
