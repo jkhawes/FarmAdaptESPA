@@ -468,14 +468,15 @@ farmers-own
 to Go
   ;; Go is the primary function in this program. It is called by the Go button on the GUI or as the primary function in a BehaviorSpace sim.
   ;; Go calls setup, then catalogs initial conditions, then loops through planning and planting for a given number of seasons, then Catalogs Final Conditions, then closes the program.
-
+  reset-timer
+  print timer
   setup ; Setup contains all the one-time setup procedures. It is one of three functions that can be called independently from the GUI.
   ; TODO - Need to determine what things are useful to catalog and write the component to do that.
   while [ticks < NumberOfSeasons]
   [ ; this is the code to run the simulation for a given NumberOfSeasons. I think this could easily be modified to include multiple simulations within one run.
     ; Throughout this code, tracers are inserted for use during troubleshooting and general timing of the program.
     trace "start of new tick (year)"
-    PlanningSeason  ; Farmers select their acitons for the year. Actions include any kind of water conservation practice, as well as what/how much to plant.
+    PlanningSeason  ; Farmers select their actions for the year. Actions include any kind of water conservation practice, as well as what/how much to plant.
     trace "end of planning for all farmers"
     CropSeason ; Calculate actual returns from choice of land use.
     trace "end of simulation season. Crop outcomes recorded and preparing to reconcile."
@@ -489,6 +490,7 @@ to Go
   if NumberOfSeasons > 0 [export-world (word GWD "_" Decision-Making "_CompletedSim_Run " RandomSeed "_" ExperimentName)] ; Changed to random seed to I can vary the outcomes across the worlds in a regulated way.
   CatalogConditions location
   set Finished TRUE
+  print timer
   stop
 end
 
@@ -573,89 +575,89 @@ to setup
 end
 
 to EvaluateRun
-  ; set of commands used to produce easily analyzable information. For instance, produce crop counts or percent who change irrigation strategies.
-
-  ; Evaluating rotations
-  let potato-rot-count 0
-  let beet-rot-count 0
-  let alfalfa-rot-count 0
-  let grain-rot-count 0
-  let barley-rot-count 0
-
-  ask farmers [
-    foreach RotationList [
-      [entry] ->
-      if entry = "Potato"  [set potato-rot-count potato-rot-count + 1]
-      if entry = "Beet" [set beet-rot-count beet-rot-count + 1]
-      if entry = "Hay" [set alfalfa-rot-count alfalfa-rot-count + 1]
-      if entry = "Grain" [set grain-rot-count grain-rot-count + 1]
-      if entry = "Barley" [set barley-rot-count barley-rot-count + 1]
-    ]
-  ]
-  print (word "potato-rotation-count is " potato-rot-count)
-  print (word "beet-rotation-count is " beet-rot-count)
-  print (word "alfalfa-rotation-count is " alfalfa-rot-count)
-  print (word "grain-rotation-count is " grain-rot-count)
-  print (word "barley-rotation-count is " barley-rot-count)
-  let rot-sum barley-rot-count + grain-rot-count + alfalfa-rot-count + beet-rot-count + potato-rot-count
-  print (word "Percent potato in rotations is " (potato-rot-count / rot-sum * 100) " as compared to " CropscapePercentPotatoes " prescribed by cropscape.")
-  print (word "Percent beet in rotations is " (beet-rot-count / rot-sum * 100) " as compared to " CropscapePercentSugarbeets " prescribed by cropscape.")
-  print (word "Percent alfafa in rotations is " (alfalfa-rot-count / rot-sum * 100) " as compared to " CropscapePercentAlfalfa " prescribed by cropscape.")
-  print (word "Percent grain in rotations is " (grain-rot-count / rot-sum * 100) " as compared to " (CropscapePercentSpringWheat + CropscapePercentCorn + CropscapePercentWinterWheat) " prescribed by cropscape.")
-  print (word "Percent barley in rotations is " (barley-rot-count / rot-sum * 100) " as compared to " CropscapePercentBarley " prescribed by cropscape.")
-
-  ; Evaluating crop histories
-  set potato-count 0
-  set beet-count 0
-  set alfalfa-count 0
-  set a-p-count 0
-  set alfalfa-total-count 0
-  set sw-count 0
-  set ww-count 0
-  set corn-count 0
-  set grain-count 0
-  set barley-count 0
-  set total-crops 0
-
-  ask farmers [
-    foreach crophistory [
-      [entry] ->
-      if entry = ["Potatoes"]  [set potato-count potato-count + 1]
-      if entry = ["Sugarbeets"] [set beet-count beet-count + 1]
-      if entry = ["Alfalfa"] [set alfalfa-count alfalfa-count + 1]
-      if entry = ["Alfalfa"] [set alfalfa-total-count alfalfa-total-count + 1]
-      if entry = ["Spring Wheat"] [set sw-count sw-count + 1]
-      if entry = ["Spring Wheat"] [set grain-count grain-count + 1]
-      if entry = ["Winter Wheat"] [set ww-count ww-count + 1]
-      if entry = ["Winter Wheat"] [set grain-count grain-count + 1]
-      if entry = ["Corn"] [set corn-count corn-count + 1]
-      if entry = ["Corn"] [set grain-count grain-count + 1]
-      if entry = ["Barley"] [set barley-count barley-count + 1]
-      if entry = ["Alfalfa_Perennial"] [set a-p-count a-p-count + 1]
-      if entry = ["Alfalfa_Perennial"] [set alfalfa-total-count alfalfa-total-count + 1]
-    ]
-  ]
-  set total-crops potato-count + beet-count + barley-count + alfalfa-total-count + grain-count
-  print (word "potato-count is " potato-count)
-  print (word "beet-count is " beet-count)
-  print (word "alfalfa-count is " alfalfa-count)
-  print (word "sw-count is " sw-count)
-  print (word "ww-count is " ww-count)
-  print (word "corn-count is " corn-count)
-  print (word "barley-count is " barley-count)
-  print (word "alfalfa perennial count is " a-p-count)
-  print (word "Alfalfa total count is " alfalfa-total-count)
-  print (word "grain-count is " grain-count)
-  print (word "total-crops is " total-crops)
-
-  ; Evaluating number of folks who changed rotation at any point. Works best when only running year 10.
-  let WaterStratChange 0
-  ask farmers [
-    if ChangedWaterManagementThisYear? = 1
-    [ set WaterStratChange WaterStratChange + 1 ]
-  ]
-  let WaterStratChangePercent-local (WaterStratChange / count farmers * 100)
-  print (word "The percent of farmers changing their water use strategy is " WaterStratChangePercent-local)
+;  ; set of commands used to produce easily analyzable information. For instance, produce crop counts or percent who change irrigation strategies.
+;
+;  ; Evaluating rotations
+;  let potato-rot-count 0
+;  let beet-rot-count 0
+;  let alfalfa-rot-count 0
+;  let grain-rot-count 0
+;  let barley-rot-count 0
+;
+;  ask farmers [
+;    foreach RotationList [
+;      [entry] ->
+;      if entry = "Potato"  [set potato-rot-count potato-rot-count + 1]
+;      if entry = "Beet" [set beet-rot-count beet-rot-count + 1]
+;      if entry = "Hay" [set alfalfa-rot-count alfalfa-rot-count + 1]
+;      if entry = "Grain" [set grain-rot-count grain-rot-count + 1]
+;      if entry = "Barley" [set barley-rot-count barley-rot-count + 1]
+;    ]
+;  ]
+;  print (word "potato-rotation-count is " potato-rot-count)
+;  print (word "beet-rotation-count is " beet-rot-count)
+;  print (word "alfalfa-rotation-count is " alfalfa-rot-count)
+;  print (word "grain-rotation-count is " grain-rot-count)
+;  print (word "barley-rotation-count is " barley-rot-count)
+;  let rot-sum barley-rot-count + grain-rot-count + alfalfa-rot-count + beet-rot-count + potato-rot-count
+;  print (word "Percent potato in rotations is " (potato-rot-count / rot-sum * 100) " as compared to " CropscapePercentPotatoes " prescribed by cropscape.")
+;  print (word "Percent beet in rotations is " (beet-rot-count / rot-sum * 100) " as compared to " CropscapePercentSugarbeets " prescribed by cropscape.")
+;  print (word "Percent alfafa in rotations is " (alfalfa-rot-count / rot-sum * 100) " as compared to " CropscapePercentAlfalfa " prescribed by cropscape.")
+;  print (word "Percent grain in rotations is " (grain-rot-count / rot-sum * 100) " as compared to " (CropscapePercentSpringWheat + CropscapePercentCorn + CropscapePercentWinterWheat) " prescribed by cropscape.")
+;  print (word "Percent barley in rotations is " (barley-rot-count / rot-sum * 100) " as compared to " CropscapePercentBarley " prescribed by cropscape.")
+;
+;  ; Evaluating crop histories
+;  set potato-count 0
+;  set beet-count 0
+;  set alfalfa-count 0
+;  set a-p-count 0
+;  set alfalfa-total-count 0
+;  set sw-count 0
+;  set ww-count 0
+;  set corn-count 0
+;  set grain-count 0
+;  set barley-count 0
+;  set total-crops 0
+;
+;  ask farmers [
+;    foreach crophistory [
+;      [entry] ->
+;      if entry = ["Potatoes"]  [set potato-count potato-count + 1]
+;      if entry = ["Sugarbeets"] [set beet-count beet-count + 1]
+;      if entry = ["Alfalfa"] [set alfalfa-count alfalfa-count + 1]
+;      if entry = ["Alfalfa"] [set alfalfa-total-count alfalfa-total-count + 1]
+;      if entry = ["Spring Wheat"] [set sw-count sw-count + 1]
+;      if entry = ["Spring Wheat"] [set grain-count grain-count + 1]
+;      if entry = ["Winter Wheat"] [set ww-count ww-count + 1]
+;      if entry = ["Winter Wheat"] [set grain-count grain-count + 1]
+;      if entry = ["Corn"] [set corn-count corn-count + 1]
+;      if entry = ["Corn"] [set grain-count grain-count + 1]
+;      if entry = ["Barley"] [set barley-count barley-count + 1]
+;      if entry = ["Alfalfa_Perennial"] [set a-p-count a-p-count + 1]
+;      if entry = ["Alfalfa_Perennial"] [set alfalfa-total-count alfalfa-total-count + 1]
+;    ]
+;  ]
+;  set total-crops potato-count + beet-count + barley-count + alfalfa-total-count + grain-count
+;  print (word "potato-count is " potato-count)
+;  print (word "beet-count is " beet-count)
+;  print (word "alfalfa-count is " alfalfa-count)
+;  print (word "sw-count is " sw-count)
+;  print (word "ww-count is " ww-count)
+;  print (word "corn-count is " corn-count)
+;  print (word "barley-count is " barley-count)
+;  print (word "alfalfa perennial count is " a-p-count)
+;  print (word "Alfalfa total count is " alfalfa-total-count)
+;  print (word "grain-count is " grain-count)
+;  print (word "total-crops is " total-crops)
+;
+;  ; Evaluating number of folks who changed rotation at any point. Works best when only running year 10.
+;  let WaterStratChange 0
+;  ask farmers [
+;    if ChangedWaterManagementThisYear? = 1
+;    [ set WaterStratChange WaterStratChange + 1 ]
+;  ]
+;  let WaterStratChangePercent-local (WaterStratChange / count farmers * 100)
+;  print (word "The percent of farmers changing their water use strategy is " WaterStratChangePercent-local)
 
 end
 
@@ -743,15 +745,119 @@ to GenerateExperiments
   file-close
 
 end
+
+
+
+to-report potato-rot-count
+  let potato-rot-count-temp 0
+  ask farmers [
+    foreach RotationList [
+      [entry] ->
+      if entry = "Potato"  [set potato-rot-count-temp potato-rot-count + 1]
+    ]
+  ]
+  report potato-rot-count-temp
+end
+
+to-report beet-rot-count
+  let beet-rot-count-temp 0
+  ask farmers [
+    foreach RotationList [
+      [entry] ->
+      if entry = "Beet" [set beet-rot-count-temp beet-rot-count-temp + 1]
+    ]
+  ]
+  report beet-rot-count-temp
+end
+to-report alfalfa-rot-count
+  let alfalfa-rot-count-temp 0
+  ask farmers [
+    foreach RotationList [
+      [entry] ->
+      if entry = "Hay" [set alfalfa-rot-count-temp alfalfa-rot-count-temp + 1]
+    ]
+  ]
+  report alfalfa-rot-count-temp
+end
+to-report grain-rot-count
+  let grain-rot-count-temp 0
+  ask farmers [
+    foreach RotationList [
+      [entry] ->
+      if entry = "Grain" [set grain-rot-count-temp grain-rot-count-temp + 1]
+      ]
+  ]
+  report grain-rot-count-temp
+end
+to-report barley-rot-count
+  let barley-rot-count-temp 0
+  ask farmers [
+    foreach RotationList [
+      [entry] ->
+      if entry = "Barley" [set barley-rot-count-temp barley-rot-count-temp + 1]
+    ]
+  ]
+  report barley-rot-count-temp
+end
+
+to-report total-crops
+  ask farmers [
+    foreach crophistory [
+      [entry] ->
+      if entry = ["Potatoes"]  [set potato-count-temp potato-count-temp + 1]
+      if entry = ["Sugarbeets"] [set beet-count-temp beet-count-temp + 1]
+      if entry = ["Alfalfa"] [set alfalfa-total-count-temp alfalfa-total-count-temp + 1]
+      if entry = ["Spring Wheat"] [set grain-count-temp grain-count-temp + 1]
+      if entry = ["Winter Wheat"] [set grain-count-temp grain-count-temp + 1]
+      if entry = ["Corn"] [set grain-count-temp grain-count-temp + 1]
+      if entry = ["Barley"] [set barley-count-temp barley-count-temp + 1]
+      if entry = ["Alfalfa_Perennial"] [set alfalfa-total-count-temp alfalfa-total-count-temp + 1]
+    ]
+  ]
+  report potato-count-temp + beet-count-temp + barley-count-temp + alfalfa-total-count-temp + grain-count-temp
+end
+
+to-report potato-count
+  ask farmers [
+    foreach crophistory [
+      [entry] ->
+      if entry = ["Potatoes"]  [set potato-count-temp potato-count-temp + 1]
+    ]
+  ]
+  report potato-count-temp
+end
+
+to-report beet-count
+  ask farmers [
+    foreach crophistory [
+      [entry] ->
+      if entry = ["Sugarbeets"]  [set beet-count-temp beet-count-temp + 1]
+    ]
+  ]
+  report beet-count-temp
+end
+
+
+to-report grain-count
+  ask farmers [
+    foreach crophistory [
+      [entry] ->
+      if entry = ["Spring Wheat"] [set grain-count-temp grain-count-temp + 1]
+      if entry = ["Winter Wheat"] [set grain-count-temp grain-count-temp + 1]
+      if entry = ["Corn"] [set grain-count-temp grain-count-temp + 1]
+          ]
+  ]
+  report grain-count-temp
+end
 @#$#@#$#@
 GRAPHICS-WINDOW
 646
 80
-2508
-1391
+1890
+957
 -1
 -1
-6.0
+4.0
 1
 10
 1
@@ -877,7 +983,7 @@ NumberOfSeasons
 NumberOfSeasons
 0
 50
-15.0
+5.0
 1
 1
 years
@@ -1460,7 +1566,7 @@ INPUTBOX
 635
 457
 InterfaceVariableFileName
-/data/InterfaceInputs6.txt
+NIL
 1
 0
 String
@@ -1905,7 +2011,7 @@ false
 Polygon -7500403 true true 270 75 225 30 30 225 75 270
 Polygon -7500403 true true 30 75 75 30 270 225 225 270
 @#$#@#$#@
-NetLogo 6.0.2
+NetLogo 6.1.1
 @#$#@#$#@
 @#$#@#$#@
 @#$#@#$#@
@@ -4309,6 +4415,199 @@ NetLogo 6.0.2
     </enumeratedValueSet>
     <enumeratedValueSet variable="PercVarWillingnessToLose">
       <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="GWD">
+      <value value="&quot;Magic Valley GWD&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WaterRightSeniorityDistribution">
+      <value value="&quot;Uniform&quot;"/>
+    </enumeratedValueSet>
+  </experiment>
+  <experiment name="RevisionsTest" repetitions="1" runMetricsEveryStep="false">
+    <setup>setup</setup>
+    <go>go</go>
+    <final>EvaluateRunR</final>
+    <metric>count turtles</metric>
+    <metric>potato-rot-count</metric>
+    <metric>beet-rot-count</metric>
+    <metric>alfalfa-rot-count</metric>
+    <metric>grain-rot-count</metric>
+    <metric>barley-rot-count</metric>
+    <metric>rot-sum</metric>
+    <metric>potato-count</metric>
+    <metric>beet-count</metric>
+    <metric>alfalfa-count</metric>
+    <metric>sw-count</metric>
+    <metric>ww-count</metric>
+    <metric>corn-count</metric>
+    <metric>barley-count</metric>
+    <metric>a-p-count</metric>
+    <metric>alfalfa-total-count</metric>
+    <metric>grain-count</metric>
+    <metric>total-crops</metric>
+    <enumeratedValueSet variable="PerceptionThreshold">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefInSocialSanctionsAverage">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="FixRandomSeed?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Simulate-ESPA_CAMP">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ExperimentVariablesFile">
+      <value value="&quot;/data/ExperimentVariables.txt&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WriteCropBudgets?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="PrintReporters?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="IAC-PhysArous-Threshold">
+      <value value="2.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WriteDetailedCropBudgets?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="F-Ratio-V">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RandomStartingMoney">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="F-Ratio-W">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WriteOutputs?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="UseRandomRotations?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WaterRightDistribution">
+      <value value="&quot;Normal&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Run-Number">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RandomSeed">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="TypicalAmountFarmerIsWillingToLosePerField">
+      <value value="5000"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Animate?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ROISeasonTolerance">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Social-Connections-per-Farmer">
+      <value value="3"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="InputIntensityDistribution">
+      <value value="&quot;Random&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Lognormal-Sigma">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="InternalScalar">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="IndividualFieldCalcs?">
+      <value value="true"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Tracers?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ExternalScalar">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefInSocialSanctionsSD">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefInESPASD">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="GeneratingWorlds?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="NumberOfSeasons">
+      <value value="15"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="EfficacyScalar">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="AcreageDistributionType">
+      <value value="&quot;Categorical&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="RhythmScalar">
+      <value value="1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="InterfaceVariableFileName">
+      <value value="&quot;/data/InterfaceInputs6.txt&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefInESPAAverage">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="CustomFarmerAccess">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="PopulateMethod">
+      <value value="&quot;Random&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefsInEconomicSanctionsSD">
+      <value value="0.1"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="water-preference">
+      <value value="100"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="OffsetIrrigationWithSkill?">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="WorldFileName">
+      <value value="&quot;Aberdeen-American Falls GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Aberdeen-American Falls GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Aberdeen-American Falls GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;Bingham GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Bingham GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Bingham GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;Bonneville-Jefferson GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Bonneville-Jefferson GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Bonneville-Jefferson GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;Carey Valley GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Carey Valley GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Carey Valley GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;Jefferson-Clark GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Jefferson-Clark GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Jefferson-Clark GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;Magic Valley GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;Magic Valley GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;Magic Valley GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+      <value value="&quot;North Snake GWD_EmptyWorld_Run 1_InformedRotations&quot;"/>
+      <value value="&quot;North Snake GWD_EmptyWorld_Run 2_InformedRotations&quot;"/>
+      <value value="&quot;North Snake GWD_EmptyWorld_Run 3_InformedRotations&quot;"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="ChargeForOverdraw">
+      <value value="0"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Consultants-per-Farmer">
+      <value value="2"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Use-Aqua-Crop">
+      <value value="false"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="PercVarWillingnessToLose">
+      <value value="5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="BeliefInEconomicSanctionsAverage">
+      <value value="0.5"/>
+    </enumeratedValueSet>
+    <enumeratedValueSet variable="Decision-Making">
+      <value value="&quot;Rational Actor Theory&quot;"/>
     </enumeratedValueSet>
     <enumeratedValueSet variable="GWD">
       <value value="&quot;Magic Valley GWD&quot;"/>

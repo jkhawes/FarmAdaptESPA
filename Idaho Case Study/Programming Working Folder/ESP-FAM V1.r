@@ -185,10 +185,10 @@ testfun <- function(ExperimentDF){
 # ======= Section 1: Simulation =========
 
 #Set universal variables
-nl.path <- "C:/Program Files/NetLogo 6.0.2/app"
+nl.path <- "C:/Program Files/NetLogo 6.0.4/app"
 gui <- FALSE
-nl.jarname <- "netlogo-6.0.2.jar"
-model.path <- "~/GitHub/ESPA-CAMP-ABM/Programming Working Folder/ESPA Farmer Adaptation Model.nlogo"
+nl.jarname <- "netlogo-6.0.4.jar"
+model.path <- "~/GitHub/FarmAdaptESPA/Idaho Case Study/Programming Working Folder/ESPA Farmer Adaptation Model.nlogo"
 
 ##Set simulation variable lists - get imported into a dataframe for passing.
 #Actual variables that vary
@@ -370,7 +370,7 @@ names(ExperimentResults) <- c("WorldFile","Decision making","Number of Seasons",
                               "ROI Limits","Number of Network Connections","Economic Santions","Potatoes","Beets","Alfalfa","Alf-Per","Alf-Tot",
                               "Spr-Wht","Wint-Wht","Corn","Grain","Barley","Total")
 #Output File for the results
-OutputFile <- "~/GitHub/ESPA-CAMP-ABM/Programming Working Folder/R/Thesis Experiment Output/Experiment Test - 20190712.csv"
+OutputFile <- "~/GitHub/FarmAdaptESPA/Programming Working Folder/Idaho Case Study/Experiment Test - 20200601.csv"
 
 # #Writing new unparallelized functions, because parallel doesn't play nice with ISU computer. 
 # #Call functions (running not in parallel)
@@ -399,7 +399,7 @@ processors <- detectCores() - 1
 cl <- makeCluster(processors,outfile="")
 
 # load NetLogo in each processor/core
-invisible(parLapply(cl, 1:processors, prepro, gui=gui, nl.path=nl.path, nl.jarname = nl.jarname, model.path=model.path))
+parLapply(cl, 1:processors, prepro, gui=gui, nl.path=nl.path, nl.jarname = nl.jarname, model.path=model.path)
 
 
 
